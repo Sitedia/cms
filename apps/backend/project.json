@@ -7,9 +7,16 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/backend",
+        "main": "apps/backend/src/main.ts",
+        "tsConfig": "apps/backend/tsconfig.app.json",
+        "assets": ["apps/backend/src/assets"],
         "webpackConfig": "apps/backend/webpack.config.js",
+        "target": "node",
+        "compiler": "tsc",
+        "sourceMap": true,
         "generatePackageJson": true
       }
     },
@@ -26,6 +33,23 @@
         "production": {
           "buildTarget": "apps/backend:build:production"
         }
+      }
+    },
+    "docker:build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "DOCKER_BUILDKIT=1 docker build . -f apps/backend/Dockerfile -t backend --no-cache --build-arg=\"APP_VERSION={args.appVersion}\""
+        ]
+      }
+    },
+    "docker:start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "echo 'Delete the previous container if exists ..' && docker rm -f backend && echo 'Create the container ...' && docker run --name backend -p 3000:3000 backend"
+        ],
+        "parallel": false
       }
     }
   }
