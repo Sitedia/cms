@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/prefer-module */
 import { ApplicationLogger } from '@sitedia/nestjs-common';
-import {  HttpStatus, INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
