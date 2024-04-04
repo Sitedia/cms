@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Inject, Injectable } from '@nestjs/common';
 // @ts-expect-error implicit import
-import * as clc from 'cli-color';
+import clc from 'cli-color';
 import { ApplicationLoggerInterface } from './application-logger.interface';
 import { LogFormat } from './log-format.enum';
 import { LogLevel } from './log-level.enum';

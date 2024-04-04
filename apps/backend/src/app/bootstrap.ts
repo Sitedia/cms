@@ -8,8 +8,8 @@ import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
 // @ts-expect-error implicit import
-import * as yaml from 'js-yaml';
-import * as fs from 'node:fs';
+import yaml from 'js-yaml';
+import fs from 'node:fs';
 import { AppModule } from './app.module';
 import { ApplicationOptions, ConfigurationOptions } from './configuration.interface';
 
