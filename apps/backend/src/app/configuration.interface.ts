@@ -1,4 +1,4 @@
-import { HealthModuleOptions, LoggerModuleOptions } from '@sitedia/nestjs-common';
+import { HealthModuleOptions, LoggerModuleOptions } from '@my-events/nestjs-common';
 import { ThrottlerModuleOptions } from '@nestjs/throttler';
 
 export enum ConfigurationOptions {

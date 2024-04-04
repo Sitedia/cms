@@ -1,4 +1,4 @@
-import { LogFormat, LogLevel } from '@sitedia/nestjs-common';
+import { LogFormat, LogLevel } from '@my-events/nestjs-common';
 import { Configuration } from './configuration.interface';
 
 const DEFAULT_PORT = '3000';

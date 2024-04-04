@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-common",
+  "name": "libs/nestjs-common",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/nestjs-common/src",
   "projectType": "library",

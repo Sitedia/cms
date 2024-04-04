@@ -1,13 +1,11 @@
 /* eslint-disable unicorn/prefer-module */
-import { ApplicationLogger } from '@sitedia/nestjs-common';
+import { ApplicationLogger } from '@my-events/nestjs-common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
-// @ts-expect-error implicit import
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-// @ts-expect-error implicit import
 import yaml from 'js-yaml';
 import fs from 'node:fs';
 import { AppModule } from './app.module';

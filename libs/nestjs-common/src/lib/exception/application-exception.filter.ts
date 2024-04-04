@@ -1,5 +1,4 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
-// @ts-expect-error implicit import
 import { Request, Response } from 'express';
 import { ExceptionDTO } from './exception.dto';
 

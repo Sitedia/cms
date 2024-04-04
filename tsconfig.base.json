@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sitedia/nestjs-common": ["libs/nestjs-common/src/index.ts"]
+      "@my-events/nestjs-common": ["libs/nestjs-common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
