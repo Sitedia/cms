@@ -16,8 +16,7 @@
         "webpackConfig": "apps/backend/webpack.config.js",
         "target": "node",
         "compiler": "tsc",
-        "sourceMap": true,
-        "generatePackageJson": true
+        "sourceMap": true
       }
     },
     "serve": {
