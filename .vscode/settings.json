@@ -1,0 +1,48 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "vsicons.associations.files": [
+    {
+      "icon": "nx",
+      "extensions": ["project.json"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "vscode",
+      "extensions": ["extensions.json", "settings.json"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "jest",
+      "extensions": ["dotenv.config.js", "jest.preset.js"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "husky",
+      "extensions": ["pre-commit"],
+      "filename": true,
+      "format": "svg"
+    }
+  ],
+  "typescript.preferences.importModuleSpecifier": "project-relative",
+  "eslint.workingDirectories": ["apps/backend", "libs/nestjs-common"],
+  "jest.jestCommandLine": "nx run-many --target test",
+  "jest.runMode": "on-demand",
+  "testing.openTesting": "openOnTestFailure"
+}

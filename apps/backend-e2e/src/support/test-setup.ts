@@ -1,5 +1,5 @@
-/* eslint-disable */
-
+/* eslint-disable unicorn/no-anonymous-default-export */
+/* eslint-disable unicorn/prefer-module */
 import axios from 'axios';
 
 module.exports = async function () {

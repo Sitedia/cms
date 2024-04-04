@@ -1,4 +1,8 @@
-/* eslint-disable */
+/* eslint-disable no-console */
+/* eslint-disable unicorn/no-anonymous-default-export */
+/* eslint-disable unicorn/prefer-module */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-var */
 var __TEARDOWN_MESSAGE__: string;
 
 module.exports = async function () {
