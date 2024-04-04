@@ -20,7 +20,7 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 RUN nx build apps/backend --verbose
 RUN ls -l ./dist/apps/backend
 RUN cd ./dist/apps/backend && pnpm install
-RUN cd ./dist/apps/backend && pnpm install tslib @nestjs/common @nestjs/core @nestjs/swagger rxjs
+RUN cd ./dist/apps/backend && pnpm install tslib @nestjs/platform-express @nestjs/common @nestjs/core @nestjs/swagger @nestjs/terminus rxjs cli-color @nestjs/config js-yaml @nestjs/throttler
 
 # TARGET
 FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
