@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Inject, Injectable } from '@nestjs/common';
 import clc from 'cli-color';
 import { ApplicationLoggerInterface } from './application-logger.interface';
@@ -87,8 +86,10 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
 
     const coloredContext = contextColor(`[${context}]`);
     const coloredMessage = color(message);
+    // eslint-disable-next-line no-console
     console.log(`${coloredTimestamp} ${coloredLevel} ${coloredContext} ${coloredMessage}`);
     if (stack) {
+      // eslint-disable-next-line no-console
       console.log(stack);
     }
   }
@@ -96,6 +97,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   protected formatJsonMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const timestamp = new Date().toISOString();
     const json = { timestamp, level, context, message, stack };
+    // eslint-disable-next-line no-console
     console.log(JSON.stringify(json));
   }
 

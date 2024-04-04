@@ -44,5 +44,6 @@
   "eslint.workingDirectories": ["apps/backend", "libs/nestjs-common"],
   "jest.jestCommandLine": "nx run-many --target test",
   "jest.runMode": "on-demand",
-  "testing.openTesting": "openOnTestFailure"
+  "testing.openTesting": "openOnTestFailure",
+  "debug.javascript.autoAttachFilter": "smart"
 }
