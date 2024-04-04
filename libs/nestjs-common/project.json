@@ -1,0 +1,20 @@
+{
+  "name": "nestjs-common",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/nestjs-common/src",
+  "projectType": "library",
+  "tags": ["nestjs-common"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/nestjs-common",
+        "tsConfig": "libs/nestjs-common/tsconfig.lib.json",
+        "packageJson": "libs/nestjs-common/package.json",
+        "main": "libs/nestjs-common/src/index.ts",
+        "assets": ["libs/nestjs-common/*.md"]
+      }
+    }
+  }
+}
