@@ -9,7 +9,8 @@
       "executor": "@nx/webpack:webpack",
       "options": {
         "outputPath": "dist/apps/backend",
-        "webpackConfig": "apps/backend/webpack.config.js"
+        "webpackConfig": "apps/backend/webpack.config.js",
+        "generatePackageJson": true
       }
     },
     "serve": {
