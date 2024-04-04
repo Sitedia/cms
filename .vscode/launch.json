@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug application",
+      "name": "Debug Backend",
       "command": "nx serve apps/backend",
       "request": "launch",
       "type": "node-terminal",
