@@ -7,16 +7,10 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/backend",
-        "main": "apps/backend/src/main.ts",
         "tsConfig": "apps/backend/tsconfig.app.json",
-        "assets": ["apps/backend/src/assets"],
-        "webpackConfig": "apps/backend/webpack.config.js",
-        "target": "node",
-        "compiler": "tsc",
-        "sourceMap": true
+        "webpackConfig": "apps/backend/webpack.config.js"
       }
     },
     "serve": {
