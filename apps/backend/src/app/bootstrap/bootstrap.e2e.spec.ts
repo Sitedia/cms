@@ -66,7 +66,7 @@ describe('nestjs application', () => {
     delete process.env.APP_SWAGGER_UI_ENABLED;
     const application = await bootstrap();
     const httpServer: http.Server = application.getHttpServer();
-    const response: http.ServerResponse = await request.agent(httpServer).get('/unknown-path');
+    const response = await request.agent(httpServer).get('/unknown-path');
 
     expect(response.statusCode).toBe(HttpStatus.NOT_FOUND);
 
@@ -82,7 +82,7 @@ describe('nestjs application', () => {
     process.env.APP_STORAGE_THRESHOLD = '0';
     const application = await bootstrap();
     const httpServer: http.Server = application.getHttpServer();
-    const response: http.ServerResponse = await request.agent(httpServer).get('/api/probes/readiness');
+    const response = await request.agent(httpServer).get('/api/probes/readiness');
 
     expect(response.statusCode).toBe(HttpStatus.SERVICE_UNAVAILABLE);
 
