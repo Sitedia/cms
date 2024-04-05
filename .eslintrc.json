@@ -1,6 +1,5 @@
 {
   "root": true,
-  "plugins": ["@nx"],
   "extends": [
     "plugin:@nx/typescript",
     "eslint:recommended",
@@ -10,24 +9,6 @@
     "plugin:prettier/recommended"
   ],
   "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
-          }
-        ]
-      }
-    },
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript", "plugin:@typescript-eslint/strict"],

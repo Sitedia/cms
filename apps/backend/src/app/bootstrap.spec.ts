@@ -1,8 +1,8 @@
 /* eslint-disable unicorn/prefer-module */
 import { LogFormat, LogLevel } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
-import * as fs from 'node:fs';
-import * as request from 'supertest';
+import fs from 'node:fs';
+import request from 'supertest';
 import { ApplicationMode, bootstrap } from './bootstrap';
 
 describe('nestjs application', () => {

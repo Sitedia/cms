@@ -20,9 +20,9 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node"],
     "strictNullChecks": true,
     "strictBindCallApply": true,
+    "types": ["jest", "node"],
     "baseUrl": ".",
     "paths": {
       "@my-events/nestjs-common": ["libs/nestjs-common/src"]

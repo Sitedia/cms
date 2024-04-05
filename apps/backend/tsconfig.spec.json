@@ -1,5 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.spec.ts"],
-  "compilerOptions": { "types": ["jest", "node"] }
+  "include": ["src/**/*.spec.ts"]
 }
