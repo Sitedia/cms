@@ -8,20 +8,12 @@ import { ExpressAdapter } from '@nestjs/platform-express';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import yaml from 'js-yaml';
-import fs from 'node:fs';
 import 'tslib';
 import { AppModule } from './app.module';
 import { ApplicationOptions, ConfigurationOptions } from './configuration.interface';
 
 const TITLE = 'Todo list API';
 const DESCRIPTION = 'API to manage a list of tasks';
-
-export enum ApplicationMode {
-  SERVER = 'SERVER', // start and listen on a port
-  TEST = 'TEST', // init without listening on a port
-  SWAGGER = 'SWAGGER', // start, generate the OpenAPI specification and stop
-}
 
 export const configureSwagger = (application: INestApplication, applicationUrl: string): OpenAPIObject => {
   // Load the configuration
@@ -78,7 +70,7 @@ export const secureEntrypoint = (application: INestApplication, applicationOptio
   return this;
 };
 
-export const bootstrap = async (mode: ApplicationMode): Promise<INestApplication> => {
+export const bootstrap = async (): Promise<INestApplication> => {
   // Load HTTPs configuration
   const enableHTTPs = process.env['APP_TLS_ENABLED'] === 'true';
   const httpsOptions: HttpsOptions = {
@@ -107,20 +99,12 @@ export const bootstrap = async (mode: ApplicationMode): Promise<INestApplication
 
   // Configure Swagger
   const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}`;
-  const document = configureSwagger(application, applicationUrl);
+  configureSwagger(application, applicationUrl);
 
-  // Start the application in the requested mode
-  if (mode === ApplicationMode.TEST) {
-    await application.init();
-  } else if (mode === ApplicationMode.SWAGGER) {
-    await application.init();
-    const specification = yaml.dump(document);
-    fs.writeFileSync(__dirname + '/../openapi.yaml', specification);
-  } else {
-    await application.listen(configuration.port);
-    const basePath = configuration.basePath;
-    applicationlogger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
-  }
+  // Start the application
+  await application.listen(configuration.port);
+  const basePath = configuration.basePath;
+  applicationlogger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
 
   return application;
 };

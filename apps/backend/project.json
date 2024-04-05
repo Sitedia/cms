@@ -26,12 +26,20 @@
         "lintFilePatterns": ["apps/backend/**/*.{ts,tsx,js,jsx}", "apps/backend/package.json"]
       }
     },
+    "lint:api": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx nest start --entryFile apps/backend/src/cli -- swagger | npx spectral lint --ruleset ../../spectral.yaml",
+        "cwd": "apps/backend"
+      }
+    },
     "test:coverage": {
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
         "jestConfig": "apps/backend/jest.config.js",
-        "codeCoverage": true
+        "codeCoverage": true,
+        "runInBand": true
       }
     },
     "build": {
