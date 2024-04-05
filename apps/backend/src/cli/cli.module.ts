@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { SwaggerCommand } from './swagger.command';
+import 'tslib';
+import { SwaggerCommand } from './commands/swagger.command';
 
 @Module({
   providers: [SwaggerCommand],

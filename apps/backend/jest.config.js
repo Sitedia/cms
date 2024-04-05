@@ -4,6 +4,6 @@ module.exports = {
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json' }],
   },
-  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/main.ts', '!src/cli.ts', '!src/cli/**'],
+  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/*.ts', '!src/cli/**'],
   coverageDirectory: './coverage',
 };

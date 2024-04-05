@@ -1,5 +1,9 @@
 /* eslint-disable jest/require-hook */
-import { bootstrap } from './cli/bootstrap';
+import { CommandFactory } from 'nest-commander';
+import { CliModule } from './cli/cli.module';
 
-// Launch the command line interface
+const bootstrap = async () => {
+  await CommandFactory.run(CliModule);
+};
+
 bootstrap();

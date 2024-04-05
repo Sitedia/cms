@@ -4,8 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import * as Joi from 'joi';
-import { configuration } from './configuration';
-import { ConfigurationOptions } from './configuration.interface';
+import { configuration } from './configuration/configuration';
+import { ConfigurationOptions } from './configuration/configuration.interface';
 
 @Module({
   imports: [
