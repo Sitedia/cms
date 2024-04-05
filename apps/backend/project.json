@@ -8,14 +8,14 @@
     "clear": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "rimraf dist coverage src/openapi.yaml",
+        "command": "rimraf dist coverage",
         "cwd": "apps/backend"
       }
     },
     "clear:all": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "rimraf dist coverage src/openapi.yaml .env.*.local node_modules",
+        "command": "rimraf dist coverage env.*.local node_modules",
         "cwd": "apps/backend"
       }
     },
