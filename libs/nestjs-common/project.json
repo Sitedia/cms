@@ -26,30 +26,13 @@
         "lintFilePatterns": ["libs/nestjs-common/**/*.{ts,tsx,js,jsx}", "libs/nestjs-common/package.json"]
       }
     },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "libs/nestjs-common/jest.config.js",
-        "verbose": true
-      },
-      "dependsOn": ["clear"]
-    },
-    "test:watch": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "libs/nestjs-common/jest.config.js",
-        "watch": true
-      },
-      "dependsOn": ["clear"]
-    },
     "test:coverage": {
       "executor": "@nx/jest:jest",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "jestConfig": "libs/nestjs-common/jest.config.js",
-        "codeCoverage": true,
-        "verbose": true
-      },
-      "dependsOn": ["clear"]
+        "codeCoverage": true
+      }
     },
     "build": {
       "executor": "nx:run-commands",
