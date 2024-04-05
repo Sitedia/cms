@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "webpack.config.js", "node_modules", "coverage"],
+  "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.js"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -16,6 +16,16 @@
     {
       "files": ["*.js", "*.jsx"],
       "rules": {}
+    },
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": [
+          "error",
+          { "ignoredDependencies": ["@nestjs/testing", "supertest", "@nestjs/platform-express"] }
+        ]
+      }
     }
   ]
 }

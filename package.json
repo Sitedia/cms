@@ -2,7 +2,6 @@
   "name": "@my-events/source",
   "version": "0.0.0",
   "license": "UNLICENSED",
-  "scripts": {},
   "private": true,
   "devDependencies": {
     "@nestjs/common": "^10.3.1",
@@ -53,16 +52,5 @@
     "tslib": "^2.6.2",
     "typescript": "^5.4.3",
     "webpack-cli": "^5.1.4"
-  },
-  "dependencies": {
-    "@nestjs/common": "^10.3.7",
-    "@nestjs/core": "^10.3.7",
-    "@nestjs/platform-express": "^10.3.7",
-    "axios": "^1.6.8",
-    "helmet": "^7.1.0",
-    "joi": "^17.12.3",
-    "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1",
-    "tslib": "^2.6.2"
   }
 }

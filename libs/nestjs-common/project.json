@@ -19,6 +19,31 @@
         "cwd": "libs/nestjs-common"
       }
     },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/nestjs-common/jest.config.js",
+        "verbose": true
+      },
+      "dependsOn": ["clear"]
+    },
+    "test:watch": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/nestjs-common/jest.config.js",
+        "watch": true
+      },
+      "dependsOn": ["clear"]
+    },
+    "test:coverage": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/nestjs-common/jest.config.js",
+        "codeCoverage": true,
+        "verbose": true
+      },
+      "dependsOn": ["clear"]
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {

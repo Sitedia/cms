@@ -11,14 +11,21 @@
     "noImplicitAny": false,
     "esModuleInterop": true,
     "target": "es2015",
-    "module": "esnext",
+    "module": "commonjs",
     "lib": ["es2021", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "types": ["node"],
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
     "baseUrl": ".",
     "paths": {
       "@my-events/nestjs-common": ["libs/nestjs-common/src"]
     }
-  },
-  "exclude": ["node_modules", "tmp"]
+  }
 }

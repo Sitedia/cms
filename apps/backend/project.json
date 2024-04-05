@@ -33,6 +33,34 @@
         "parallel": false
       }
     },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/backend/jest.config.js",
+        "verbose": true,
+        "runInBand": true
+      },
+      "dependsOn": ["clear"]
+    },
+    "test:watch": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/backend/jest.config.js",
+        "runInBand": true,
+        "watch": true
+      },
+      "dependsOn": ["clear"]
+    },
+    "test:coverage": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/backend/jest.config.js",
+        "codeCoverage": true,
+        "verbose": true,
+        "runInBand": true
+      },
+      "dependsOn": ["clear"]
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
