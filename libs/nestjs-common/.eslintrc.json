@@ -4,9 +4,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "parserOptions": {
-        "project": ["libs/nestjs-common/tsconfig.json"]
-      }
+      "parserOptions": { "project": ["libs/nestjs-common/tsconfig.json"] }
     }
   ]
 }
