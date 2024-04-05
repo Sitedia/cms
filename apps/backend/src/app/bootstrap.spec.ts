@@ -26,7 +26,7 @@ describe('nestjs application', () => {
 
   it('should be able to start on a specific port', async () => {
     expect.assertions(2);
-    process.env.PORT = '3002';
+    delete process.env.PORT;
     process.env.APP_TLS_ENABLED = 'false';
     process.env.APP_SWAGGER_UI_ENABLED = 'true';
     process.env.APP_LOG_FORMAT = LogFormat.CONSOLE;

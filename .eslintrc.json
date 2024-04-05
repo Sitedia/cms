@@ -14,7 +14,7 @@
         "no-console": "warn",
         "max-params": ["error", 8],
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
-        "unicorn/prevent-abbreviations": ["error", { "ignore": ["e2e", "props"] }],
+        "unicorn/prevent-abbreviations": ["error", { "ignore": ["e2e", "props", "moduleRef"] }],
         "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }]
       }
     },
