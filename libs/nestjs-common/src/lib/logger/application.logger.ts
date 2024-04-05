@@ -14,8 +14,8 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   private readonly logFormat: LogFormat;
 
   constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {
-    this.logLevel = options.logLevel || LogLevel.LOG;
-    this.logFormat = options.logFormat || LogFormat.CONSOLE;
+    this.logLevel = options.logLevel ?? LogLevel.LOG;
+    this.logFormat = options.logFormat ?? LogFormat.CONSOLE;
   }
 
   verbose(message: string, context?: string, stack?: string) {
