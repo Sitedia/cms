@@ -1,12 +1,22 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["/*", "!/src"],
+  "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.js"],
   "overrides": [
     {
-      "files": ["*.ts"],
-      "extends": ["plugin:@typescript-eslint/strict"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": ["./tsconfig.json"]
+        "project": ["libs/nestjs-common/tsconfig.json"]
+      }
+    },
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": [
+          "error",
+          { "ignoredDependencies": ["tslib"], "ignoredFiles": ["**/*.spec.ts"], "checkVersionMismatches": false }
+        ],
+        "jest/unbound-method": "off"
       }
     }
   ]

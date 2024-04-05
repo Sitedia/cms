@@ -1,9 +1,16 @@
 {
   "root": true,
-  "extends": ["eslint:recommended", "plugin:jest/all", "plugin:unicorn/all", "plugin:prettier/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@nx/typescript",
+    "plugin:jest/all",
+    "plugin:unicorn/all",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@nx"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "curly": "error",
         "eqeqeq": "error",
@@ -15,7 +22,20 @@
         "max-params": ["error", 8],
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
         "unicorn/prevent-abbreviations": ["error", { "ignore": ["e2e", "props", "moduleRef"] }],
-        "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }]
+        "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
       }
     },
     {
