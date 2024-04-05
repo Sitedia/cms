@@ -14,7 +14,11 @@
       "rules": {
         "@nx/dependency-checks": [
           "error",
-          { "ignoredDependencies": ["tslib"], "ignoredFiles": ["**/*.spec.ts"], "checkVersionMismatches": false }
+          {
+            "ignoredFiles": ["**/*.spec.ts"],
+            "includeTransitiveDependencies": true,
+            "checkVersionMismatches": false
+          }
         ],
         "jest/unbound-method": "off"
       }

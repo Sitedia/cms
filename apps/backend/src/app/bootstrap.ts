@@ -10,6 +10,7 @@ import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import yaml from 'js-yaml';
 import fs from 'node:fs';
+import 'tslib';
 import { AppModule } from './app.module';
 import { ApplicationOptions, ConfigurationOptions } from './configuration.interface';
 

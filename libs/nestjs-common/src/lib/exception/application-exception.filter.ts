@@ -1,5 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
+import 'tslib';
 import { ExceptionDTO } from './exception.dto';
 
 const INTERNAL_SERVER_ERROR_MESSAGE = 'An internal server error occurred';
