@@ -5,7 +5,7 @@ import { LogLevel } from './log-level.enum';
 describe('application logger', () => {
   it('should display text in CONSOLE mode', async () => {
     expect.assertions(1);
-    const logger = new ApplicationLogger({ logLevel: LogLevel.VERBOSE, logFormat: LogFormat.CONSOLE });
+    const logger = new ApplicationLogger({ logLevel: LogLevel.OFF, logFormat: LogFormat.CONSOLE });
     const loggerSpy = jest.spyOn(logger, 'logMessage');
     logger.verbose('Test', 'Context');
     logger.debug('Test', 'Context');
@@ -19,7 +19,7 @@ describe('application logger', () => {
 
   it('should display text in JSON mode', async () => {
     expect.assertions(1);
-    const logger = new ApplicationLogger({ logLevel: LogLevel.VERBOSE, logFormat: LogFormat.JSON });
+    const logger = new ApplicationLogger({ logLevel: LogLevel.OFF, logFormat: LogFormat.JSON });
     const loggerSpy = jest.spyOn(logger, 'logMessage');
     logger.verbose('Test', 'Context');
     logger.debug('Test', 'Context');

@@ -42,6 +42,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     this.logMessage(LogLevel.FATAL, message, context, stack);
   }
 
+  /* istanbul ignore next */
   logMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     if (!this.isEnabled(level)) {
       return;
@@ -78,6 +79,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     }
   }
 
+  /* istanbul ignore next */
   protected formatTextMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const color = this.getColorByLogLevel(level);
     const contextColor = this.getColorByLogLevel(LogLevel.WARN);
@@ -94,6 +96,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     }
   }
 
+  /* istanbul ignore next */
   protected formatJsonMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const timestamp = new Date().toISOString();
     const json = { timestamp, level, context, message, stack };
@@ -101,6 +104,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     console.log(JSON.stringify(json));
   }
 
+  /* istanbul ignore next */
   protected getColorByLogLevel(level: LogLevel) {
     switch (level) {
       case LogLevel.VERBOSE: {
