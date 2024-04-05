@@ -1,9 +1,9 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.js"],
+  "ignorePatterns": ["/*", "!/src"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts"],
       "extends": ["plugin:@typescript-eslint/strict"],
       "parserOptions": {
         "project": ["./tsconfig.json"]

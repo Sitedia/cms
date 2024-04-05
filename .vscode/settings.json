@@ -41,7 +41,7 @@
     }
   ],
   "typescript.preferences.importModuleSpecifier": "project-relative",
-  "eslint.workingDirectories": ["apps/backend", "libs/nestjs-common"],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
   "jest.jestCommandLine": "nx run-many --target test",
   "jest.runMode": "on-demand",
   "testing.openTesting": "openOnTestFailure"
