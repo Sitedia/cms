@@ -21,13 +21,13 @@ describe('application logger', () => {
     expect.assertions(1);
     const logger = new ApplicationLogger({ logLevel: LogLevel.OFF, logFormat: LogFormat.JSON });
     const loggerSpy = jest.spyOn(logger, 'logMessage');
-    logger.verbose('Test', 'Context');
-    logger.debug('Test', 'Context');
-    logger.log('Test', 'Context');
-    logger.warn('Test', 'Context');
-    logger.error('Test', 'Context');
-    logger.error('Test', 'Context', new Error('Fatal error').stack);
-    logger.fatal('Test', 'Context');
+    logger.verbose('JSON', 'Context');
+    logger.debug('JSON', 'Context');
+    logger.log('JSON', 'Context');
+    logger.warn('JSON', 'Context');
+    logger.error('JSON', 'Context');
+    logger.error('JSON', 'Context', new Error('Fatal error').stack);
+    logger.fatal('JSON', 'Context');
     expect(loggerSpy).toHaveBeenCalledTimes(7);
   });
 
