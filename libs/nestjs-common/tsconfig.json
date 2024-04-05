@@ -8,8 +8,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "noImplicitAny": false
+    "esModuleInterop": true
   },
   "files": [],
   "include": [],

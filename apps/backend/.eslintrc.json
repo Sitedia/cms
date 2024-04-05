@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "webpack.config.js", "node_modules"],
+  "ignorePatterns": ["!**/*", "webpack.config.js", "node_modules", "coverage"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
