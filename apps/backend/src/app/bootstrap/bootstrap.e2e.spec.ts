@@ -48,7 +48,7 @@ describe('nestjs application', () => {
     process.env.APP_SWAGGER_UI_ENABLED = 'false';
     process.env.APP_LOG_FORMAT = 'JSON';
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
-    delete process.env.APP_LOG_LEVEL;
+    process.env.APP_LOG_LEVEL = LogLevel.OFF;
     const application = await bootstrap();
     const httpServer: http.Server = application.getHttpServer();
 

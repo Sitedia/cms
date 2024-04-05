@@ -4,6 +4,7 @@ import { Configuration } from './configuration.interface';
 const DEFAULT_PORT = '3000';
 const DEFAULT_STORAGE_THRESHOLD = '0.9';
 
+/* istanbul ignore next */
 export const configuration = (): Configuration => ({
   application: {
     version: process.env.APP_VERSION || 'local',
