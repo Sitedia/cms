@@ -42,6 +42,21 @@
       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
       "env": { "jest": true },
       "rules": { "no-magic-numbers": "off", "max-lines-per-function": "off" }
+    },
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": [
+          "error",
+          {
+            "ignoredFiles": ["**/*.spec.ts"],
+            "includeTransitiveDependencies": true,
+            "checkVersionMismatches": false
+          }
+        ],
+        "jest/unbound-method": "off"
+      }
     }
   ]
 }

@@ -7,21 +7,6 @@
       "parserOptions": {
         "project": ["apps/backend/tsconfig.json"]
       }
-    },
-    {
-      "files": ["*.json"],
-      "parser": "jsonc-eslint-parser",
-      "rules": {
-        "@nx/dependency-checks": [
-          "error",
-          {
-            "ignoredFiles": ["**/*.spec.ts"],
-            "includeTransitiveDependencies": true,
-            "checkVersionMismatches": false
-          }
-        ],
-        "jest/unbound-method": "off"
-      }
     }
   ]
 }
