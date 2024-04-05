@@ -7,9 +7,9 @@ USER root
 
 # Copy only files required to build the application
 COPY nx.json package.json tsconfig.base.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY libs/nestjs-common/package.json libs/nestjs-common/project.json  libs/nestjs-common/tsconfig.json libs/nestjs-common/tsconfig.lib.json libs/nestjs-common/tsconfig.spec.json ./libs/nestjs-common/
+COPY libs/nestjs-common/package.json libs/nestjs-common/project.json  libs/nestjs-common/tsconfig.json libs/nestjs-common/tsconfig.build.json ./libs/nestjs-common/
 COPY libs/nestjs-common/src ./libs/nestjs-common/src
-COPY apps/backend/package.json apps/backend/project.json apps/backend/nest-cli.json apps/backend/tsconfig.json apps/backend/tsconfig.app.json apps/backend/tsconfig.spec.json ./apps/backend/
+COPY apps/backend/package.json apps/backend/project.json apps/backend/nest-cli.json apps/backend/tsconfig.json apps/backend/tsconfig.build.json ./apps/backend/
 COPY apps/backend/src ./apps/backend/src
 RUN chown -R 1001:0 .
 
