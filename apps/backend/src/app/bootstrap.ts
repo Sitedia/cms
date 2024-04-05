@@ -4,6 +4,7 @@ import { HttpStatus, INestApplication } from '@nestjs/common';
 import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
+import { ExpressAdapter } from '@nestjs/platform-express';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
@@ -87,7 +88,7 @@ export const bootstrap = async (mode: ApplicationMode): Promise<INestApplication
   };
 
   // Create the NestJS application
-  const application = await NestFactory.create(AppModule, {
+  const application: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, {
     bufferLogs: true, // buffer the first logs until out custom logger is set (see below)
     httpsOptions: enableHTTPs ? httpsOptions : undefined,
   });

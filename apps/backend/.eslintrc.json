@@ -15,11 +15,7 @@
       "rules": {
         "@nx/dependency-checks": [
           "error",
-          {
-            "ignoredDependencies": ["tslib", "@nestjs/platform-express"],
-            "ignoredFiles": ["**/*.spec.ts"],
-            "checkVersionMismatches": false
-          }
+          { "ignoredDependencies": ["tslib"], "ignoredFiles": ["**/*.spec.ts"], "checkVersionMismatches": false }
         ],
         "jest/unbound-method": "off"
       }
