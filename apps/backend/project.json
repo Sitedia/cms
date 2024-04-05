@@ -8,21 +8,21 @@
     "clear": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["rimraf dist coverage src/openapi.yaml"],
+        "command": "rimraf dist coverage src/openapi.yaml",
         "cwd": "apps/backend"
       }
     },
     "clear:all": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["rimraf dist coverage src/openapi.yaml .env.*.local node_modules"],
+        "command": "rimraf dist coverage src/openapi.yaml .env.*.local node_modules",
         "cwd": "apps/backend"
       }
     },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["eslint . -c ./.eslintrc.json --fix"],
+        "command": "eslint . -c ./.eslintrc.json --fix",
         "cwd": "apps/backend"
       }
     },
@@ -71,14 +71,14 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nest build"],
+        "command": "nest build",
         "cwd": "apps/backend"
       }
     },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nest start --watch"],
+        "command": "nest start --watch",
         "cwd": "apps/backend",
         "env": {
           "NODE_ENV": "development"
@@ -88,7 +88,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nest start"],
+        "command": "nest start",
         "cwd": "apps/backend"
       },
       "dependsOn": ["build"]
@@ -96,7 +96,7 @@
     "start:prod": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["node dist/apps/backend/src/main.js"],
+        "command": "node dist/apps/backend/src/main.js",
         "cwd": "apps/backend"
       },
       "dependsOn": ["build"]
@@ -104,18 +104,13 @@
     "docker:build": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "DOCKER_BUILDKIT=1 docker build . -f apps/backend/Dockerfile -t backend --no-cache --build-arg=\"APP_VERSION={args.appVersion}\""
-        ]
+        "command": "DOCKER_BUILDKIT=1 docker build . -f apps/backend/Dockerfile -t backend --no-cache --build-arg=\"APP_VERSION={args.appVersion}\""
       }
     },
     "docker:start": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "echo 'Delete the previous container if exists ..' && docker rm -f backend && echo 'Create the container ...' && docker run --name backend -p 3000:3000 backend"
-        ],
-        "parallel": false
+        "command": "echo 'Delete the previous container if exists ..' && docker rm -f backend && echo 'Create the container ...' && docker run --name backend -p 3000:3000 backend"
       }
     }
   }

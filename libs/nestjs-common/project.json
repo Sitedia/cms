@@ -8,21 +8,21 @@
     "clear": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["rimraf dist coverage"],
+        "command": "rimraf dist coverage",
         "cwd": "libs/nestjs-common"
       }
     },
     "clear:all": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["rimraf dist coverage node_modules"],
+        "command": "rimraf dist coverage node_modules",
         "cwd": "libs/nestjs-common"
       }
     },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["eslint . -c ./.eslintrc.json --fix"],
+        "command": "eslint . -c ./.eslintrc.json --fix",
         "cwd": "apps/backend"
       }
     },
@@ -54,7 +54,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nest build"],
+        "command": "nest build",
         "cwd": "libs/nestjs-common"
       }
     }
