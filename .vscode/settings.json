@@ -29,7 +29,7 @@
     },
     {
       "icon": "jest",
-      "extensions": ["dotenv.config.js", "jest.preset.js"],
+      "extensions": ["jest.preset.js"],
       "filename": true,
       "format": "svg"
     },

@@ -4,3 +4,4 @@ dist
 coverage
 .nx/cache
 openapi.yaml
+.husky/_
