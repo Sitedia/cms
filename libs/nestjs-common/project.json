@@ -37,7 +37,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nest build",
+        "command": "npx nest build",
         "cwd": "libs/nestjs-common"
       }
     }

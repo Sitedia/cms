@@ -17,9 +17,9 @@ RUN chown -R 1001:0 .
 USER default
 
 # Build the application
-RUN npm install -g --ignore-scripts @nestjs/cli pnpm nx
+RUN npm install -g --ignore-scripts pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts
-RUN nx build apps/backend
+RUN npx nx build apps/backend
 RUN pnpm install --prod --force --frozen-lockfile --ignore-scripts
 
 # TARGET
