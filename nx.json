@@ -27,5 +27,10 @@
         "targetName": "test"
       }
     }
-  ]
+  ],
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [{ "dependencies": true, "target": "build" }, "clear"]
+    }
+  }
 }
