@@ -19,6 +19,13 @@
         "cwd": "libs/nestjs-common"
       }
     },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["eslint . -c ./.eslintrc.json --fix"],
+        "cwd": "apps/backend"
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {

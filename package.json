@@ -4,8 +4,6 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@nx/eslint": "18.2.2",
-    "@nx/eslint-plugin": "18.2.2",
     "@nx/jest": "18.2.2",
     "@nx/nest": "18.2.2",
     "@nx/workspace": "18.2.2",

@@ -4,8 +4,9 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:@typescript-eslint/strict"],
       "parserOptions": {
-        "project": ["libs/nestjs-common/tsconfig.*?.json"]
+        "project": ["./tsconfig.json"]
       }
     }
   ]

@@ -19,6 +19,13 @@
         "cwd": "apps/backend"
       }
     },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["eslint . -c ./.eslintrc.json --fix"],
+        "cwd": "apps/backend"
+      }
+    },
     "lint:api": {
       "executor": "nx:run-commands",
       "options": {

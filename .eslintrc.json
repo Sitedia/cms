@@ -1,17 +1,9 @@
 {
   "root": true,
-  "extends": [
-    "plugin:@nx/typescript",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended",
-    "plugin:unicorn/all",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:jest/all", "plugin:unicorn/all", "plugin:prettier/recommended"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript", "plugin:@typescript-eslint/strict"],
       "rules": {
         "curly": "error",
         "eqeqeq": "error",
@@ -27,21 +19,9 @@
       }
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
-    },
-    {
       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
-      "env": {
-        "jest": true
-      },
+      "env": { "jest": true },
       "rules": { "no-magic-numbers": "off", "max-lines-per-function": "off" }
-    },
-    {
-      "files": ["*.json"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": { "unicorn/prevent-abbreviations": "off" }
     }
   ]
 }

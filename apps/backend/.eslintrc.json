@@ -4,8 +4,9 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:@typescript-eslint/strict"],
       "parserOptions": {
-        "project": ["apps/backend/tsconfig.*?.json"]
+        "project": ["./tsconfig.json"]
       }
     }
   ]
