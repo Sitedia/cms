@@ -17,7 +17,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-events/nestjs-common": ["libs/nestjs-common/src/index.ts"]
+      "@my-events/nestjs-common": ["libs/nestjs-common/src"]
     }
   },
   "exclude": ["node_modules", "tmp"]

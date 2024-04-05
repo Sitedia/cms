@@ -5,28 +5,66 @@
   "projectType": "application",
   "tags": ["backend"],
   "targets": {
-    "build": {
-      "executor": "@nx/webpack:webpack",
+    "clear": {
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/apps/backend",
-        "tsConfig": "apps/backend/tsconfig.app.json",
-        "webpackConfig": "apps/backend/webpack.config.js"
+        "commands": ["rimraf dist coverage src/openapi.yaml"],
+        "cwd": "apps/backend"
+      }
+    },
+    "clear:all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["rimraf dist coverage src/openapi.yaml .env.*.local node_modules"],
+        "cwd": "apps/backend"
+      }
+    },
+    "lint:api": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nest start",
+          "spectral lint ./dist/apps/backend/src/openapi.yaml --ruleset ../../spectral.yaml --fail-on-unmatched-globs"
+        ],
+        "cwd": "apps/backend",
+        "env": {
+          "APP_MODE": "SWAGGER"
+        },
+        "parallel": false
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nest build"],
+        "cwd": "apps/backend"
       }
     },
     "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
+      "executor": "nx:run-commands",
       "options": {
-        "buildTarget": "apps/backend:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "apps/backend:build:development"
-        },
-        "production": {
-          "buildTarget": "apps/backend:build:production"
+        "commands": ["nest start --watch"],
+        "cwd": "apps/backend",
+        "env": {
+          "NODE_ENV": "development"
         }
       }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nest start"],
+        "cwd": "apps/backend"
+      },
+      "dependsOn": ["build"]
+    },
+    "start:prod": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node dist/apps/backend/src/main.js"],
+        "cwd": "apps/backend"
+      },
+      "dependsOn": ["build"]
     },
     "docker:build": {
       "executor": "nx:run-commands",

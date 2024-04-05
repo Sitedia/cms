@@ -5,15 +5,25 @@
   "projectType": "library",
   "tags": ["nestjs-common"],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+    "clear": {
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/libs/nestjs-common",
-        "tsConfig": "libs/nestjs-common/tsconfig.lib.json",
-        "packageJson": "libs/nestjs-common/package.json",
-        "main": "libs/nestjs-common/src/index.ts",
-        "assets": ["libs/nestjs-common/*.md"]
+        "commands": ["rimraf dist coverage"],
+        "cwd": "libs/nestjs-common"
+      }
+    },
+    "clear:all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["rimraf dist coverage node_modules"],
+        "cwd": "libs/nestjs-common"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nest build"],
+        "cwd": "libs/nestjs-common"
       }
     }
   }

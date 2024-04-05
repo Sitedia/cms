@@ -6,20 +6,21 @@ WORKDIR /build
 USER root
 
 # Copy only files required to build the application
-COPY nx.json package.json tsconfig.base.json pnpm-lock.yaml jest.preset.js jest.config.ts ./
-COPY apps ./apps
-COPY libs ./libs
+COPY nx.json package.json tsconfig.base.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY libs/nestjs-common/package.json libs/nestjs-common/project.json  libs/nestjs-common/tsconfig.json libs/nestjs-common/tsconfig.lib.json libs/nestjs-common/tsconfig.spec.json ./libs/nestjs-common/
+COPY libs/nestjs-common/src ./libs/nestjs-common/src
+COPY apps/backend/package.json apps/backend/project.json apps/backend/nest-cli.json apps/backend/tsconfig.json apps/backend/tsconfig.app.json apps/backend/tsconfig.spec.json ./apps/backend/
+COPY apps/backend/src ./apps/backend/src
 RUN chown -R 1001:0 .
 
 # Reduce privileges
-# USER default
+USER default
 
 # Build the application
-RUN npm install -g --ignore-scripts pnpm nx
+RUN npm install -g --ignore-scripts @nestjs/cli pnpm nx
 RUN pnpm install --frozen-lockfile --ignore-scripts
-RUN nx build apps/backend --verbose
-RUN ls -l ./dist/apps/backend
-RUN cd ./dist/apps/backend && pnpm install
+RUN nx build apps/backend
+RUN pnpm install --prod --force --frozen-lockfile --ignore-scripts
 
 # TARGET
 FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
@@ -27,15 +28,15 @@ FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
 WORKDIR /app
 
 # Reduce privileges (user from the base image)
-USER 1001
+USER nobody
 
 # Set the version of the application
 ARG APP_VERSION
 ENV APP_VERSION=$APP_VERSION
 
 # Copy production files
-COPY --from=builder /build/dist/apps/backend/ .
-RUN ls -l
+COPY --from=builder /build/node_modules/ ./node_modules/
+COPY --from=builder /build/apps/backend/ ./apps/backend/
 
 # Start the application
-CMD ["node", "./main.js"]
+CMD ["node", "apps/backend/dist/apps/backend/src/main.js"]
