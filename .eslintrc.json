@@ -12,15 +12,15 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "curly": "error",
-        "eqeqeq": "error",
         "camelcase": "error",
         "complexity": ["error", 10],
-        "radix": "error",
+        "curly": "error",
+        "eqeqeq": "error",
         "max-depth": ["error", 4],
-        "no-console": "warn",
         "max-params": ["error", 8],
+        "no-console": "warn",
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
+        "radix": "error",
         "unicorn/prevent-abbreviations": ["error", { "ignore": ["e2e", "props", "moduleRef"] }],
         "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
         "@nx/enforce-module-boundaries": [
