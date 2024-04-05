@@ -1,6 +1,7 @@
 /* eslint-disable unicorn/prefer-module */
 import { ApplicationLogger } from '@my-events/nestjs-common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
+import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
@@ -78,9 +79,11 @@ export const secureEntrypoint = (application: INestApplication, applicationOptio
 export const bootstrap = async (mode: ApplicationMode): Promise<INestApplication> => {
   // Load HTTPs configuration
   const enableHTTPs = process.env['APP_TLS_ENABLED'] === 'true';
-  const httpsOptions = {
+  const httpsOptions: HttpsOptions = {
     cert: process.env['APP_TLS_CERTIFICATE']?.replaceAll('\\n', '\n'),
     key: process.env['APP_TLS_KEY']?.replaceAll('\\n', '\n'),
+    ciphers: process.env['APP_TLS_CIPHERS'],
+    honorCipherOrder: true,
   };
 
   // Create the NestJS application

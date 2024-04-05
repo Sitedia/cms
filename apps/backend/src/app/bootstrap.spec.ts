@@ -2,6 +2,7 @@
 import { LogFormat, LogLevel } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
 import fs from 'node:fs';
+import http from 'node:http';
 import request from 'supertest';
 import { ApplicationMode, bootstrap } from './bootstrap';
 
@@ -14,7 +15,7 @@ describe('nestjs application', () => {
     process.env.APP_LOG_FORMAT = 'CONSOLE';
     process.env.APP_LOG_LEVEL = LogLevel.OFF;
     const application = await bootstrap(ApplicationMode.TEST);
-    const httpServer = application.getHttpServer();
+    const httpServer: http.Server = application.getHttpServer();
     const response = await request.agent(httpServer).get('/api/probes/liveness');
 
     expect(response.statusCode).toBe(HttpStatus.OK);
@@ -32,7 +33,7 @@ describe('nestjs application', () => {
     process.env.APP_LOG_LEVEL = LogLevel.OFF;
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     const application = await bootstrap(ApplicationMode.SERVER);
-    const httpServer = application.getHttpServer();
+    const httpServer: http.Server = application.getHttpServer();
     const response = await request.agent(httpServer).get('/api/probes/liveness');
 
     expect(response.statusCode).toBe(HttpStatus.OK);
@@ -50,7 +51,7 @@ describe('nestjs application', () => {
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     delete process.env.APP_LOG_LEVEL;
     const application = await bootstrap(ApplicationMode.TEST);
-    const httpServer = application.getHttpServer();
+    const httpServer: http.Server = application.getHttpServer();
 
     expect(httpServer).toBeDefined();
 
@@ -79,8 +80,8 @@ describe('nestjs application', () => {
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     delete process.env.APP_SWAGGER_UI_ENABLED;
     const application = await bootstrap(ApplicationMode.SWAGGER);
-    const httpServer = application.getHttpServer();
-    const response = await request.agent(httpServer).get('/unknown-path');
+    const httpServer: http.Server = application.getHttpServer();
+    const response: http.ServerResponse = await request.agent(httpServer).get('/unknown-path');
 
     expect(response.statusCode).toBe(HttpStatus.NOT_FOUND);
 
@@ -95,8 +96,8 @@ describe('nestjs application', () => {
     process.env.APP_SWAGGER_UI_ENABLED = 'INVALID';
     process.env.APP_STORAGE_THRESHOLD = '0';
     const application = await bootstrap(ApplicationMode.SWAGGER);
-    const httpServer = application.getHttpServer();
-    const response = await request.agent(httpServer).get('/api/probes/readiness');
+    const httpServer: http.Server = application.getHttpServer();
+    const response: http.ServerResponse = await request.agent(httpServer).get('/api/probes/readiness');
 
     expect(response.statusCode).toBe(HttpStatus.SERVICE_UNAVAILABLE);
 
