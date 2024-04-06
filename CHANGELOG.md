@@ -1,3 +1,10 @@
+## 0.2.0 (2024-04-06)
+
+
+### 🚀 Features
+
+- improve the welcome documentation ([9259d4f](https://github.com/Sitedia/my-events/commit/9259d4f))
+
 ## 0.1.0 (2024-04-06)
 
 
