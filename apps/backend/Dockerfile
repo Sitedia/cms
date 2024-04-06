@@ -20,7 +20,7 @@ USER default
 # Build the application
 RUN npm install -g --ignore-scripts pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts --reporter=append-only
-RUN npx nx build apps/backend --verbose
+RUN npx nx build apps/backend --verbose --batch
 
 # Recreate the node_modules to make them smaller
 RUN rm -rf ./apps/backend/node_modules
