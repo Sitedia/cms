@@ -15,10 +15,10 @@ USER default
 
 # Build the application
 RUN npm install -g --ignore-scripts pnpm
-RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm install --frozen-lockfile --ignore-scripts --reporter=append-only
 RUN npx nx build apps/backend
 RUN rm -rf ./node_modules
-RUN pnpm install --prod --frozen-lockfile --ignore-scripts
+RUN pnpm install --prod --frozen-lockfile --ignore-scripts --reporter=append-only
 
 # TARGET
 FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
