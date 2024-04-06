@@ -21,6 +21,8 @@ USER default
 RUN npm install -g --ignore-scripts pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts --reporter=append-only
 RUN npx nx build apps/backend
+
+# Recreate the node_modules to make it smaller
 RUN rm -rf ./node_modules
 RUN pnpm install --prod --frozen-lockfile --ignore-scripts --reporter=append-only
 
