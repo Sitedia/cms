@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+echo "Check commit message..."
+npx --no -- commitlint --edit $1
+
+echo "Check style..."
+nx format:check
+
 echo "Lint source code..."
 nx run-many --target lint
