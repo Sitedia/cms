@@ -17,7 +17,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
   const httpsOptions: HttpsOptions = {
     cert: process.env['APP_TLS_CERTIFICATE']?.replaceAll('\\n', '\n'),
     key: process.env['APP_TLS_KEY']?.replaceAll('\\n', '\n'),
-    ciphers: process.env['APP_TLS_CIPHERS'],
+    ciphers: process.env['APP_TLS_ALLOWED_CIPHERS'],
     honorCipherOrder: true,
   };
 
