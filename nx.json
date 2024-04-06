@@ -23,8 +23,14 @@
   },
   "release": {
     "projects": ["*"],
+    "version": {
+      "conventionalCommits": true
+    },
     "changelog": {
       "workspaceChangelog": {
+        "renderOptions": {
+          "authors": false
+        },
         "createRelease": "github"
       }
     }
