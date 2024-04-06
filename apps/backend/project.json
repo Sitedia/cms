@@ -33,6 +33,14 @@
         "cwd": "apps/backend"
       }
     },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "jestConfig": "apps/backend/jest.config.js",
+        "runInBand": true
+      }
+    },
     "test:coverage": {
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],

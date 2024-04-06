@@ -4,6 +4,8 @@ module.exports = {
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json' }],
   },
+  transformIgnorePatterns: ['^.+\\.js$'],
   collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/*.ts', '!src/cli/**'],
   coverageDirectory: './coverage',
+  setupFilesAfterEnv: [__dirname + '/dotenv.config.js'],
 };

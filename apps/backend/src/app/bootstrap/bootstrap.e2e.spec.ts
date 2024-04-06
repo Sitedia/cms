@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/prefer-module */
-import { LogFormat, LogLevel } from '@my-events/nestjs-common';
+import { LogFormat } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
 import http from 'node:http';
 import request from 'supertest';
@@ -12,7 +12,6 @@ describe('nestjs application', () => {
     process.env.APP_TLS_ENABLED = 'false';
     process.env.APP_SWAGGER_UI_ENABLED = 'true';
     process.env.APP_LOG_FORMAT = 'CONSOLE';
-    process.env.APP_LOG_LEVEL = LogLevel.OFF;
     const application = await bootstrap();
     const httpServer: http.Server = application.getHttpServer();
     const response = await request.agent(httpServer).get('/api/probes/liveness');
@@ -25,11 +24,10 @@ describe('nestjs application', () => {
 
   it('should be able to start on a specific port', async () => {
     expect.assertions(2);
-    delete process.env.PORT;
+    process.env.PORT = '3002';
     process.env.APP_TLS_ENABLED = 'false';
     process.env.APP_SWAGGER_UI_ENABLED = 'true';
     process.env.APP_LOG_FORMAT = LogFormat.CONSOLE;
-    process.env.APP_LOG_LEVEL = LogLevel.OFF;
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     const application = await bootstrap();
     const httpServer: http.Server = application.getHttpServer();
@@ -48,7 +46,6 @@ describe('nestjs application', () => {
     process.env.APP_SWAGGER_UI_ENABLED = 'false';
     process.env.APP_LOG_FORMAT = 'JSON';
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
-    process.env.APP_LOG_LEVEL = LogLevel.OFF;
     const application = await bootstrap();
     const httpServer: http.Server = application.getHttpServer();
 
@@ -61,7 +58,6 @@ describe('nestjs application', () => {
     expect.assertions(1);
     process.env.APP_TLS_ENABLED = 'false';
     process.env.APP_LOG_FORMAT = LogFormat.CONSOLE;
-    process.env.APP_LOG_LEVEL = LogLevel.OFF;
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     delete process.env.APP_SWAGGER_UI_ENABLED;
     const application = await bootstrap();
@@ -77,7 +73,6 @@ describe('nestjs application', () => {
     expect.assertions(1);
     process.env.APP_TLS_ENABLED = 'false';
     process.env.APP_LOG_FORMAT = LogFormat.CONSOLE;
-    process.env.APP_LOG_LEVEL = LogLevel.OFF;
     process.env.APP_SWAGGER_UI_ENABLED = 'INVALID';
     process.env.APP_STORAGE_THRESHOLD = '0';
     const application = await bootstrap();
