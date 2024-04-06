@@ -1,22 +1,23 @@
 /* eslint-disable unicorn/prefer-module */
 import { ApplicationLogger } from '@my-events/nestjs-common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
-import { NextFunction, Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import 'tslib';
 import { ApplicationOptions } from '../configuration/configuration.interface';
 
-export const secureEntrypoint = (application: INestApplication, applicationOptions: ApplicationOptions) => {
-  const applicationlogger = application.get(ApplicationLogger);
+export const secureEntrypoint = (app: INestApplication, applicationOptions: ApplicationOptions) => {
+  const applicationlogger = app.get(ApplicationLogger);
 
   // Configure Express
-  application.setGlobalPrefix(applicationOptions.basePath);
-  application.use(helmet());
-  application.enableCors({ origin: applicationOptions.origin });
-  application.enableVersioning();
+  app.setGlobalPrefix(applicationOptions.basePath);
+  app.use(helmet());
+  app.enableCors({ origin: applicationOptions.origin });
+  app.enableVersioning();
+  app.use(express.json({ limit: '2MB', type: 'application/json', strict: true }));
 
   // Log all incoming requests
-  application.use((request: Request, response: Response, next: NextFunction) => {
+  app.use((request: Request, response: Response, next: NextFunction) => {
     applicationlogger.debug(`${request.method} ${request.url}`, 'Express');
     next();
     response.on('finish', () => {

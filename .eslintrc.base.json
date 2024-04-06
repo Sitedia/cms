@@ -21,7 +21,7 @@
         "no-console": "warn",
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
         "radix": "error",
-        "unicorn/prevent-abbreviations": ["error", { "ignore": ["e2e", "props", "moduleRef"] }],
+        "unicorn/prevent-abbreviations": ["error", { "ignore": ["app", "e2e", "props", "moduleRef"] }],
         "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
         "@nx/enforce-module-boundaries": [
           "error",
