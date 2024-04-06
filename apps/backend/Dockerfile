@@ -41,5 +41,8 @@ ENV APP_VERSION=$APP_VERSION
 COPY --from=builder --chown=root:root --chmod=755 /build/node_modules/ ./node_modules/
 COPY --from=builder --chown=root:root --chmod=755 /build/apps/backend/ ./apps/backend/
 
+# Reduce privileges (user from base image)
+USER nobody
+
 # Start the application
 CMD ["node", "apps/backend/dist/apps/backend/src/main.js"]
