@@ -16,8 +16,7 @@
             "ignoredFiles": ["**/*.spec.ts"],
             "includeTransitiveDependencies": true
           }
-        ],
-        "jest/unbound-method": "off"
+        ]
       }
     }
   ]

@@ -17,8 +17,7 @@
             "ignoredDependencies": ["dotenv"],
             "includeTransitiveDependencies": true
           }
-        ],
-        "jest/unbound-method": "off"
+        ]
       }
     }
   ]
