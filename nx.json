@@ -32,6 +32,12 @@
           "authors": false
         },
         "createRelease": "github"
+      },
+      "projectChangelogs": {
+        "renderOptions": {
+          "authors": false
+        },
+        "createRelease": "github"
       }
     }
   }
