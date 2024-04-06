@@ -22,6 +22,11 @@
     "production": ["default"]
   },
   "release": {
-    "projects": ["*"]
+    "projects": ["*"],
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github"
+      }
+    }
   }
 }
