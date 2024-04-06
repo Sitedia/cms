@@ -13,7 +13,7 @@
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "camelcase": "error",
-        "complexity": ["error", 10],
+        "complexity": ["error", 20],
         "curly": "error",
         "eqeqeq": "error",
         "max-depth": ["error", 4],

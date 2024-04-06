@@ -39,12 +39,12 @@ export const bootstrap = async (): Promise<INestApplication> => {
   secureEntrypoint(application, configuration);
 
   // Configure Swagger
-  const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}`;
-  configureSwagger(application, applicationUrl);
+  configureSwagger(application, configuration.apiUrl);
 
   // Start the application
   await application.listen(configuration.port);
   const basePath = configuration.basePath;
+  const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}`;
   applicationlogger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
 
   return application;

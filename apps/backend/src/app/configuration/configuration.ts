@@ -11,6 +11,7 @@ export const configuration = (): Configuration => ({
     port: Number.parseInt(process.env.PORT || DEFAULT_PORT, 10),
     basePath: process.env.APP_BASE_PATH || 'api',
     origin: process.env.APP_CORS_ORIGIN || '',
+    apiUrl: process.env.APP_API_URL || 'http://localhost:3000',
   },
   logger: {
     logLevel: (process.env.APP_LOG_LEVEL as LogLevel) || LogLevel.LOG,

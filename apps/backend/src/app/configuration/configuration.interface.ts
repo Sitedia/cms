@@ -13,6 +13,7 @@ export interface ApplicationOptions {
   port: number;
   basePath: string;
   origin: string;
+  apiUrl: string;
 }
 
 export interface Configuration {
