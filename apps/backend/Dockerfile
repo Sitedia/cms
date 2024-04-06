@@ -3,16 +3,19 @@ FROM registry.access.redhat.com/ubi9/nodejs-20:1-34 AS builder
 
 WORKDIR /build
 
-# Reduce privileges
-USER root
-
 # Copy only files required to build the application
 COPY nx.json package.json tsconfig.base.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY libs/nestjs-common/package.json libs/nestjs-common/project.json  libs/nestjs-common/tsconfig.json libs/nestjs-common/tsconfig.build.json ./libs/nestjs-common/
 COPY libs/nestjs-common/src ./libs/nestjs-common/src
 COPY apps/backend/package.json apps/backend/project.json apps/backend/nest-cli.json apps/backend/tsconfig.json apps/backend/tsconfig.build.json ./apps/backend/
 COPY apps/backend/src ./apps/backend/src
-RUN chown -R 1001:0 .
+
+# Allow permissions to default user in this folder
+USER root
+RUN chown -R default:root .
+
+# Reduce privileges
+USER default
 
 # Build the application
 RUN npm install -g --ignore-scripts pnpm
@@ -36,8 +39,6 @@ ENV APP_VERSION=$APP_VERSION
 # Copy production files
 COPY --from=builder /build/node_modules/ ./node_modules/
 COPY --from=builder /build/apps/backend/ ./apps/backend/
-
-RUN ls -l
 
 # Start the application
 CMD ["node", "apps/backend/dist/apps/backend/src/main.js"]
