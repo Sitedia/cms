@@ -10,7 +10,7 @@ COPY --chown=root:root --chmod=755 libs/nestjs-common/src ./libs/nestjs-common/s
 COPY --chown=root:root --chmod=755 apps/backend/package.json apps/backend/project.json apps/backend/nest-cli.json apps/backend/tsconfig.json apps/backend/tsconfig.build.json ./apps/backend/
 COPY --chown=root:root --chmod=755 apps/backend/src ./apps/backend/src
 
-# Allow permissions to default user in this folder
+# Allow write permissions to 'default' user in this folder
 USER root
 RUN chown -R default:root .
 
