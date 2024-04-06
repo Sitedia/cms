@@ -1,12 +1,10 @@
 ## 0.2.0 (2024-04-06)
 
-
 ### 🚀 Features
 
 - improve the welcome documentation ([9259d4f](https://github.com/Sitedia/my-events/commit/9259d4f))
 
 ## 0.1.0 (2024-04-06)
-
 
 ### 🚀 Features
 
@@ -22,12 +20,11 @@ This was a version bump only, there were no code changes.
 
 ## 0.0.2 (2024-04-06)
 
-
 ### 🚀 Features
 
 - improve dev configuration ([b5385d9](https://github.com/Sitedia/my-events/commit/b5385d9))
 
-### ❤️  Thank You
+### ❤️ Thank You
 
 - cedric
 
