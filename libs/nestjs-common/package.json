@@ -1,6 +1,6 @@
 {
   "name": "@my-events/nestjs-common",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
