@@ -20,9 +20,11 @@ USER default
 # Build the application
 RUN npm install -g --ignore-scripts pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts --reporter=append-only
-RUN npx nx build apps/backend
+RUN npx nx build apps/backend --verbose
 
-# Recreate the node_modules to make it smaller
+# Recreate the node_modules to make them smaller
+RUN rm -rf ./apps/backend/node_modules
+RUN rm -rf ./libs/nestjs-common/node_modules
 RUN rm -rf ./node_modules
 RUN pnpm install --prod --frozen-lockfile --ignore-scripts --reporter=append-only
 
@@ -31,16 +33,13 @@ FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
 
 WORKDIR /app
 
-# Reduce privileges (user from the base image)
-USER nobody
-
 # Set the version of the application
 ARG APP_VERSION
 ENV APP_VERSION=$APP_VERSION
 
 # Copy production files
-COPY --from=builder /build/node_modules/ ./node_modules/
-COPY --from=builder /build/apps/backend/ ./apps/backend/
+COPY --from=builder --chown=root:root --chmod=755 /build/node_modules/ ./node_modules/
+COPY --from=builder --chown=root:root --chmod=755 /build/apps/backend/ ./apps/backend/
 
 # Start the application
 CMD ["node", "apps/backend/dist/apps/backend/src/main.js"]
