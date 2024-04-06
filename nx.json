@@ -20,5 +20,8 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
     "production": ["default"]
+  },
+  "release": {
+    "projects": ["*"]
   }
 }
