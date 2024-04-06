@@ -1,3 +1,9 @@
+#!/bin/bash
+
+echo "Check branch name..."
+BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
+node .husky/check-branch-name.js $BRANCH_NAME
+
 echo "Check commit message..."
 npx --no -- commitlint --edit $1
 
