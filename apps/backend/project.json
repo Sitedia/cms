@@ -92,7 +92,7 @@
     "docker:start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "echo 'Delete the previous container if exists ..' && docker rm -f backend && echo 'Create the container ...' && docker run --name backend -p 3000:3000 backend"
+        "command": "echo 'Delete the previous container if exists ..' && docker rm -f backend && echo 'Create the container ...' && docker run --env-file apps/backend/.env.docker --name backend -p 8801:3000 backend"
       }
     }
   }
