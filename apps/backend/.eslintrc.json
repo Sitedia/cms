@@ -1,5 +1,5 @@
 {
-  "extends": ["../../.eslintrc.json"],
+  "extends": ["../../.eslintrc.base.json"],
   "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.js", "dotenv.config.js"],
   "overrides": [
     {
