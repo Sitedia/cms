@@ -12,9 +12,9 @@ COPY --chown=root:root --chmod=755 apps/backend/src ./apps/backend/src
 
 # Allow write permissions to 'default' user in this folder
 USER root
-RUN chown -R default:root .
+RUN chown -R default:root /build
 
-# Reduce privileges
+# Reduce privileges (user from base image)
 USER default
 
 # Build the application
@@ -22,7 +22,7 @@ RUN npm install -g --ignore-scripts pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts --reporter=append-only
 RUN npx nx build apps/backend --verbose --batch
 
-# Recreate the node_modules to make them smaller
+# Keep only production packages (recreate node_modules folders to make them smaller)
 RUN rm -rf ./apps/backend/node_modules
 RUN rm -rf ./libs/nestjs-common/node_modules
 RUN rm -rf ./node_modules
