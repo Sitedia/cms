@@ -14,8 +14,7 @@
           "error",
           {
             "ignoredFiles": ["**/*.spec.ts"],
-            "includeTransitiveDependencies": true,
-            "checkVersionMismatches": false
+            "includeTransitiveDependencies": true
           }
         ],
         "jest/unbound-method": "off"

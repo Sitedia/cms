@@ -15,8 +15,7 @@
           {
             "ignoredFiles": ["**/*.spec.ts"],
             "ignoredDependencies": ["dotenv"],
-            "includeTransitiveDependencies": true,
-            "checkVersionMismatches": false
+            "includeTransitiveDependencies": true
           }
         ],
         "jest/unbound-method": "off"
