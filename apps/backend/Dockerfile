@@ -20,7 +20,11 @@ USER default
 RUN npm install -g --ignore-scripts pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts
 RUN npx nx build apps/backend
-RUN pnpm install --prod --force --frozen-lockfile --ignore-scripts
+
+# Recreate the node_modules folders, using deletion to reduce the size of the image
+RUN npx nx run-many -t clear:all
+RUN rm -rf ./node_modules
+RUN pnpm install --prod --frozen-lockfile --ignore-scripts
 
 # TARGET
 FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
