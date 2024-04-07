@@ -35,9 +35,14 @@
       }
     },
     {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx", "*.dto.ts", "*.entity.ts"],
+      "env": { "jest": true },
+      "rules": { "no-magic-numbers": "off" }
+    },
+    {
       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
       "env": { "jest": true },
-      "rules": { "no-magic-numbers": "off", "max-lines-per-function": "off" }
+      "rules": { "max-lines-per-function": "off" }
     },
     {
       "files": ["*.json"],
