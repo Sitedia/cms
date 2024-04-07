@@ -13,7 +13,6 @@ export const secureEntrypoint = (app: INestApplication, applicationOptions: Appl
   app.setGlobalPrefix(applicationOptions.basePath);
   app.use(helmet());
   app.enableCors({ origin: applicationOptions.origin });
-  app.enableVersioning();
   app.use(express.json({ limit: '2MB', type: 'application/json', strict: true }));
 
   // Log all incoming requests
