@@ -15,6 +15,10 @@ export class HealthController {
     private readonly disk: DiskHealthIndicator,
   ) {}
 
+  @ApiOperation({
+    summary: 'liveness probe',
+    description: 'Checks if the instance should be restarted.',
+  })
   @Get('liveness')
   @HealthCheck()
   async liveness() {
