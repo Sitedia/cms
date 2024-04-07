@@ -5,8 +5,8 @@ import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import 'tslib';
 import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface';
 
-const TITLE = 'Todo list API';
-const DESCRIPTION = 'API to manage a list of tasks';
+const TITLE = 'My Events API';
+const DESCRIPTION = 'API to manage a list of events';
 
 export const configureSwagger = (application: INestApplication, applicationUrl: string): OpenAPIObject => {
   // Load the configuration
