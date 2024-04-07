@@ -29,7 +29,7 @@ export const configureSwagger = (application: INestApplication, applicationUrl: 
   const basePath = configuration.basePath;
   SwaggerModule.setup(`/${basePath}/swagger-ui.html`, application, document, {
     jsonDocumentUrl: `/${basePath}/specifications/openapi.json`,
-    yamlDocumentUrl: `/${basePath}/specifications/openapi.yml`,
+    yamlDocumentUrl: `/${basePath}/specifications/openapi.yaml`,
   });
 
   return document;
