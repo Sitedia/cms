@@ -84,7 +84,7 @@ importers:
   apps/backend:
     dependencies:
       '@my-events/nestjs-common':
-        specifier: workspace:*
+        specifier: 0.2.0
         version: link:../../libs/nestjs-common
       '@nestjs/common':
         specifier: ^10.3.7
