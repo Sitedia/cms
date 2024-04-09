@@ -3,7 +3,7 @@
   "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.js"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts", "*.tsx"],
       "parserOptions": { "project": ["libs/nestjs-common/tsconfig.json"] }
     }
   ]
