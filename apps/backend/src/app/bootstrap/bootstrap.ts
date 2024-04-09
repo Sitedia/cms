@@ -5,7 +5,6 @@ import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.i
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import 'tslib';
 import { AppModule } from '../app.module';
 import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface';
 import { secureEntrypoint } from '../setup/entrypoint.setup';

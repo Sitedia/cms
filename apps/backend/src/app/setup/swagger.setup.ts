@@ -2,7 +2,6 @@
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
-import 'tslib';
 import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface';
 
 const TITLE = 'My Events API';

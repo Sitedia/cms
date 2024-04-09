@@ -2,7 +2,7 @@
 import { LogFormat } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
 import http from 'node:http';
-import request from 'supertest';
+import * as request from 'supertest';
 import { bootstrap } from './bootstrap';
 
 describe('nestjs application', () => {
