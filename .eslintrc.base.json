@@ -22,6 +22,7 @@
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
         "radix": "error",
         "unicorn/prevent-abbreviations": ["error", { "ignore": ["app", "e2e", "props", "moduleRef"] }],
+        "jest/require-hook": "off",
         "@typescript-eslint/no-unused-vars": "error",
         "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
         "@nx/enforce-module-boundaries": [
@@ -37,12 +38,7 @@
     {
       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx", "*.dto.ts", "*.entity.ts"],
       "env": { "jest": true },
-      "rules": { "no-magic-numbers": "off" }
-    },
-    {
-      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
-      "env": { "jest": true },
-      "rules": { "max-lines-per-function": "off" }
+      "rules": { "jest/require-hook": ["error"], "no-magic-numbers": "off" }
     },
     {
       "files": ["*.json"],
