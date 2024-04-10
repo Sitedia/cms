@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-module */
 import { ApplicationLogger } from '@my-events/nestjs-common';
 import { INestApplication } from '@nestjs/common';
 import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface.js';

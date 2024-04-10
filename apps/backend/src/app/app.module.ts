@@ -3,7 +3,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import Joi from 'joi';
 import { ConfigurationOptions } from './configuration/configuration.interface.js';
 import { configuration } from './configuration/configuration.js';
 
@@ -12,7 +11,6 @@ import { configuration } from './configuration/configuration.js';
     ConfigModule.forRoot({
       load: [configuration],
       envFilePath: [`.env.${process.env.NODE_ENV}.local`, `.env.${process.env.NODE_ENV}`],
-      validationSchema: Joi.object({ NODE_ENV: Joi.string().valid('development', 'test') }),
       isGlobal: true,
       cache: true,
     }),

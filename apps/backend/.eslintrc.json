@@ -3,7 +3,7 @@
   "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.ts", "dotenv.config.js"],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": ["*.ts", "*.js"],
       "settings": {
         "import/resolver": {
           "typescript": { "project": ["apps/backend/tsconfig.json"] },

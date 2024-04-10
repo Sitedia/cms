@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-module */
 import { LogFormat } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
 import http from 'node:http';

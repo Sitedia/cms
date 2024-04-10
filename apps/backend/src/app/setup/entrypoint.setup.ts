@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-module */
 import { ApplicationLogger } from '@my-events/nestjs-common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
