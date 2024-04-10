@@ -1,7 +1,18 @@
 {
   "extends": ["../../.eslintrc.base.json"],
   "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.ts", "dotenv.config.js"],
-  "parserOptions": {
-    "project": ["apps/backend/tsconfig.json"]
-  }
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "settings": {
+        "import/resolver": {
+          "typescript": { "project": ["apps/backend/tsconfig.json"] },
+          "node": { "project": ["apps/backend/tsconfig.json"] }
+        }
+      },
+      "parserOptions": {
+        "project": ["apps/backend/tsconfig.json"]
+      }
+    }
+  ]
 }

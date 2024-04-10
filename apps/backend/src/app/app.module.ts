@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import * as Joi from 'joi';
+import Joi from 'joi';
 import { ConfigurationOptions } from './configuration/configuration.interface.js';
 import { configuration } from './configuration/configuration.js';
 

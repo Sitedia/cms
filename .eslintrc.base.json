@@ -14,12 +14,6 @@
         "plugin:unicorn/all",
         "plugin:prettier/recommended"
       ],
-      "settings": {
-        "import/resolver": {
-          "typescript": { "project": ["tsconfig.base.json"] },
-          "node": { "project": ["tsconfig.base.json"] }
-        }
-      },
       "rules": {
         "camelcase": "error",
         "complexity": ["error", 20],

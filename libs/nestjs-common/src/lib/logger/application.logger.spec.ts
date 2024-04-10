@@ -1,6 +1,6 @@
-import { ApplicationLogger } from './application.logger';
-import { LogFormat } from './log-format.enum';
-import { LogLevel } from './log-level.enum';
+import { ApplicationLogger } from './application.logger.js';
+import { LogFormat } from './log-format.enum.js';
+import { LogLevel } from './log-level.enum.js';
 
 describe('application logger', () => {
   it('should display text in CONSOLE mode', () => {
