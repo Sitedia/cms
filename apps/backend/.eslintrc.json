@@ -10,6 +10,9 @@
           "node": { "project": ["apps/backend/tsconfig.json"] }
         }
       },
+      "env": {
+        "jest": true
+      },
       "parserOptions": {
         "project": ["apps/backend/tsconfig.json"]
       }
