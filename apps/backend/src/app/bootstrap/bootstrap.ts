@@ -1,14 +1,14 @@
 /* eslint-disable unicorn/prefer-module */
 import { ApplicationLogger } from '@my-events/nestjs-common';
 import { INestApplication } from '@nestjs/common';
-import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface';
+import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface.js';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { AppModule } from '../app.module';
-import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface';
-import { secureEntrypoint } from '../setup/entrypoint.setup';
-import { configureSwagger } from '../setup/swagger.setup';
+import { AppModule } from '../app.module.js';
+import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface.js';
+import { secureEntrypoint } from '../setup/entrypoint.setup.js';
+import { configureSwagger } from '../setup/swagger.setup.js';
 
 export const bootstrap = async (): Promise<INestApplication> => {
   // Load HTTPs configuration

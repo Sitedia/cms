@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.base.json"],
-  "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.js"],
+  "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.ts"],
   "parserOptions": {
     "project": ["libs/nestjs-common/tsconfig.json"]
   }

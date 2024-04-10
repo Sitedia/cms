@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "license": "UNLICENSED",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@my-events/nestjs-common": "0.2.0",
     "@nestjs/common": "^10.3.7",

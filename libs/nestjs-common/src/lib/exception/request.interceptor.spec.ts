@@ -1,8 +1,8 @@
 import { ExecutionContext, ForbiddenException } from '@nestjs/common';
 import { lastValueFrom, of, throwError } from 'rxjs';
-import { ApplicationLogger } from '../logger/application.logger';
-import { LogLevel } from '../logger/log-level.enum';
-import { RequestInterceptor } from './request.interceptor';
+import { ApplicationLogger } from '../logger/application.logger.js';
+import { LogLevel } from '../logger/log-level.enum.js';
+import { RequestInterceptor } from './request.interceptor.js';
 
 // Create a mock object interface
 interface Account {

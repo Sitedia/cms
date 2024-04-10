@@ -1,8 +1,8 @@
 module.exports = {
   displayName: 'backend',
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.ts',
   transform: {
-    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json', diagnostics: { ignoreCodes: [151001] } }],
+    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json', diagnostics: false }],
   },
   transformIgnorePatterns: ['^.+\\.js$'],
   collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/*.ts', '!src/cli/**'],

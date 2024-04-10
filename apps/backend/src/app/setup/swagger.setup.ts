@@ -2,7 +2,7 @@
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
-import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface';
+import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface.js';
 
 const TITLE = 'My Events API';
 const DESCRIPTION = 'API to manage a list of events';
