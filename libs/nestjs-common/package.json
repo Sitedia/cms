@@ -19,6 +19,6 @@
     "@types/express": "^4.17.21"
   },
   "exports": {
-    ".": "./dist/libs/nestjs-common/src/index.js"
+    ".": "./dist/index.js"
   }
 }

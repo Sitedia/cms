@@ -52,7 +52,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npx nest build",
+        "command": "npx nest build  -c tsconfig.build.json",
         "cwd": "apps/backend"
       }
     },
