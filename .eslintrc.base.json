@@ -1,38 +1,41 @@
 {
   "root": true,
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/strict",
-    "plugin:@nx/typescript",
-    "plugin:import/recommended",
-    "plugin:jest/all",
-    "plugin:unicorn/all",
-    "plugin:prettier/recommended"
-  ],
   "plugins": ["@nx"],
-  "settings": {
-    "import/resolver": {
-      "typescript": { "project": ["tsconfig.base.json"] },
-      "node": { "project": ["tsconfig.base.json"] }
-    }
-  },
-  "rules": {
-    "camelcase": "error",
-    "complexity": ["error", 20],
-    "curly": "error",
-    "eqeqeq": "error",
-    "max-depth": ["error", 4],
-    "max-params": ["error", 8],
-    "no-console": "warn",
-    "no-magic-numbers": ["error", { "ignore": [0, 1] }],
-    "radix": "error",
-    "unicorn/prevent-abbreviations": ["error", { "ignore": ["app", "e2e", "props", "moduleRef"] }],
-    "jest/require-hook": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
-    "@nx/enforce-module-boundaries": ["error"]
-  },
   "overrides": [
+    {
+      "files": ["*.ts", "*.js"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked",
+        "plugin:@nx/typescript",
+        "plugin:import/recommended",
+        "plugin:jest/all",
+        "plugin:unicorn/all",
+        "plugin:prettier/recommended"
+      ],
+      "settings": {
+        "import/resolver": {
+          "typescript": { "project": ["tsconfig.base.json"] },
+          "node": { "project": ["tsconfig.base.json"] }
+        }
+      },
+      "rules": {
+        "camelcase": "error",
+        "complexity": ["error", 20],
+        "curly": "error",
+        "eqeqeq": "error",
+        "max-depth": ["error", 4],
+        "max-params": ["error", 8],
+        "no-console": "warn",
+        "no-magic-numbers": ["error", { "ignore": [0, 1] }],
+        "radix": "error",
+        "unicorn/prevent-abbreviations": ["error", { "ignore": ["app", "e2e", "props", "moduleRef"] }],
+        "jest/require-hook": "off",
+        "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
+        "@nx/enforce-module-boundaries": ["error"]
+      }
+    },
     {
       "files": ["*.spec.ts", "*.spec.tsx"],
       "env": { "jest": true },
@@ -41,7 +44,7 @@
     {
       "files": ["*.spec.ts", "*.spec.tsx", "*.dto.ts", "*.entity.ts"],
       "env": { "jest": true },
-      "rules": { "no-magic-numbers": "off" }
+      "rules": { "no-magic-numbers": "off", "@typescript-eslint/no-magic-numbers": "off" }
     },
     {
       "files": ["*.json"],

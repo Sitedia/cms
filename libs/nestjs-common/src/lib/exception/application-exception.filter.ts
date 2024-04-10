@@ -10,7 +10,7 @@ export class ApplicationExceptionFilter implements ExceptionFilter {
     const context = host.switchToHttp();
     const response = context.getResponse<Response>();
     const request = context.getRequest<Request>();
-    const status = exception.getStatus();
+    const status = exception.getStatus() as HttpStatus;
 
     // We should return the exception message only for client exceptions
     const internalErrorMessage = INTERNAL_SERVER_ERROR_MESSAGE;

@@ -18,7 +18,7 @@ export const secureEntrypoint = (app: INestApplication, applicationOptions: Appl
     applicationlogger.debug(`${request.method} ${request.url}`, 'Express');
     next();
     response.on('finish', () => {
-      const status = response.statusCode;
+      const status = response.statusCode as HttpStatus;
       if (status >= HttpStatus.INTERNAL_SERVER_ERROR) {
         applicationlogger.error(`${request.method} ${request.url} ${response.statusCode}`, 'Express');
       } else if (status >= HttpStatus.BAD_REQUEST) {

@@ -17,7 +17,7 @@ describe('exception filter', () => {
     expect(application).toBeDefined();
   });
 
-  it('should return a client exception with the message', async () => {
+  it('should return a client exception with the message', () => {
     expect.assertions(2);
 
     // Create a mock to intercept the exception
@@ -46,7 +46,7 @@ describe('exception filter', () => {
     expect(result?.message).toBe('My message');
   });
 
-  it('should return a server exception without the message', async () => {
+  it('should return a server exception without the message', () => {
     expect.assertions(2);
 
     // Create a mock to intercept the exception

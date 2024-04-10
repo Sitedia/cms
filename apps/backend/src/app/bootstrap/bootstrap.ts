@@ -12,11 +12,11 @@ import { configureSwagger } from '../setup/swagger.setup';
 
 export const bootstrap = async (): Promise<INestApplication> => {
   // Load HTTPs configuration
-  const enableHTTPs = process.env['APP_TLS_ENABLED'] === 'true';
+  const enableHTTPs = process.env.APP_TLS_ENABLED === 'true';
   const httpsOptions: HttpsOptions = {
-    cert: process.env['APP_TLS_CERTIFICATE']?.replaceAll('\\n', '\n'),
-    key: process.env['APP_TLS_KEY']?.replaceAll('\\n', '\n'),
-    ciphers: process.env['APP_TLS_ALLOWED_CIPHERS'],
+    cert: process.env.APP_TLS_CERTIFICATE?.replaceAll('\\n', '\n'),
+    key: process.env.APP_TLS_KEY?.replaceAll('\\n', '\n'),
+    ciphers: process.env.APP_TLS_ALLOWED_CIPHERS,
     honorCipherOrder: true,
   };
 
