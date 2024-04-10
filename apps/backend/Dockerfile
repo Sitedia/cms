@@ -20,6 +20,7 @@ USER default
 # Build the application
 RUN npm install -g --ignore-scripts pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts --reporter=append-only
+RUN npx nx build libs/nestjs-common --verbose --batch
 RUN npx nx build apps/backend --verbose --batch
 
 # Keep only production packages (recreate node_modules folders to make them smaller)
@@ -40,6 +41,7 @@ ENV APP_VERSION=$APP_VERSION
 # Copy production files
 COPY --from=builder --chown=root:root --chmod=755 /build/node_modules/ ./node_modules/
 COPY --from=builder --chown=root:root --chmod=755 /build/apps/backend/ ./apps/backend/
+COPY --from=builder --chown=root:root --chmod=755 /build/libs/nestjs-common/ ./libs/nestjs-common/
 
 # Reduce privileges (user from base image)
 USER nobody
