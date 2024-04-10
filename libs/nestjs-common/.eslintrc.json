@@ -11,7 +11,7 @@
         }
       },
       "env": {
-        "jest": true
+        "jest/globals": true
       },
       "parserOptions": {
         "project": ["libs/nestjs-common/tsconfig.json"]
