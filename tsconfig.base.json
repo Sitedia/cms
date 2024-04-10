@@ -24,7 +24,7 @@
     "strictNullChecks": true,
     "target": "ES2022",
     "paths": {
-      "@my-events/nestjs-common": ["libs/nestjs-common/src/index.ts"]
+      "@my-events/nestjs-common": ["libs/nestjs-common/src/index.js"]
     }
   }
 }
