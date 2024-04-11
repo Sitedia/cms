@@ -1,27 +1,16 @@
 {
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  },
   "compilerOptions": {
-    "alwaysStrict": true,
     "baseUrl": ".",
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "incremental": false,
-    "lib": ["ES2022"],
     "module": "NodeNext",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "removeComments": true,
     "rootDir": ".",
-    "skipLibCheck": true,
     "sourceMap": true,
-    "strictBindCallApply": true,
-    "strictNullChecks": true,
+    "strict": true,
     "target": "ES2022",
     "paths": {
       "@my-events/nestjs-common": ["libs/nestjs-common/src/index.js"]

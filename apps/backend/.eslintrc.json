@@ -4,18 +4,8 @@
   "overrides": [
     {
       "files": ["*.ts", "*.js"],
-      "settings": {
-        "import/resolver": {
-          "typescript": { "project": ["apps/backend/tsconfig.json"] },
-          "node": { "project": ["apps/backend/tsconfig.json"] }
-        }
-      },
-      "env": {
-        "jest/globals": true
-      },
-      "parserOptions": {
-        "project": ["apps/backend/tsconfig.json"]
-      }
+      "settings": { "import/resolver": { "typescript": { "project": ["apps/backend/tsconfig.json"] } } },
+      "parserOptions": { "project": ["apps/backend/tsconfig.json"] }
     }
   ]
 }

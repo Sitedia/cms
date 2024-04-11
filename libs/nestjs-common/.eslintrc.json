@@ -4,18 +4,8 @@
   "overrides": [
     {
       "files": ["*.ts", "*.js"],
-      "settings": {
-        "import/resolver": {
-          "typescript": { "project": ["libs/nestjs-common/tsconfig.json"] },
-          "node": { "project": ["libs/nestjs-common/tsconfig.json"] }
-        }
-      },
-      "env": {
-        "jest/globals": true
-      },
-      "parserOptions": {
-        "project": ["libs/nestjs-common/tsconfig.json"]
-      }
+      "settings": { "import/resolver": { "typescript": { "project": ["libs/nestjs-common/tsconfig.json"] } } },
+      "parserOptions": { "project": ["libs/nestjs-common/tsconfig.json"] }
     }
   ]
 }

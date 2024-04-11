@@ -1,7 +1,6 @@
 {
   "name": "@my-events/source",
   "version": "0.0.0",
-  "license": "UNLICENSED",
   "private": true,
   "type": "module",
   "devDependencies": {
