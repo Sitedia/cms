@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import clc from 'cli-color';
+import * as clc from 'cli-color';
 import { ApplicationLoggerInterface } from './application-logger.interface.js';
 import { LogFormat } from './log-format.enum.js';
 import { LogLevel } from './log-level.enum.js';

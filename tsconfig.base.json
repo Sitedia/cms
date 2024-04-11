@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "NodeNext",
+    "module": "CommonJS",
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "rootDir": ".",
@@ -13,7 +12,7 @@
     "strict": true,
     "target": "ES2022",
     "paths": {
-      "@my-events/nestjs-common": ["libs/nestjs-common/src/index.js"]
+      "@my-events/nestjs-common": ["libs/nestjs-common/src"]
     }
   }
 }

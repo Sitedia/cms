@@ -1,8 +1,8 @@
 import { LogFormat } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
-import http from 'node:http';
+import * as http from 'node:http';
 import * as request from 'supertest';
-import { bootstrap } from './bootstrap.js';
+import { bootstrap } from './bootstrap';
 
 describe('nestjs application', () => {
   it('should display the status of the application', async () => {
