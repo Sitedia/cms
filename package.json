@@ -1,7 +1,6 @@
 {
   "name": "@my-events/source",
-  "version": "0.0.0",
-  "private": true,
+  "description": "Application to manage events",
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
