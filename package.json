@@ -1,5 +1,6 @@
 {
   "name": "@my-events/source",
+  "version": "0.3.0-SNAPSHOT",
   "description": "Application to manage events",
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
