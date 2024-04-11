@@ -59,7 +59,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npx nest start --watch",
+        "command": "npx nest start --watch -b swc",
         "cwd": "apps/backend",
         "env": {
           "NODE_ENV": "development"
@@ -91,7 +91,13 @@
     "docker:start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "echo 'Delete the previous container if exists ..' && docker rm -f backend && echo 'Create the container ...' && docker run --env-file apps/backend/.env.docker --name backend -p 8801:3000 backend"
+        "commands": [
+          "echo 'Delete the previous container if exists ..'",
+          "docker rm -f backend",
+          "echo 'Create the container ...'",
+          "docker run --env-file apps/backend/.env.docker --name backend -p 8801:3000 backend"
+        ],
+        "parallel": false
       }
     }
   }
