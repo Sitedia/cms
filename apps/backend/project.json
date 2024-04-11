@@ -59,7 +59,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npx nest start --watch -b swc",
+        "command": "npx nest start --watch",
         "cwd": "apps/backend",
         "env": {
           "NODE_ENV": "development"
