@@ -11,9 +11,19 @@
     }
   ],
   "targetDefaults": {
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    },
+    "test:coverage": {
+      "cache": true
+    },
     "build": {
       "dependsOn": [{ "dependencies": true, "target": "build" }, "clear"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
     }
   },
   "namedInputs": {
