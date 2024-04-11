@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { Test, TestingModule } from '@nestjs/testing';
 import { LoggerModule } from '../logger/logger.module.js';
 import { HealthController } from './health.controller.js';

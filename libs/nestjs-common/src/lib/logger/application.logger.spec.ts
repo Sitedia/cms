@@ -1,3 +1,4 @@
+import { describe, expect, it, jest } from '@jest/globals';
 import { ApplicationLogger } from './application.logger.js';
 import { LogFormat } from './log-format.enum.js';
 import { LogLevel } from './log-level.enum.js';

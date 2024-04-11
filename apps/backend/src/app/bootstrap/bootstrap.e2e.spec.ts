@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { LogFormat } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
 import * as http from 'node:http';

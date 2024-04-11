@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { ArgumentsHost, ForbiddenException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { LogLevel } from '../logger/log-level.enum.js';
