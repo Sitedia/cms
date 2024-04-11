@@ -47,4 +47,4 @@ COPY --from=builder --chown=root:root --chmod=755 /build/libs/nestjs-common/ ./l
 USER nobody
 
 # Start the application
-CMD ["node", "apps/backend/dist/main.js"]
+CMD ["node", "apps/backend/dist/apps/backend/src/main.js"]
