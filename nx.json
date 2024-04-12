@@ -33,9 +33,6 @@
   },
   "release": {
     "projects": ["*"],
-    "version": {
-      "conventionalCommits": true
-    },
     "changelog": {
       "workspaceChangelog": {
         "renderOptions": {

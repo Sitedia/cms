@@ -1,9 +1,9 @@
 {
   "name": "@my-events/backend",
-  "version": "0.3.0-SNAPSHOT",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@my-events/nestjs-common": "0.3.0-SNAPSHOT",
+    "@my-events/nestjs-common": "0.2.0",
     "@nestjs/common": "^10.3.7",
     "@nestjs/config": "^3.2.2",
     "@nestjs/core": "^10.3.7",

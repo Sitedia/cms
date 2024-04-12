@@ -1,4 +1,4 @@
 {
-  "name": "source",
+  "name": "root/source",
   "$schema": "./node_modules/nx/schemas/project-schema.json"
 }
