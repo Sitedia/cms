@@ -14,9 +14,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.1.0
         version: 19.1.0
-      '@jest/globals':
-        specifier: ^29.7.0
-        version: 29.7.0
       '@nestjs/cli':
         specifier: ^10.3.2
         version: 10.3.2
@@ -35,12 +32,6 @@ importers:
       '@nx/workspace':
         specifier: 18.2.4
         version: 18.2.4
-      '@types/jest':
-        specifier: ^29.5.12
-        version: 29.5.12
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.12.7
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.6.0
         version: 7.6.0(@typescript-eslint/parser@7.6.0)(eslint@8.57.0)(typescript@5.4.5)
@@ -141,9 +132,15 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      '@types/jest':
+        specifier: ^29.5.12
+        version: 29.5.12
       '@types/js-yaml':
         specifier: ^4.0.9
         version: 4.0.9
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.12.7
       '@types/supertest':
         specifier: ^6.0.2
         version: 6.0.2
@@ -193,6 +190,12 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      '@types/jest':
+        specifier: ^29.5.12
+        version: 29.5.12
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.12.7
 
 packages:
 
