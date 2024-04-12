@@ -1,14 +1,7 @@
 import { HealthModuleOptions, LoggerModuleOptions } from '@my-events/nestjs-common';
 import { ThrottlerModuleOptions } from '@nestjs/throttler';
 
-export enum ConfigurationOptions {
-  APPLICATION = 'application',
-  LOGGER = 'logger',
-  RATE_LIMIT = 'rateLimit',
-  HEALTH = 'health',
-}
-
-export interface ApplicationOptions {
+export interface ApplicationModuleOptions {
   version: string;
   port: number;
   basePath: string;
@@ -17,7 +10,7 @@ export interface ApplicationOptions {
 }
 
 export interface Configuration {
-  application: ApplicationOptions;
+  application: ApplicationModuleOptions;
   logger: LoggerModuleOptions;
   health: HealthModuleOptions;
   rateLimit: ThrottlerModuleOptions;

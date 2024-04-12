@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
-import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface.js';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
 
 const TITLE = 'My Events API';
 const DESCRIPTION = 'API to manage a list of events';
@@ -9,7 +9,7 @@ const DESCRIPTION = 'API to manage a list of events';
 export const configureSwagger = (application: INestApplication, applicationUrl: string): OpenAPIObject => {
   // Load the configuration
   const configService = application.get(ConfigService);
-  const configuration = configService.getOrThrow<ApplicationOptions>(ConfigurationOptions.APPLICATION);
+  const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
 
   // Prepare the configuration
   const documentBuilder = new DocumentBuilder()

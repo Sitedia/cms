@@ -5,7 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from '../app.module.js';
-import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface.js';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
 import { secureEntrypoint } from '../setup/entrypoint.setup.js';
 import { configureSwagger } from '../setup/swagger.setup.js';
 
@@ -31,7 +31,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
 
   // Load the configuration
   const configService = application.get(ConfigService);
-  const configuration = configService.getOrThrow<ApplicationOptions>(ConfigurationOptions.APPLICATION);
+  const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
 
   // Secure the entry point
   secureEntrypoint(application, configuration);

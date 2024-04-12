@@ -2,9 +2,9 @@ import { ApplicationLogger } from '@my-events/nestjs-common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { ApplicationOptions } from '../configuration/configuration.interface.js';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
 
-export const secureEntrypoint = (app: INestApplication, applicationOptions: ApplicationOptions) => {
+export const secureEntrypoint = (app: INestApplication, applicationOptions: ApplicationModuleOptions) => {
   const applicationlogger = app.get(ApplicationLogger);
 
   // Configure Express
