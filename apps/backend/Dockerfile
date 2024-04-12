@@ -5,9 +5,9 @@ WORKDIR /build
 
 # Copy only files required to build the application
 COPY --chown=root:root --chmod=755 nx.json package.json tsconfig.base.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY --chown=root:root --chmod=755 libs/nestjs-common/package.json libs/nestjs-common/project.json  libs/nestjs-common/tsconfig.json libs/nestjs-common/tsconfig.build.json ./libs/nestjs-common/
+COPY --chown=root:root --chmod=755 libs/nestjs-common/package.json libs/nestjs-common/project.json  libs/nestjs-common/tsconfig.json libs/nestjs-common/tsconfig.lib.json ./libs/nestjs-common/
 COPY --chown=root:root --chmod=755 libs/nestjs-common/src ./libs/nestjs-common/src
-COPY --chown=root:root --chmod=755 apps/backend/package.json apps/backend/project.json apps/backend/nest-cli.json apps/backend/tsconfig.json apps/backend/tsconfig.build.json ./apps/backend/
+COPY --chown=root:root --chmod=755 apps/backend/package.json apps/backend/project.json apps/backend/nest-cli.json apps/backend/tsconfig.json apps/backend/tsconfig.app.json ./apps/backend/
 COPY --chown=root:root --chmod=755 apps/backend/src ./apps/backend/src
 
 # Allow write permissions to 'default' user in this folder
