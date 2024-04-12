@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
-import clc from 'cli-color';
-import { ApplicationLoggerInterface } from './application-logger.interface';
-import { LogFormat } from './log-format.enum';
-import { LogLevel } from './log-level.enum';
-import { MODULE_OPTIONS_TOKEN } from './logger-module.definition';
-import { LoggerModuleOptions } from './logger-module.options';
+import * as clc from 'cli-color';
+import { ApplicationLoggerInterface } from './application-logger.interface.js';
+import { LogFormat } from './log-format.enum.js';
+import { LogLevel } from './log-level.enum.js';
+import { MODULE_OPTIONS_TOKEN } from './logger-module.definition.js';
+import { LoggerModuleOptions } from './logger-module.options.js';
 
 const LEVEL_PAD_INDENT = 7;
 

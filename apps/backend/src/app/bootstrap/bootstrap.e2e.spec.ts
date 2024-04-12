@@ -1,8 +1,8 @@
-/* eslint-disable unicorn/prefer-module */
+import { describe, expect, it } from '@jest/globals';
 import { LogFormat } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
-import http from 'node:http';
-import request from 'supertest';
+import * as http from 'node:http';
+import * as request from 'supertest';
 import { bootstrap } from './bootstrap';
 
 describe('nestjs application', () => {
@@ -13,10 +13,11 @@ describe('nestjs application', () => {
     process.env.APP_SWAGGER_UI_ENABLED = 'true';
     process.env.APP_LOG_FORMAT = 'CONSOLE';
     const application = await bootstrap();
-    const httpServer: http.Server = application.getHttpServer();
+    const httpServer = application.getHttpServer() as http.Server;
     const response = await request.agent(httpServer).get('/api/probes/liveness');
 
     expect(response.statusCode).toBe(HttpStatus.OK);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toBe('ok');
 
     await application.close();
@@ -30,10 +31,11 @@ describe('nestjs application', () => {
     process.env.APP_LOG_FORMAT = LogFormat.CONSOLE;
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     const application = await bootstrap();
-    const httpServer: http.Server = application.getHttpServer();
+    const httpServer = application.getHttpServer() as http.Server;
     const response = await request.agent(httpServer).get('/api/probes/liveness');
 
     expect(response.statusCode).toBe(HttpStatus.OK);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toBe('ok');
 
     await application.close();
@@ -47,7 +49,7 @@ describe('nestjs application', () => {
     process.env.APP_LOG_FORMAT = 'JSON';
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     const application = await bootstrap();
-    const httpServer: http.Server = application.getHttpServer();
+    const httpServer = application.getHttpServer() as http.Server;
 
     expect(httpServer).toBeDefined();
 
@@ -61,7 +63,7 @@ describe('nestjs application', () => {
     process.env.DEFAULT_STORAGE_THRESHOLD = '1';
     delete process.env.APP_SWAGGER_UI_ENABLED;
     const application = await bootstrap();
-    const httpServer: http.Server = application.getHttpServer();
+    const httpServer = application.getHttpServer() as http.Server;
     const response = await request.agent(httpServer).get('/unknown-path');
 
     expect(response.statusCode).toBe(HttpStatus.NOT_FOUND);
@@ -76,7 +78,7 @@ describe('nestjs application', () => {
     process.env.APP_SWAGGER_UI_ENABLED = 'INVALID';
     process.env.APP_STORAGE_THRESHOLD = '0';
     const application = await bootstrap();
-    const httpServer: http.Server = application.getHttpServer();
+    const httpServer = application.getHttpServer() as http.Server;
     const response = await request.agent(httpServer).get('/api/probes/readiness');
 
     expect(response.statusCode).toBe(HttpStatus.SERVICE_UNAVAILABLE);

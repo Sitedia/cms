@@ -1,6 +1,6 @@
 import { CallHandler, ExecutionContext, HttpException, HttpStatus, Injectable, NestInterceptor } from '@nestjs/common';
 import { catchError, throwError } from 'rxjs';
-import { ApplicationLogger } from '../logger/application.logger';
+import { ApplicationLogger } from '../logger/application.logger.js';
 
 @Injectable()
 export class RequestInterceptor implements NestInterceptor {
@@ -9,16 +9,12 @@ export class RequestInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler) {
     // Intercept and log errors
     return next.handle().pipe(
-      catchError((error) => {
-        const status = error instanceof HttpException ? error.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
-
-        // Prepare the log message
-        let message = error.message;
-        if (error.response) {
-          message = `${message}: ${JSON.stringify(error.response)}`;
-        }
+      catchError((error: Error) => {
+        const status =
+          error instanceof HttpException ? (error.getStatus() as HttpStatus) : HttpStatus.INTERNAL_SERVER_ERROR;
 
         // Log the error
+        const message = `${error.message}: ${JSON.stringify(error)}`;
         if (status >= HttpStatus.INTERNAL_SERVER_ERROR) {
           this.logger.error(message, RequestInterceptor.name, error.stack);
         } else {

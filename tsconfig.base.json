@@ -2,25 +2,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "lib": ["es2021", "dom"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
+    "module": "CommonJS",
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "rootDir": ".",
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "strictBindCallApply": true,
-    "strictNullChecks": true,
-    "target": "es2021",
-    "types": ["jest", "node"],
+    "target": "ES2022",
     "paths": {
       "@my-events/nestjs-common": ["libs/nestjs-common/src"]
     }

@@ -1,8 +1,14 @@
+import { describe, expect, it } from '@jest/globals';
 import { ExecutionContext, ForbiddenException } from '@nestjs/common';
 import { lastValueFrom, of, throwError } from 'rxjs';
-import { ApplicationLogger } from '../logger/application.logger';
-import { LogLevel } from '../logger/log-level.enum';
-import { RequestInterceptor } from './request.interceptor';
+import { ApplicationLogger } from '../logger/application.logger.js';
+import { LogLevel } from '../logger/log-level.enum.js';
+import { RequestInterceptor } from './request.interceptor.js';
+
+// Create a mock object interface
+interface Account {
+  username: string;
+}
 
 // Create a mock context for all interceptors in the tests
 const contextMock = {
@@ -13,7 +19,7 @@ const contextMock = {
 };
 
 // Set up each test
-const setup = async () => {
+const setup = () => {
   const logger = new ApplicationLogger({ logLevel: LogLevel.OFF });
   return new RequestInterceptor(logger);
 };
@@ -21,17 +27,17 @@ const setup = async () => {
 describe('request interceptor', () => {
   it('should intercept the requests', async () => {
     expect.assertions(1);
-    const requestInterceptor = await setup();
+    const requestInterceptor = setup();
     const handlerMock = { handle: () => of({ username: 'admin' }) };
     const observable = requestInterceptor.intercept(contextMock as ExecutionContext, handlerMock);
-    const result = await lastValueFrom(observable);
+    const result = (await lastValueFrom(observable)) as Account;
 
     expect(result.username).toBe('admin');
   });
 
   it('should log client errors', async () => {
     expect.assertions(1);
-    const requestInterceptor = await setup();
+    const requestInterceptor = setup();
     const handlerMock = { handle: () => throwError(() => new ForbiddenException('My error')) };
     const observable = requestInterceptor.intercept(contextMock as ExecutionContext, handlerMock);
 
@@ -40,7 +46,7 @@ describe('request interceptor', () => {
 
   it('should log the internal server errors', async () => {
     expect.assertions(1);
-    const requestInterceptor = await setup();
+    const requestInterceptor = setup();
     const handlerMock = { handle: () => throwError(() => new Error('Internal error')) };
     const observable = requestInterceptor.intercept(contextMock as ExecutionContext, handlerMock);
 

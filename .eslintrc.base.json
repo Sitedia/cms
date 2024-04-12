@@ -1,16 +1,19 @@
 {
   "root": true,
-  "extends": [
-    "eslint:recommended",
-    "plugin:@nx/typescript",
-    "plugin:jest/all",
-    "plugin:unicorn/all",
-    "plugin:prettier/recommended"
-  ],
   "plugins": ["@nx"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts", "*.js"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked",
+        "plugin:@nx/typescript",
+        "plugin:import/recommended",
+        "plugin:jest/all",
+        "plugin:unicorn/all",
+        "plugin:prettier/recommended"
+      ],
       "rules": {
         "camelcase": "error",
         "complexity": ["error", 20],
@@ -21,27 +24,35 @@
         "no-console": "warn",
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
         "radix": "error",
-        "unicorn/prevent-abbreviations": ["error", { "ignore": ["e2e", "props", "moduleRef"] }],
+        "unicorn/prevent-abbreviations": ["error", { "ignore": ["app", "e2e", "props", "moduleRef"] }],
+        "jest/require-hook": "off",
         "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [{ "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }]
-          }
-        ]
+        "@nx/enforce-module-boundaries": ["error"]
       }
     },
     {
-      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "files": ["*.spec.ts", "*.spec.tsx"],
       "env": { "jest": true },
-      "rules": { "no-magic-numbers": "off", "max-lines-per-function": "off" }
+      "rules": { "jest/require-hook": ["error"] }
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.dto.ts", "*.entity.ts"],
+      "env": { "jest": true },
+      "rules": { "no-magic-numbers": "off", "@typescript-eslint/no-magic-numbers": "off" }
     },
     {
       "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
       "rules": {
-        "jest/unbound-method": "off"
+        "jest/unbound-method": "off",
+        "@nx/dependency-checks": [
+          "error",
+          {
+            "ignoredFiles": ["**/*.spec.ts"],
+            "ignoredDependencies": ["dotenv"],
+            "includeTransitiveDependencies": true
+          }
+        ]
       }
     }
   ]

@@ -1,10 +1,11 @@
+import { describe, expect, it } from '@jest/globals';
 import { ArgumentsHost, ForbiddenException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { LogLevel } from '../logger/log-level.enum';
-import { LoggerModule } from '../logger/logger.module';
-import { ApplicationExceptionFilter } from './application-exception.filter';
-import { ExceptionDTO } from './exception.dto';
-import { ExceptionModule } from './exception.module';
+import { LogLevel } from '../logger/log-level.enum.js';
+import { LoggerModule } from '../logger/logger.module.js';
+import { ApplicationExceptionFilter } from './application-exception.filter.js';
+import { ExceptionDTO } from './exception.dto.js';
+import { ExceptionModule } from './exception.module.js';
 
 describe('exception filter', () => {
   it('should load the exception filter', async () => {
@@ -17,7 +18,7 @@ describe('exception filter', () => {
     expect(application).toBeDefined();
   });
 
-  it('should return a client exception with the message', async () => {
+  it('should return a client exception with the message', () => {
     expect.assertions(2);
 
     // Create a mock to intercept the exception
@@ -46,7 +47,7 @@ describe('exception filter', () => {
     expect(result?.message).toBe('My message');
   });
 
-  it('should return a server exception without the message', async () => {
+  it('should return a server exception without the message', () => {
     expect.assertions(2);
 
     // Create a mock to intercept the exception

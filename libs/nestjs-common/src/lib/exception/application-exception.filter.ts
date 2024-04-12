@@ -1,7 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
-import 'tslib';
-import { ExceptionDTO } from './exception.dto';
+import { ExceptionDTO } from './exception.dto.js';
 
 const INTERNAL_SERVER_ERROR_MESSAGE = 'An internal server error occurred';
 
@@ -11,7 +10,7 @@ export class ApplicationExceptionFilter implements ExceptionFilter {
     const context = host.switchToHttp();
     const response = context.getResponse<Response>();
     const request = context.getRequest<Request>();
-    const status = exception.getStatus();
+    const status = exception.getStatus() as HttpStatus;
 
     // We should return the exception message only for client exceptions
     const internalErrorMessage = INTERNAL_SERVER_ERROR_MESSAGE;

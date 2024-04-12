@@ -1,9 +1,9 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { DiskHealthIndicator, HealthCheck, HealthCheckService } from '@nestjs/terminus';
-import { ApplicationLogger } from '../logger/application.logger';
-import { MODULE_OPTIONS_TOKEN } from './health-module.definition';
-import { HealthModuleOptions } from './health-module.options';
+import { ApplicationLogger } from '../logger/application.logger.js';
+import { MODULE_OPTIONS_TOKEN } from './health-module.definition.js';
+import { HealthModuleOptions } from './health-module.options.js';
 
 @ApiTags('probes')
 @Controller('probes')

@@ -1,12 +1,10 @@
-/* eslint-disable unicorn/prefer-module */
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
-import 'tslib';
-import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface';
+import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface.js';
 
-const TITLE = 'Todo list API';
-const DESCRIPTION = 'API to manage a list of tasks';
+const TITLE = 'My Events API';
+const DESCRIPTION = 'API to manage a list of events';
 
 export const configureSwagger = (application: INestApplication, applicationUrl: string): OpenAPIObject => {
   // Load the configuration
@@ -29,7 +27,7 @@ export const configureSwagger = (application: INestApplication, applicationUrl: 
   const basePath = configuration.basePath;
   SwaggerModule.setup(`/${basePath}/swagger-ui.html`, application, document, {
     jsonDocumentUrl: `/${basePath}/specifications/openapi.json`,
-    yamlDocumentUrl: `/${basePath}/specifications/openapi.yml`,
+    yamlDocumentUrl: `/${basePath}/specifications/openapi.yaml`,
   });
 
   return document;

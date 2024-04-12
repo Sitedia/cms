@@ -29,15 +29,14 @@
     "lint:api": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npx nest start --entryFile apps/backend/src/cli -- swagger | npx spectral lint --ruleset ../../spectral.yaml",
-        "cwd": "apps/backend"
+        "command": "npx spectral lint http://localhost:3000/api/specifications/openapi.yaml --ruleset ./spectral.yaml --fail-on-unmatched-globs"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
+        "jestConfig": "apps/backend/jest.config.ts",
         "runInBand": true
       }
     },
@@ -45,7 +44,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
+        "jestConfig": "apps/backend/jest.config.ts",
         "codeCoverage": true,
         "runInBand": true
       }
@@ -92,7 +91,13 @@
     "docker:start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "echo 'Delete the previous container if exists ..' && docker rm -f backend && echo 'Create the container ...' && docker run --env-file apps/backend/.env.docker --name backend -p 8801:3000 backend"
+        "commands": [
+          "echo 'Delete the previous container if exists ..'",
+          "docker rm -f backend",
+          "echo 'Create the container ...'",
+          "docker run --env-file apps/backend/.env.docker --name backend -p 8801:3000 backend"
+        ],
+        "parallel": false
       }
     }
   }
