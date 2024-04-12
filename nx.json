@@ -25,14 +25,6 @@
       "cache": true
     },
     "build": {
-      "dependsOn": [
-        {
-          "dependencies": true,
-          "target": "build"
-        },
-        "clear"
-      ],
-      "inputs": ["production", "^production"],
       "cache": true
     }
   },
