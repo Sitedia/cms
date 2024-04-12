@@ -36,7 +36,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
+        "jestConfig": "apps/backend/jest.config.ts",
         "runInBand": true
       }
     },
@@ -44,7 +44,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
+        "jestConfig": "apps/backend/jest.config.ts",
         "codeCoverage": true,
         "runInBand": true
       }
