@@ -3,11 +3,15 @@
   "plugins": [
     {
       "plugin": "@nx/eslint/plugin",
-      "options": { "targetName": "lint" }
+      "options": {
+        "targetName": "lint"
+      }
     },
     {
       "plugin": "@nx/jest/plugin",
-      "options": { "targetName": "test" }
+      "options": {
+        "targetName": "test"
+      }
     }
   ],
   "targetDefaults": {
@@ -21,7 +25,13 @@
       "cache": true
     },
     "build": {
-      "dependsOn": [{ "dependencies": true, "target": "build" }, "clear"],
+      "dependsOn": [
+        {
+          "dependencies": true,
+          "target": "build"
+        },
+        "clear"
+      ],
       "inputs": ["production", "^production"],
       "cache": true
     }
