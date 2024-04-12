@@ -1,4 +1,4 @@
-const regex = '^((fix|feat)/[a-z0-9-]+)$';
+const regex = '^(main)|((fix|feat)/[a-z0-9-]+)$';
 const branchName = process.argv[2];
 
 // Validate the branch name
