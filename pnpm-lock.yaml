@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@nestjs/mapped-types':
-        specifier: '*'
-        version: 2.0.5(@nestjs/common@10.3.7)(reflect-metadata@0.2.2)
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.2.1

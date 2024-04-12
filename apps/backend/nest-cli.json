@@ -3,6 +3,6 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "apps/backend/src",
   "compilerOptions": {
-    "tsConfigPath": "tsconfig.lib.json"
+    "tsConfigPath": "tsconfig.app.json"
   }
 }
