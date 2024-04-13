@@ -1,16 +1,10 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.organizeImports": "explicit",
     "source.fixAll": "explicit"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
@@ -47,9 +41,8 @@
       "format": "svg"
     }
   ],
-  "typescript.preferences.importModuleSpecifier": "project-relative",
+  "testing.openTesting": "openOnTestFailure",
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "jest.jestCommandLine": "nx run-many --target test",
-  "jest.runMode": "on-demand",
-  "testing.openTesting": "openOnTestFailure"
+  "jest.runMode": "on-demand"
 }

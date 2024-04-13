@@ -5,27 +5,6 @@
   "projectType": "application",
   "tags": ["backend"],
   "targets": {
-    "clear": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "rimraf dist coverage",
-        "cwd": "apps/backend"
-      }
-    },
-    "clear:all": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "rimraf dist coverage env.*.local node_modules",
-        "cwd": "apps/backend"
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/backend/**/*.{ts,tsx,js,jsx}", "apps/backend/package.json"]
-      }
-    },
     "lint:api": {
       "executor": "nx:run-commands",
       "options": {

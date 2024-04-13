@@ -6,9 +6,9 @@ import { ApplicationModuleOptions } from '../configuration/configuration.interfa
 const TITLE = 'My Events API';
 const DESCRIPTION = 'API to manage a list of events';
 
-export const configureSwagger = (application: INestApplication, applicationUrl: string): OpenAPIObject => {
+export const configureSwagger = (app: INestApplication): OpenAPIObject => {
   // Load the configuration
-  const configService = application.get(ConfigService);
+  const configService = app.get(ConfigService);
   const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
 
   // Prepare the configuration
@@ -17,17 +17,16 @@ export const configureSwagger = (application: INestApplication, applicationUrl: 
     .setDescription(DESCRIPTION)
     .setVersion(configuration.version)
     .addTag('probes')
-    .addServer(applicationUrl);
+    .addServer(configuration.apiUrl);
 
   // Generate the OpenAPI specification
   const config = documentBuilder.build();
-  const document = SwaggerModule.createDocument(application, config);
+  const document = SwaggerModule.createDocument(app, config);
 
   // Set up Swagger
-  const basePath = configuration.basePath;
-  SwaggerModule.setup(`/${basePath}/swagger-ui.html`, application, document, {
-    jsonDocumentUrl: `/${basePath}/specifications/openapi.json`,
-    yamlDocumentUrl: `/${basePath}/specifications/openapi.yaml`,
+  SwaggerModule.setup(`/${configuration.basePath}/swagger-ui.html`, app, document, {
+    jsonDocumentUrl: `/${configuration.basePath}/specifications/openapi.json`,
+    yamlDocumentUrl: `/${configuration.basePath}/specifications/openapi.yaml`,
   });
 
   return document;

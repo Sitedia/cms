@@ -20,30 +20,30 @@ export const bootstrap = async (): Promise<INestApplication> => {
   };
 
   // Create the NestJS application
-  const application: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, {
+  const app: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, {
     bufferLogs: true, // buffer the first logs until out custom logger is set (see below)
     httpsOptions: enableHTTPs ? httpsOptions : undefined,
   });
 
   // Set our custom logger (https://docs.nestjs.com/techniques/logger)
-  const applicationlogger = application.get(ApplicationLogger);
-  application.useLogger(applicationlogger);
+  const applicationlogger = app.get(ApplicationLogger);
+  app.useLogger(applicationlogger);
 
   // Load the configuration
-  const configService = application.get(ConfigService);
+  const configService = app.get(ConfigService);
   const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
 
   // Secure the entry point
-  secureEntrypoint(application, configuration);
+  secureEntrypoint(app);
 
   // Configure Swagger
-  configureSwagger(application, configuration.apiUrl);
+  configureSwagger(app);
 
   // Start the application
-  await application.listen(configuration.port);
+  await app.listen(configuration.port);
   const basePath = configuration.basePath;
   const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}`;
   applicationlogger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
 
-  return application;
+  return app;
 };

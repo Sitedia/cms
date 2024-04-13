@@ -5,27 +5,6 @@
   "projectType": "library",
   "tags": ["nestjs-common"],
   "targets": {
-    "clear": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "rimraf dist coverage",
-        "cwd": "libs/nestjs-common"
-      }
-    },
-    "clear:all": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "rimraf dist coverage node_modules",
-        "cwd": "libs/nestjs-common"
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/nestjs-common/**/*.{ts,tsx,js,jsx}", "libs/nestjs-common/package.json"]
-      }
-    },
     "test:coverage": {
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
