@@ -7,6 +7,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   setupFilesAfterEnv: ['<rootDir>/dotenv.config.js'],
-  coverageDirectory: './coverage',
   collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/index.ts', '!src/main.ts'],
 };

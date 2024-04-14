@@ -12,22 +12,19 @@ export const configureSwagger = (app: INestApplication): OpenAPIObject => {
   const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
 
   // Prepare the configuration
-  const documentBuilder = new DocumentBuilder()
+  const config = new DocumentBuilder()
     .setTitle(TITLE)
     .setDescription(DESCRIPTION)
     .setVersion(configuration.version)
     .addTag('probes')
-    .addServer(configuration.apiUrl);
+    .addServer(configuration.apiUrl)
+    .build();
 
   // Generate the OpenAPI specification
-  const config = documentBuilder.build();
   const document = SwaggerModule.createDocument(app, config);
 
   // Set up Swagger
-  SwaggerModule.setup(`/${configuration.basePath}/swagger-ui.html`, app, document, {
-    jsonDocumentUrl: `/${configuration.basePath}/specifications/openapi.json`,
-    yamlDocumentUrl: `/${configuration.basePath}/specifications/openapi.yaml`,
-  });
+  SwaggerModule.setup(`/${configuration.basePath}/swagger-ui.html`, app, document);
 
   return document;
 };
