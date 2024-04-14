@@ -11,8 +11,7 @@
         "plugin:@nx/typescript",
         "plugin:import/recommended",
         "plugin:jest/all",
-        "plugin:unicorn/all",
-        "plugin:prettier/recommended"
+        "plugin:unicorn/all"
       ],
       "rules": {
         "camelcase": "error",
