@@ -5,6 +5,7 @@ import { LogFormat } from './log-format.enum';
 import { MODULE_OPTIONS_TOKEN } from './logger-module.definition';
 import { LoggerModuleOptions } from './logger-module.options';
 
+const levels: LogLevel[] = ['verbose', 'debug', 'log', 'warn', 'error', 'fatal'];
 const LEVEL_PAD_INDENT = 7;
 
 @Injectable()
@@ -56,29 +57,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   }
 
   isEnabled(level: LogLevel) {
-    if (!this.enabled) {
-      return false;
-    }
-    switch (this.level) {
-      case 'verbose': {
-        return true;
-      }
-      case 'debug': {
-        return ['debug', 'log', 'warn', 'error', 'fatal'].includes(level);
-      }
-      case 'warn': {
-        return ['warn', 'error', 'fatal'].includes(level);
-      }
-      case 'error': {
-        return ['error', 'fatal'].includes(level);
-      }
-      case 'fatal': {
-        return level === 'fatal';
-      }
-      default: {
-        return ['log', 'warn', 'error', 'fatal'].includes(level);
-      }
-    }
+    return this.enabled ? levels.slice(levels.indexOf(this.level)).includes(level) : false;
   }
 
   /* istanbul ignore next */
@@ -101,9 +80,8 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   /* istanbul ignore next */
   protected formatJsonMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const timestamp = new Date().toISOString();
-    const json = { timestamp, level, context, message, stack };
     // eslint-disable-next-line no-console
-    console.log(JSON.stringify(json));
+    console.log(JSON.stringify({ timestamp, level, context, message, stack }));
   }
 
   /* istanbul ignore next */
