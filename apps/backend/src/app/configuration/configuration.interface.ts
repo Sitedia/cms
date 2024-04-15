@@ -5,7 +5,7 @@ export interface ApplicationModuleOptions {
   version: string;
   port: number;
   basePath: string;
-  origin: string;
+  origin?: string;
   apiUrl: string;
 }
 

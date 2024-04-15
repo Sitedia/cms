@@ -3,7 +3,7 @@ import { HttpStatus, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface';
 
 export const secureEntrypoint = (app: INestApplication) => {
   // Load the logger

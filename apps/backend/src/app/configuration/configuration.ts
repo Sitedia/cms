@@ -1,5 +1,6 @@
-import { LogFormat, LogLevel } from '@my-events/nestjs-common';
-import { Configuration } from './configuration.interface.js';
+import { LogFormat } from '@my-events/nestjs-common';
+import { LogLevel } from '@nestjs/common';
+import { Configuration } from './configuration.interface';
 
 const DEFAULT_PORT = '3000';
 const DEFAULT_STORAGE_THRESHOLD = '1.0';
@@ -10,11 +11,12 @@ export const configuration = (): Configuration => ({
     version: process.env.APP_VERSION ?? 'local',
     port: Number.parseInt(process.env.PORT ?? DEFAULT_PORT, 10),
     basePath: process.env.APP_BASE_PATH ?? 'api',
-    origin: process.env.APP_CORS_ORIGIN ?? '',
+    origin: process.env.APP_CORS_ORIGIN ?? undefined,
     apiUrl: process.env.APP_API_URL ?? 'http://localhost:3000',
   },
   logger: {
-    logLevel: (process.env.APP_LOG_LEVEL as LogLevel) || LogLevel.LOG,
+    enabled: process.env.APP_LOG_ENABLED ? process.env.APP_LOG_ENABLED !== 'false' : true,
+    logLevel: (process.env.APP_LOG_LEVEL as LogLevel) ?? 'log',
     logFormat: process.env.APP_LOG_FORMAT === 'JSON' ? LogFormat.JSON : LogFormat.CONSOLE,
   },
   health: {

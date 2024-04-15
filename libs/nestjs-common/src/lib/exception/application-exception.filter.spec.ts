@@ -1,18 +1,17 @@
 import { describe, expect, it } from '@jest/globals';
 import { ArgumentsHost, ForbiddenException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { LogLevel } from '../logger/log-level.enum.js';
-import { LoggerModule } from '../logger/logger.module.js';
-import { ApplicationExceptionFilter } from './application-exception.filter.js';
-import { ExceptionDTO } from './exception.dto.js';
-import { ExceptionModule } from './exception.module.js';
+import { LoggerModule } from '../logger/logger.module';
+import { ApplicationExceptionFilter } from './application-exception.filter';
+import { ExceptionDTO } from './exception.dto';
+import { ExceptionModule } from './exception.module';
 
 describe('exception filter', () => {
   it('should load the exception filter', async () => {
     expect.assertions(1);
 
     const application = await Test.createTestingModule({
-      imports: [ExceptionModule, LoggerModule.register({ logLevel: LogLevel.OFF })],
+      imports: [ExceptionModule, LoggerModule.register({ enabled: false })],
     }).compile();
 
     expect(application).toBeDefined();

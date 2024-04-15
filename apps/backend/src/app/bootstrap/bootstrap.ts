@@ -1,13 +1,13 @@
 import { ApplicationLogger } from '@my-events/nestjs-common';
 import { INestApplication } from '@nestjs/common';
-import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface.js';
+import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { AppModule } from '../app.module.js';
-import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
-import { secureEntrypoint } from '../setup/entrypoint.setup.js';
-import { configureSwagger } from '../setup/swagger.setup.js';
+import { AppModule } from '../app.module';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface';
+import { secureEntrypoint } from '../setup/entrypoint.setup';
+import { configureSwagger } from '../setup/swagger.setup';
 
 export const bootstrap = async (): Promise<INestApplication> => {
   // Load HTTPs configuration
@@ -26,12 +26,15 @@ export const bootstrap = async (): Promise<INestApplication> => {
   });
 
   // Set our custom logger (https://docs.nestjs.com/techniques/logger)
-  const applicationlogger = app.get(ApplicationLogger);
-  app.useLogger(applicationlogger);
+  const logger = app.get(ApplicationLogger);
+  app.useLogger(logger);
 
   // Load the configuration
   const configService = app.get(ConfigService);
   const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
+
+  // Log the configuration. !! Hide sensitive values
+  logger.verbose(`Using configuration ${configService.get('*')}`);
 
   // Secure the entry point
   secureEntrypoint(app);
@@ -43,7 +46,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
   await app.listen(configuration.port);
   const basePath = configuration.basePath;
   const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}`;
-  applicationlogger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
+  logger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
 
   return app;
 };
