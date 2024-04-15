@@ -24,9 +24,6 @@ export class HealthController {
   @Get('liveness')
   @HealthCheck()
   async liveness() {
-    if (1 === 1) {
-      console.log('coucou');
-    }
     const healthCheckResult = await this.health.check([
       () => this.disk.checkStorage('storage', { path: '/', thresholdPercent: this.options.storageThresholdPercent }),
     ]);
