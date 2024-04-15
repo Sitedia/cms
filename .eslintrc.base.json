@@ -45,7 +45,7 @@
           "error",
           {
             "ignoredFiles": ["**/*.spec.ts"],
-            "ignoredDependencies": ["dotenv", "#my-events/nestjs-common"],
+            "ignoredDependencies": ["dotenv", "@my-events/nestjs-common"],
             "includeTransitiveDependencies": true
           }
         ]

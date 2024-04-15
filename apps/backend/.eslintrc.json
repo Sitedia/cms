@@ -4,7 +4,11 @@
     {
       "files": ["*.ts"],
       "parserOptions": { "project": ["apps/backend/tsconfig.json"] },
-      "settings": { "import/resolver": { "typescript": { "project": ["apps/backend/tsconfig.json"] } } }
+      "settings": {
+        "import/resolver": {
+          "typescript": { "project": ["apps/backend/tsconfig.json"] }
+        }
+      }
     }
   ]
 }
