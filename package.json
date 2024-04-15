@@ -9,7 +9,6 @@
     "@nx/workspace": "18.2.4",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "eslint": "^8.57.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^28.2.0",
     "eslint-plugin-unicorn": "^52.0.0",

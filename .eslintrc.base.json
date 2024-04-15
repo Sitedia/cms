@@ -10,7 +10,6 @@
         "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked",
         "plugin:@nx/typescript",
-        "plugin:import/recommended",
         "plugin:jest/all",
         "plugin:unicorn/all"
       ],
