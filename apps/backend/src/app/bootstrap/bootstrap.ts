@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from '../app.module';
+import { configuration as config } from '../configuration/configuration';
 import { ApplicationModuleOptions } from '../configuration/configuration.interface';
 import { secureEntrypoint } from '../setup/entrypoint.setup';
 import { configureSwagger } from '../setup/swagger.setup';
@@ -34,7 +35,9 @@ export const bootstrap = async (): Promise<INestApplication> => {
   const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
 
   // Log the configuration. !! Hide sensitive values
-  logger.verbose(`Using configuration ${configService.get('*')}`);
+  if (logger.isEnabled('verbose')) {
+    logger.verbose(`Using configuration ${JSON.stringify(config())}`);
+  }
 
   // Secure the entry point
   secureEntrypoint(app);

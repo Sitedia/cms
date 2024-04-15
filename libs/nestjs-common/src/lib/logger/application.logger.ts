@@ -10,13 +10,13 @@ const LEVEL_PAD_INDENT = 7;
 @Injectable()
 export class ApplicationLogger implements ApplicationLoggerInterface {
   private readonly enabled: boolean;
-  private readonly logLevel: LogLevel;
-  private readonly logFormat: LogFormat;
+  private readonly level: LogLevel;
+  private readonly format: LogFormat;
 
   constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {
     this.enabled = options.enabled ?? true;
-    this.logLevel = options.logLevel ?? 'log';
-    this.logFormat = options.logFormat ?? LogFormat.CONSOLE;
+    this.level = options.level ?? 'log';
+    this.format = options.format ?? LogFormat.CONSOLE;
     this.verbose(`Logger started with options ${JSON.stringify(options)}`);
   }
 
@@ -48,7 +48,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   logMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     if (!this.isEnabled(level)) {
       return;
-    } else if (this.logFormat === LogFormat.JSON) {
+    } else if (this.format === LogFormat.JSON) {
       this.formatJsonMessage(level, message, context, stack);
     } else {
       this.formatTextMessage(level, message, context, stack);
@@ -59,7 +59,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     if (!this.enabled) {
       return false;
     }
-    switch (this.logLevel) {
+    switch (this.level) {
       case 'verbose': {
         return true;
       }

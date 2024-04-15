@@ -3,6 +3,6 @@ import { LogFormat } from './log-format.enum';
 
 export interface LoggerModuleOptions {
   enabled?: boolean;
-  logLevel?: LogLevel;
-  logFormat?: LogFormat;
+  level?: LogLevel;
+  format?: LogFormat;
 }
