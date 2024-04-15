@@ -31,12 +31,10 @@
     },
     {
       "files": ["*.spec.ts"],
-      "env": { "jest": true },
       "rules": { "jest/require-hook": ["error"] }
     },
     {
       "files": ["*.spec.ts", "*.dto.ts", "*.entity.ts"],
-      "env": { "jest": true },
       "rules": { "no-magic-numbers": "off" }
     },
     {
