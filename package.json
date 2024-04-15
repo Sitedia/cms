@@ -1,6 +1,5 @@
 {
   "name": "@my-events/source",
-  "version": "0.2.0",
   "private": true,
   "devDependencies": {
     "@nx/eslint": "18.2.4",

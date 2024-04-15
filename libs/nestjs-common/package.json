@@ -1,6 +1,6 @@
 {
   "name": "@my-events/nestjs-common",
-  "version": "0.2.0",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.3.7",
