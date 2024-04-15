@@ -43,7 +43,11 @@
       "rules": {
         "@nx/dependency-checks": [
           "error",
-          { "ignoredFiles": ["**/*.spec.ts"], "ignoredDependencies": ["dotenv"], "includeTransitiveDependencies": true }
+          {
+            "ignoredFiles": ["**/*.spec.ts"],
+            "ignoredDependencies": ["dotenv", "#my-events/nestjs-common"],
+            "includeTransitiveDependencies": true
+          }
         ]
       }
     }
