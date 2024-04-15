@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/nest-cli",
   "sourceRoot": "apps/backend/src",
   "compilerOptions": {
+    "tsConfigPath": "tsconfig.app.json",
     "deleteOutDir": true
   }
 }
