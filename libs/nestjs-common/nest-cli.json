@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/nest-cli",
   "sourceRoot": "libs/nestjs-common/src",
   "compilerOptions": {
-    "tsConfigPath": "tsconfig.lib.json",
     "deleteOutDir": true
   }
 }
