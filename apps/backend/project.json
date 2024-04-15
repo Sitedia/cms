@@ -5,17 +5,11 @@
   "projectType": "application",
   "tags": ["backend"],
   "targets": {
-    "lint:api": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx spectral lint http://localhost:3000/api/specifications/openapi.yaml --ruleset ./spectral.yaml --fail-on-unmatched-globs"
-      }
-    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.ts",
+        "jestConfig": "apps/backend/jest.config.js",
         "runInBand": true
       }
     },
@@ -23,7 +17,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.ts",
+        "jestConfig": "apps/backend/jest.config.js",
         "codeCoverage": true,
         "runInBand": true
       }
@@ -46,14 +40,6 @@
       }
     },
     "start": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx nest start",
-        "cwd": "apps/backend"
-      },
-      "dependsOn": ["build"]
-    },
-    "start:prod": {
       "executor": "nx:run-commands",
       "options": {
         "command": "node dist/apps/backend/src/main.js",

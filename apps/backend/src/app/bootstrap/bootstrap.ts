@@ -35,6 +35,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
   const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
 
   // Log the configuration. !! Hide sensitive values
+  /* istanbul ignore next */
   if (logger.isEnabled('verbose')) {
     logger.verbose(`Using configuration ${JSON.stringify(config())}`);
   }

@@ -33,16 +33,10 @@
       "extensions": ["jest.preset.js", "dotenv.config.js"],
       "filename": true,
       "format": "svg"
-    },
-    {
-      "icon": "husky",
-      "extensions": ["pre-commit"],
-      "filename": true,
-      "format": "svg"
     }
   ],
-  "testing.openTesting": "openOnTestFailure",
   "eslint.workingDirectories": [{ "mode": "auto" }],
-  "jest.jestCommandLine": "nx run-many --target test",
+  "testing.openTesting": "openOnTestFailure",
+  "jest.jestCommandLine": "nx run-many --t test",
   "jest.runMode": "on-demand"
 }
