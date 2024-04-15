@@ -24,7 +24,12 @@ export class HealthController {
   @Get('liveness')
   @HealthCheck()
   async liveness() {
-    const healthCheckResult = await this.health.check([]);
+    if (1 === 1) {
+      console.log('coucou');
+    }
+    const healthCheckResult = await this.health.check([
+      () => this.disk.checkStorage('storage', { path: '/', thresholdPercent: this.options.storageThresholdPercent }),
+    ]);
     this.logger.debug(`Status is ${healthCheckResult.status}`, HealthController.name);
     return healthCheckResult;
   }
@@ -36,9 +41,7 @@ export class HealthController {
   @Get('readiness')
   @HealthCheck()
   async readiness() {
-    const healthCheckResult = await this.health.check([
-      () => this.disk.checkStorage('storage', { path: '/', thresholdPercent: this.options.storageThresholdPercent }),
-    ]);
+    const healthCheckResult = await this.health.check([]);
     this.logger.debug(`Status is ${healthCheckResult.status}`, HealthController.name);
     return healthCheckResult;
   }

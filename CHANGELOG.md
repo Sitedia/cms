@@ -1,6 +1,5 @@
 ## 0.3.0-SNAPSHOT (2024-04-11)
 
-
 ### 🚀 Features
 
 - update Husky configuration ([b0fed85](https://github.com/Sitedia/my-events/commit/b0fed85))

@@ -80,7 +80,6 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   /* istanbul ignore next */
   protected formatJsonMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const timestamp = new Date().toISOString();
-    // eslint-disable-next-line no-console
     console.log(JSON.stringify({ timestamp, level, context, message, stack }));
   }
 
