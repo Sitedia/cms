@@ -7,7 +7,6 @@
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "jestConfig": "apps/backend/jest.config.ts",
         "runInBand": true
@@ -15,7 +14,6 @@
     },
     "test:coverage": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "jestConfig": "apps/backend/jest.config.ts",
         "codeCoverage": true,
