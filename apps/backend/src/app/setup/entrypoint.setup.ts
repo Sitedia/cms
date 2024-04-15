@@ -1,9 +1,9 @@
-import { ApplicationLogger } from '@my-events/nestjs-common';
+import { ApplicationLogger } from '#my-events/nestjs-common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { ApplicationModuleOptions } from '../configuration/configuration.interface';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
 
 export const secureEntrypoint = (app: INestApplication) => {
   // Load the logger

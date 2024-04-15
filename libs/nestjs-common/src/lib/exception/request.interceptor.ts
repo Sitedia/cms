@@ -1,6 +1,6 @@
 import { CallHandler, ExecutionContext, HttpException, HttpStatus, Injectable, NestInterceptor } from '@nestjs/common';
 import { catchError, throwError } from 'rxjs';
-import { ApplicationLogger } from '../logger/application.logger';
+import { ApplicationLogger } from '../logger/application.logger.js';
 
 @Injectable()
 export class RequestInterceptor implements NestInterceptor {

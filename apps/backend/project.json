@@ -9,7 +9,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
+        "jestConfig": "apps/backend/jest.config.ts",
         "runInBand": true
       }
     },
@@ -17,7 +17,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
+        "jestConfig": "apps/backend/jest.config.ts",
         "codeCoverage": true,
         "runInBand": true
       }
@@ -42,7 +42,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node dist/apps/backend/src/main.js",
+        "command": "node ./dist/apps/backend/src/main.js",
         "cwd": "apps/backend"
       },
       "dependsOn": ["build"]

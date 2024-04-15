@@ -9,7 +9,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "jestConfig": "libs/nestjs-common/jest.config.js",
+        "jestConfig": "libs/nestjs-common/jest.config.ts",
         "codeCoverage": true
       }
     },

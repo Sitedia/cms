@@ -1,10 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
 import { ArgumentsHost, ForbiddenException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { LoggerModule } from '../logger/logger.module';
-import { ApplicationExceptionFilter } from './application-exception.filter';
-import { ExceptionDTO } from './exception.dto';
-import { ExceptionModule } from './exception.module';
+import { LoggerModule } from '../logger/logger.module.js';
+import { ApplicationExceptionFilter } from './application-exception.filter.js';
+import { ExceptionDTO } from './exception.dto.js';
+import { ExceptionModule } from './exception.module.js';
 
 describe('exception filter', () => {
   it('should load the exception filter', async () => {

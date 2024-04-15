@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
 import { Test, TestingModule } from '@nestjs/testing';
-import { LoggerModule } from '../logger/logger.module';
-import { HealthController } from './health.controller';
-import { HealthModule } from './health.module';
+import { LoggerModule } from '../logger/logger.module.js';
+import { HealthController } from './health.controller.js';
+import { HealthModule } from './health.module.js';
 
 const setup = async () => {
   const app: TestingModule = await Test.createTestingModule({

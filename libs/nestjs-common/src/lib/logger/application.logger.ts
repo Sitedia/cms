@@ -1,9 +1,9 @@
 import { Inject, Injectable, LogLevel } from '@nestjs/common';
-import * as clc from 'cli-color';
-import { ApplicationLoggerInterface } from './application-logger.interface';
-import { LogFormat } from './log-format.enum';
-import { MODULE_OPTIONS_TOKEN } from './logger-module.definition';
-import { LoggerModuleOptions } from './logger-module.options';
+import clc from 'cli-color';
+import { ApplicationLoggerInterface } from './application-logger.interface.js';
+import { LogFormat } from './log-format.enum.js';
+import { MODULE_OPTIONS_TOKEN } from './logger-module.definition.js';
+import { LoggerModuleOptions } from './logger-module.options.js';
 
 const levels: LogLevel[] = ['verbose', 'debug', 'log', 'warn', 'error', 'fatal'];
 const LEVEL_PAD_INDENT = 7;

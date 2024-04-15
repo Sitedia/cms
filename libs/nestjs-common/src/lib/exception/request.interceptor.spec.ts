@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
 import { ExecutionContext, ForbiddenException } from '@nestjs/common';
 import { lastValueFrom, of, throwError } from 'rxjs';
-import { ApplicationLogger } from '../logger/application.logger';
-import { RequestInterceptor } from './request.interceptor';
+import { ApplicationLogger } from '../logger/application.logger.js';
+import { RequestInterceptor } from './request.interceptor.js';
 
 // Create a mock object interface
 interface Account {

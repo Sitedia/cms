@@ -1,6 +1,6 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import { ApplicationLogger } from './application.logger';
-import { LogFormat } from './log-format.enum';
+import { ApplicationLogger } from './application.logger.js';
+import { LogFormat } from './log-format.enum.js';
 
 describe('application logger', () => {
   it('should display text in CONSOLE mode', () => {

@@ -1,6 +1,6 @@
-import { LogFormat } from '@my-events/nestjs-common';
+import { LogFormat } from '#my-events/nestjs-common';
 import { LogLevel } from '@nestjs/common';
-import { Configuration } from './configuration.interface';
+import { Configuration } from './configuration.interface.js';
 
 const DEFAULT_PORT = '3000';
 const DEFAULT_STORAGE_THRESHOLD = '1.0';
