@@ -1,4 +1,4 @@
-import { HealthModuleOptions, LoggerModuleOptions } from '#my-events/nestjs-common';
+import { HealthModuleOptions, LoggerModuleOptions } from '#libs/nestjs-common';
 import { ThrottlerModuleOptions } from '@nestjs/throttler';
 
 export interface ApplicationModuleOptions {

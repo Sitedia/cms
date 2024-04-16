@@ -1,4 +1,4 @@
-import { LogFormat } from '#my-events/nestjs-common';
+import { LogFormat } from '#libs/nestjs-common';
 import { LogLevel } from '@nestjs/common';
 import { Configuration } from './configuration.interface.js';
 
