@@ -4,8 +4,7 @@
     "lint": { "cache": true },
     "test": { "cache": true },
     "test:coverage": { "cache": true },
-    "serve": { "dependsOn": ["clear"] },
-    "build": { "cache": true, "dependsOn": ["clear"] }
+    "build": { "cache": true }
   },
   "release": {
     "projects": ["*"],
