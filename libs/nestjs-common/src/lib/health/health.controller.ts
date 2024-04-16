@@ -14,7 +14,7 @@ export class HealthController {
     private readonly logger: ApplicationLogger,
     private readonly disk: DiskHealthIndicator,
   ) {
-    logger.verbose(`Health check started with options ${JSON.stringify(options)}`);
+    logger.verbose(`Health check controller started with options ${JSON.stringify(options)}`, ApplicationLogger.name);
   }
 
   @ApiOperation({
