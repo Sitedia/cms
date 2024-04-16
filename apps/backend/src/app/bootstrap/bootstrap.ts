@@ -1,11 +1,12 @@
-import { ApplicationLogger } from '@my-events/nestjs-common';
+import { ApplicationLogger } from '#libs/nestjs-common';
 import { INestApplication } from '@nestjs/common';
 import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface.js';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from '../app.module.js';
-import { ApplicationOptions, ConfigurationOptions } from '../configuration/configuration.interface.js';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
+import { configuration as config } from '../configuration/configuration.js';
 import { secureEntrypoint } from '../setup/entrypoint.setup.js';
 import { configureSwagger } from '../setup/swagger.setup.js';
 
@@ -20,30 +21,36 @@ export const bootstrap = async (): Promise<INestApplication> => {
   };
 
   // Create the NestJS application
-  const application: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, {
+  const app: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, {
     bufferLogs: true, // buffer the first logs until out custom logger is set (see below)
     httpsOptions: enableHTTPs ? httpsOptions : undefined,
   });
 
   // Set our custom logger (https://docs.nestjs.com/techniques/logger)
-  const applicationlogger = application.get(ApplicationLogger);
-  application.useLogger(applicationlogger);
+  const logger = app.get(ApplicationLogger);
+  app.useLogger(logger);
 
   // Load the configuration
-  const configService = application.get(ConfigService);
-  const configuration = configService.getOrThrow<ApplicationOptions>(ConfigurationOptions.APPLICATION);
+  const configService = app.get(ConfigService);
+  const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
+
+  // Log the configuration. !! Hide sensitive values
+  /* istanbul ignore next */
+  if (logger.isEnabled('verbose')) {
+    logger.verbose(`Using configuration ${JSON.stringify(config())}`);
+  }
 
   // Secure the entry point
-  secureEntrypoint(application, configuration);
+  secureEntrypoint(app);
 
   // Configure Swagger
-  configureSwagger(application, configuration.apiUrl);
+  configureSwagger(app);
 
   // Start the application
-  await application.listen(configuration.port);
+  await app.listen(configuration.port);
   const basePath = configuration.basePath;
   const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}`;
-  applicationlogger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
+  logger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
 
-  return application;
+  return app;
 };

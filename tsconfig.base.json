@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": ".",
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "CommonJS",
+    "lib": ["ES2022"],
+    "module": "ES2022",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "rootDir": ".",
@@ -12,7 +17,7 @@
     "strict": true,
     "target": "ES2022",
     "paths": {
-      "@my-events/nestjs-common": ["libs/nestjs-common/src"]
+      "#libs/nestjs-common": ["libs/nestjs-common/src/index.js"]
     }
   }
 }

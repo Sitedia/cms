@@ -1,55 +1,21 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.organizeImports": "explicit",
     "source.fixAll": "explicit"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "vsicons.associations.files": [
-    {
-      "icon": "nx",
-      "extensions": ["project.json"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "vscode",
-      "extensions": ["extensions.json", "settings.json"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "eslint",
-      "extensions": [".eslintrc.base.json"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "jest",
-      "extensions": ["jest.preset.js", "dotenv.config.js"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "husky",
-      "extensions": ["pre-commit"],
-      "filename": true,
-      "format": "svg"
-    }
+    { "icon": "nx", "extensions": ["project.json"], "filename": true, "format": "svg" },
+    { "icon": "vscode", "extensions": ["extensions.json", "settings.json"], "filename": true, "format": "svg" },
+    { "icon": "eslint", "extensions": [".eslintrc.base.json"], "filename": true, "format": "svg" },
+    { "icon": "jest", "extensions": ["jest.preset.ts", "dotenv.config.ts"], "filename": true, "format": "svg" }
   ],
-  "typescript.preferences.importModuleSpecifier": "project-relative",
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "jest.jestCommandLine": "nx run-many --target test",
-  "jest.runMode": "on-demand",
-  "testing.openTesting": "openOnTestFailure"
+  "testing.openTesting": "openOnTestFailure",
+  "jest.jestCommandLine": "nx run-many -t test",
+  "jest.runMode": "on-demand"
 }

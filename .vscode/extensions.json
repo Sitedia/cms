@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "vscode-icons-team.vscode-icons",
-    "orta.vscode-jest"
+    "orta.vscode-jest",
+    "firsttris.vscode-jest-runner"
   ]
 }

@@ -1,52 +1,55 @@
-import { Inject, Injectable } from '@nestjs/common';
-import * as clc from 'cli-color';
+import { Inject, Injectable, LogLevel } from '@nestjs/common';
+import clc from 'cli-color';
 import { ApplicationLoggerInterface } from './application-logger.interface.js';
 import { LogFormat } from './log-format.enum.js';
-import { LogLevel } from './log-level.enum.js';
 import { MODULE_OPTIONS_TOKEN } from './logger-module.definition.js';
 import { LoggerModuleOptions } from './logger-module.options.js';
 
+const levels: LogLevel[] = ['verbose', 'debug', 'log', 'warn', 'error', 'fatal'];
 const LEVEL_PAD_INDENT = 7;
 
 @Injectable()
 export class ApplicationLogger implements ApplicationLoggerInterface {
-  private readonly logLevel: LogLevel;
-  private readonly logFormat: LogFormat;
+  private readonly enabled: boolean;
+  private readonly level: LogLevel;
+  private readonly format: LogFormat;
 
   constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {
-    this.logLevel = options.logLevel ?? LogLevel.LOG;
-    this.logFormat = options.logFormat ?? LogFormat.CONSOLE;
+    this.enabled = options.enabled ?? true;
+    this.level = options.level ?? 'log';
+    this.format = options.format ?? LogFormat.CONSOLE;
+    this.verbose(`Logger started with options ${JSON.stringify(options)}`);
   }
 
   verbose(message: string, context?: string, stack?: string) {
-    this.logMessage(LogLevel.VERBOSE, message, context, stack);
+    this.logMessage('verbose', message, context, stack);
   }
 
   debug(message: string, context?: string, stack?: string) {
-    this.logMessage(LogLevel.DEBUG, message, context, stack);
+    this.logMessage('debug', message, context, stack);
   }
 
   log(message: string, context?: string, stack?: string) {
-    this.logMessage(LogLevel.LOG, message, context, stack);
+    this.logMessage('log', message, context, stack);
   }
 
   warn(message: string, context?: string, stack?: string) {
-    this.logMessage(LogLevel.WARN, message, context, stack);
+    this.logMessage('warn', message, context, stack);
   }
 
   error(message: string, context?: string, stack?: string) {
-    this.logMessage(LogLevel.ERROR, message, context, stack);
+    this.logMessage('error', message, context, stack);
   }
 
   fatal(message: string, context?: string, stack?: string) {
-    this.logMessage(LogLevel.FATAL, message, context, stack);
+    this.logMessage('fatal', message, context, stack);
   }
 
   /* istanbul ignore next */
   logMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     if (!this.isEnabled(level)) {
       return;
-    } else if (this.logFormat === LogFormat.JSON) {
+    } else if (this.format === LogFormat.JSON) {
       this.formatJsonMessage(level, message, context, stack);
     } else {
       this.formatTextMessage(level, message, context, stack);
@@ -54,35 +57,13 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   }
 
   isEnabled(level: LogLevel) {
-    switch (this.logLevel) {
-      case LogLevel.VERBOSE: {
-        return true;
-      }
-      case LogLevel.DEBUG: {
-        return [LogLevel.DEBUG, LogLevel.LOG, LogLevel.WARN, LogLevel.ERROR, LogLevel.FATAL].includes(level);
-      }
-      case LogLevel.WARN: {
-        return [LogLevel.WARN, LogLevel.ERROR, LogLevel.FATAL].includes(level);
-      }
-      case LogLevel.ERROR: {
-        return [LogLevel.ERROR, LogLevel.FATAL].includes(level);
-      }
-      case LogLevel.FATAL: {
-        return level === LogLevel.FATAL;
-      }
-      case LogLevel.OFF: {
-        return false;
-      }
-      default: {
-        return [LogLevel.LOG, LogLevel.WARN, LogLevel.ERROR, LogLevel.FATAL].includes(level);
-      }
-    }
+    return this.enabled ? levels.slice(levels.indexOf(this.level)).includes(level) : false;
   }
 
   /* istanbul ignore next */
   protected formatTextMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const color = this.getColorByLogLevel(level);
-    const contextColor = this.getColorByLogLevel(LogLevel.WARN);
+    const contextColor = this.getColorByLogLevel('warn');
     const coloredTimestamp = color(new Date().toISOString());
     const coloredLevel = color(level.toLocaleUpperCase().padStart(LEVEL_PAD_INDENT, ' ').slice(0, LEVEL_PAD_INDENT));
 
@@ -99,27 +80,26 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   /* istanbul ignore next */
   protected formatJsonMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const timestamp = new Date().toISOString();
-    const json = { timestamp, level, context, message, stack };
     // eslint-disable-next-line no-console
-    console.log(JSON.stringify(json));
+    console.log(JSON.stringify({ timestamp, level, context, message, stack }));
   }
 
   /* istanbul ignore next */
   protected getColorByLogLevel(level: LogLevel) {
     switch (level) {
-      case LogLevel.VERBOSE: {
+      case 'verbose': {
         return clc.cyanBright;
       }
-      case LogLevel.DEBUG: {
+      case 'debug': {
         return clc.magentaBright;
       }
-      case LogLevel.WARN: {
+      case 'warn': {
         return clc.yellow;
       }
-      case LogLevel.ERROR: {
+      case 'error': {
         return clc.red;
       }
-      case LogLevel.FATAL: {
+      case 'fatal': {
         return clc.bold;
       }
       default: {

@@ -13,7 +13,9 @@ export class HealthController {
     private readonly health: HealthCheckService,
     private readonly logger: ApplicationLogger,
     private readonly disk: DiskHealthIndicator,
-  ) {}
+  ) {
+    logger.verbose(`Health check started with options ${JSON.stringify(options)}`);
+  }
 
   @ApiOperation({
     summary: 'liveness probe',
@@ -22,7 +24,9 @@ export class HealthController {
   @Get('liveness')
   @HealthCheck()
   async liveness() {
-    const healthCheckResult = await this.health.check([]);
+    const healthCheckResult = await this.health.check([
+      () => this.disk.checkStorage('storage', { path: '/', thresholdPercent: this.options.storageThresholdPercent }),
+    ]);
     this.logger.debug(`Status is ${healthCheckResult.status}`, HealthController.name);
     return healthCheckResult;
   }
@@ -34,9 +38,7 @@ export class HealthController {
   @Get('readiness')
   @HealthCheck()
   async readiness() {
-    const healthCheckResult = await this.health.check([
-      () => this.disk.checkStorage('storage', { path: '/', thresholdPercent: this.options.storageThresholdPercent }),
-    ]);
+    const healthCheckResult = await this.health.check([]);
     this.logger.debug(`Status is ${healthCheckResult.status}`, HealthController.name);
     return healthCheckResult;
   }

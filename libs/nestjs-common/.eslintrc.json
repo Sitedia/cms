@@ -1,10 +1,8 @@
 {
   "extends": ["../../.eslintrc.base.json"],
-  "ignorePatterns": ["node_modules", "dist", "coverage", "jest.config.ts", "dotenv.config.js"],
   "overrides": [
     {
-      "files": ["*.ts", "*.js"],
-      "settings": { "import/resolver": { "typescript": { "project": ["libs/nestjs-common/tsconfig.json"] } } },
+      "files": ["*.ts"],
       "parserOptions": { "project": ["libs/nestjs-common/tsconfig.json"] }
     }
   ]

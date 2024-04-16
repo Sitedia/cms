@@ -2,7 +2,6 @@ import { describe, expect, it } from '@jest/globals';
 import { ExecutionContext, ForbiddenException } from '@nestjs/common';
 import { lastValueFrom, of, throwError } from 'rxjs';
 import { ApplicationLogger } from '../logger/application.logger.js';
-import { LogLevel } from '../logger/log-level.enum.js';
 import { RequestInterceptor } from './request.interceptor.js';
 
 // Create a mock object interface
@@ -20,7 +19,7 @@ const contextMock = {
 
 // Set up each test
 const setup = () => {
-  const logger = new ApplicationLogger({ logLevel: LogLevel.OFF });
+  const logger = new ApplicationLogger({ enabled: false });
   return new RequestInterceptor(logger);
 };
 

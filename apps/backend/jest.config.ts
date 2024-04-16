@@ -1,6 +1,5 @@
 module.exports = {
   preset: '../../jest.preset.ts',
   displayName: 'backend',
-  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/index.ts'],
-  coverageDirectory: './coverage',
+  setupFilesAfterEnv: ['<rootDir>/dotenv.config.ts'],
 };

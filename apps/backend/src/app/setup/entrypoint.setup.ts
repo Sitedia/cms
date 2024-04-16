@@ -1,16 +1,22 @@
-import { ApplicationLogger } from '@my-events/nestjs-common';
+import { ApplicationLogger } from '#libs/nestjs-common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { ApplicationOptions } from '../configuration/configuration.interface.js';
+import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
 
-export const secureEntrypoint = (app: INestApplication, applicationOptions: ApplicationOptions) => {
+export const secureEntrypoint = (app: INestApplication) => {
+  // Load the logger
   const applicationlogger = app.get(ApplicationLogger);
 
+  // Load the configuration
+  const configService = app.get(ConfigService);
+  const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
+
   // Configure Express
-  app.setGlobalPrefix(applicationOptions.basePath);
+  app.setGlobalPrefix(configuration.basePath);
   app.use(helmet());
-  app.enableCors({ origin: applicationOptions.origin });
+  app.enableCors({ origin: configuration.origin });
 
   // Log all incoming requests
   app.use((request: Request, response: Response, next: NextFunction) => {

@@ -1,9 +1,9 @@
+import { LogFormat } from '#libs/nestjs-common';
 import { describe, expect, it } from '@jest/globals';
-import { LogFormat } from '@my-events/nestjs-common';
 import { HttpStatus } from '@nestjs/common';
 import * as http from 'node:http';
 import * as request from 'supertest';
-import { bootstrap } from './bootstrap';
+import { bootstrap } from './bootstrap.js';
 
 describe('nestjs application', () => {
   it('should display the status of the application', async () => {
@@ -79,7 +79,7 @@ describe('nestjs application', () => {
     process.env.APP_STORAGE_THRESHOLD = '0';
     const application = await bootstrap();
     const httpServer = application.getHttpServer() as http.Server;
-    const response = await request.agent(httpServer).get('/api/probes/readiness');
+    const response = await request.agent(httpServer).get('/api/probes/liveness');
 
     expect(response.statusCode).toBe(HttpStatus.SERVICE_UNAVAILABLE);
 

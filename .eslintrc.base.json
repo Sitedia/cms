@@ -1,50 +1,45 @@
 {
   "root": true,
+  "ignorePatterns": ["dist", "coverage", "dotenv.config.ts", "jest.config.ts"],
   "plugins": ["@nx"],
   "overrides": [
     {
-      "files": ["*.ts", "*.js"],
+      "files": ["*.ts"],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked",
         "plugin:@nx/typescript",
-        "plugin:import/recommended",
         "plugin:jest/all",
-        "plugin:unicorn/all",
-        "plugin:prettier/recommended"
+        "plugin:unicorn/all"
       ],
       "rules": {
         "camelcase": "error",
-        "complexity": ["error", 20],
         "curly": "error",
         "eqeqeq": "error",
+        "complexity": ["error", 20],
         "max-depth": ["error", 4],
         "max-params": ["error", 8],
         "no-console": "warn",
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
         "radix": "error",
         "unicorn/prevent-abbreviations": ["error", { "ignore": ["app", "e2e", "props", "moduleRef"] }],
-        "jest/require-hook": "off",
-        "@typescript-eslint/no-extraneous-class": ["error", { "allowEmpty": true }],
-        "@nx/enforce-module-boundaries": ["error"]
+        "@nx/enforce-module-boundaries": ["error"],
+        "jest/require-hook": "off"
       }
     },
     {
-      "files": ["*.spec.ts", "*.spec.tsx"],
-      "env": { "jest": true },
+      "files": ["*.spec.ts"],
       "rules": { "jest/require-hook": ["error"] }
     },
     {
-      "files": ["*.spec.ts", "*.spec.tsx", "*.dto.ts", "*.entity.ts"],
-      "env": { "jest": true },
-      "rules": { "no-magic-numbers": "off", "@typescript-eslint/no-magic-numbers": "off" }
+      "files": ["*.spec.ts", "*.dto.ts", "*.entity.ts"],
+      "rules": { "no-magic-numbers": "off" }
     },
     {
       "files": ["*.json"],
       "parser": "jsonc-eslint-parser",
       "rules": {
-        "jest/unbound-method": "off",
         "@nx/dependency-checks": [
           "error",
           {
