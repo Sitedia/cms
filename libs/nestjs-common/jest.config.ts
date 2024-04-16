@@ -1,4 +1,4 @@
 export default {
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.ts',
   displayName: 'nestjs-common',
 };

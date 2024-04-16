@@ -1,5 +1,5 @@
 export default {
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.ts',
   displayName: 'backend',
-  setupFilesAfterEnv: ['<rootDir>/dotenv.config.js'],
+  setupFilesAfterEnv: ['<rootDir>/dotenv.config.ts'],
 };
