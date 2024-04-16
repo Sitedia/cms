@@ -5,6 +5,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { configuration } from './configuration/configuration.js';
 
+/** Components to load in our NestJS application */
 @Module({
   imports: [
     ConfigModule.forRoot({
