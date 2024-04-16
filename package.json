@@ -1,6 +1,5 @@
 {
-  "name": "@my-events/source",
-  "private": true,
+  "type": "module",
   "devDependencies": {
     "@nx/eslint": "18.2.4",
     "@nx/eslint-plugin": "18.2.4",

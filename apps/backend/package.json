@@ -1,7 +1,4 @@
 {
-  "name": "@my-events/backend",
-  "version": "0.0.0",
-  "private": true,
   "type": "module",
   "imports": {
     "#libs/nestjs-common": "./dist/libs/nestjs-common/src/index.js"
