@@ -5,7 +5,7 @@
     "test": { "cache": true },
     "test:coverage": { "cache": true },
     "serve": { "dependsOn": ["clear"] },
-    "build": { "dependsOn": ["clear"] }
+    "build": { "cache": true, "dependsOn": ["clear"] }
   },
   "release": {
     "projects": ["*"],
