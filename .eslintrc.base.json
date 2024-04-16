@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["dist", "coverage", "dotenv.config.ts", "jest.config.ts"],
+  "ignorePatterns": ["dist", "coverage", "jest.config.js", "dotenv.config.js"],
   "plugins": ["@nx"],
   "overrides": [
     {

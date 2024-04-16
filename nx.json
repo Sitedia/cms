@@ -1,29 +1,14 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "plugins": [
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": { "targetName": "lint" }
-    },
-    {
-      "plugin": "@nx/jest/plugin",
-      "options": { "targetName": "test" }
-    }
-  ],
   "targetDefaults": {
     "lint": { "cache": true },
     "test": { "cache": true },
     "test:coverage": { "cache": true },
-    "build": { "cache": true, "inputs": ["production", "^production"] }
+    "build": { "cache": true }
   },
   "release": {
     "projects": ["*"],
     "version": { "conventionalCommits": true },
     "changelog": { "workspaceChangelog": { "renderOptions": { "authors": false } } }
-  },
-  "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "production": ["default"],
-    "sharedGlobals": []
   }
 }
