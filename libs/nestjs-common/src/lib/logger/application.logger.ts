@@ -18,30 +18,30 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     this.enabled = options.enabled ?? true;
     this.level = options.level ?? 'log';
     this.format = options.format ?? LogFormat.CONSOLE;
-    this.verbose(`Logger started with options ${JSON.stringify(options)}`);
+    this.verbose(`Logger started with options ${JSON.stringify(options)}`, ApplicationLogger.name);
   }
 
-  verbose(message: string, context?: string, stack?: string) {
+  verbose(message: string, context: string, stack?: string) {
     this.logMessage('verbose', message, context, stack);
   }
 
-  debug(message: string, context?: string, stack?: string) {
+  debug(message: string, context: string, stack?: string) {
     this.logMessage('debug', message, context, stack);
   }
 
-  log(message: string, context?: string, stack?: string) {
+  log(message: string, context: string, stack?: string) {
     this.logMessage('log', message, context, stack);
   }
 
-  warn(message: string, context?: string, stack?: string) {
+  warn(message: string, context: string, stack?: string) {
     this.logMessage('warn', message, context, stack);
   }
 
-  error(message: string, context?: string, stack?: string) {
+  error(message: string, context: string, stack?: string) {
     this.logMessage('error', message, context, stack);
   }
 
-  fatal(message: string, context?: string, stack?: string) {
+  fatal(message: string, context: string, stack?: string) {
     this.logMessage('fatal', message, context, stack);
   }
 

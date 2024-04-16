@@ -37,7 +37,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
   // Log the configuration. !! Hide sensitive values
   /* istanbul ignore next */
   if (logger.isEnabled('verbose')) {
-    logger.verbose(`Using configuration ${JSON.stringify(config())}`);
+    logger.verbose(`Using configuration ${JSON.stringify(config())}`, 'bootstrap');
   }
 
   // Secure the entry point
@@ -48,9 +48,8 @@ export const bootstrap = async (): Promise<INestApplication> => {
 
   // Start the application
   await app.listen(configuration.port);
-  const basePath = configuration.basePath;
-  const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}`;
-  logger.log(`Application is listening on ${applicationUrl}/${basePath}`, 'Express');
+  const applicationUrl = `${enableHTTPs ? 'https' : 'http'}://localhost:${configuration.port}/${configuration.basePath}`;
+  logger.log(`Application is listening on ${applicationUrl}`, 'bootstrap');
 
   return app;
 };

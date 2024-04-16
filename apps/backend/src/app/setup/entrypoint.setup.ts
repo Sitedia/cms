@@ -20,16 +20,16 @@ export const secureEntrypoint = (app: INestApplication) => {
 
   // Log all incoming requests
   app.use((request: Request, response: Response, next: NextFunction) => {
-    applicationlogger.debug(`${request.method} ${request.url}`, 'Express');
+    applicationlogger.debug(`${request.method} ${request.url}`, 'secureEntrypoint');
     next();
     response.on('finish', () => {
       const status = response.statusCode as HttpStatus;
       if (status >= HttpStatus.INTERNAL_SERVER_ERROR) {
-        applicationlogger.error(`${request.method} ${request.url} ${response.statusCode}`, 'Express');
+        applicationlogger.error(`${request.method} ${request.url} ${response.statusCode}`, 'secureEntrypoint');
       } else if (status >= HttpStatus.BAD_REQUEST) {
-        applicationlogger.warn(`${request.method} ${request.url} ${response.statusCode}`, 'Express');
+        applicationlogger.warn(`${request.method} ${request.url} ${response.statusCode}`, 'secureEntrypoint');
       } else {
-        applicationlogger.verbose(`${request.method} ${request.url} ${response.statusCode}`, 'Express');
+        applicationlogger.verbose(`${request.method} ${request.url} ${response.statusCode}`, 'secureEntrypoint');
       }
     });
   });
