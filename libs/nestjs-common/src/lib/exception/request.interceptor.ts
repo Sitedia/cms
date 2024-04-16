@@ -2,6 +2,7 @@ import { CallHandler, ExecutionContext, HttpException, HttpStatus, Injectable, N
 import { catchError, throwError } from 'rxjs';
 import { ApplicationLogger } from '../logger/application.logger.js';
 
+/** Interceptor to trace all client and server exceptions in the console */
 @Injectable()
 export class RequestInterceptor implements NestInterceptor {
   constructor(private readonly logger: ApplicationLogger) {}
