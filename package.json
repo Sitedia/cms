@@ -1,11 +1,13 @@
 {
   "type": "module",
   "devDependencies": {
+    "@nestjs/cli": "^10.3.2",
     "@nx/eslint-plugin": "18.2.4",
     "@nx/jest": "18.2.4",
     "@nx/nest": "18.2.4",
     "@nx/workspace": "18.2.4",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^28.2.0",
     "eslint-plugin-unicorn": "^52.0.0",
@@ -13,6 +15,7 @@
     "nx": "18.2.4",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
     "typescript": "^5.4.5"
   }
 }
