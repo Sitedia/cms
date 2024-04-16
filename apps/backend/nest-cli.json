@@ -1,7 +1,4 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
-  "sourceRoot": "apps/backend/src",
-  "compilerOptions": {
-    "deleteOutDir": true
-  }
+  "sourceRoot": "apps/backend/src"
 }

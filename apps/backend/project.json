@@ -5,6 +5,13 @@
   "projectType": "application",
   "tags": ["backend"],
   "targets": {
+    "clear": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["rimraf dist coverage"],
+        "cwd": "apps/backend"
+      }
+    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
@@ -30,14 +37,14 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npx nest build",
+        "command": "nest build",
         "cwd": "apps/backend"
       }
     },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npx nest start --watch",
+        "command": "nest start --watch",
         "cwd": "apps/backend",
         "env": {
           "NODE_ENV": "development"
