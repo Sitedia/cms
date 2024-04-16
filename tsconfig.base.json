@@ -10,6 +10,7 @@
     "moduleResolution": "Node",
     "noImplicitOverride": true,
     "noImplicitReturns": true,
+    "removeComments": true,
     "rootDir": ".",
     "sourceMap": true,
     "strict": true,
