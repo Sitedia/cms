@@ -5,17 +5,24 @@
   "projectType": "application",
   "tags": ["backend"],
   "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["eslint ."],
+        "cwd": "apps/backend"
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "apps/backend/jest.config.ts",
+        "jestConfig": "apps/backend/jest.config.js",
         "runInBand": true
       }
     },
     "test:coverage": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "apps/backend/jest.config.ts",
+        "jestConfig": "apps/backend/jest.config.js",
         "codeCoverage": true,
         "runInBand": true
       }

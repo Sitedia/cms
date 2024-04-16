@@ -5,10 +5,23 @@
   "projectType": "library",
   "tags": ["nestjs-common"],
   "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["eslint ."],
+        "cwd": "libs/nestjs-common"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/nestjs-common/jest.config.js"
+      }
+    },
     "test:coverage": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/nestjs-common/jest.config.ts",
+        "jestConfig": "libs/nestjs-common/jest.config.js",
         "codeCoverage": true
       }
     },
