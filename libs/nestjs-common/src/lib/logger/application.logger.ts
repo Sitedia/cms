@@ -8,6 +8,7 @@ import { LoggerModuleOptions } from './logger-module.options.js';
 const levels: LogLevel[] = ['verbose', 'debug', 'log', 'warn', 'error', 'fatal'];
 const LEVEL_PAD_INDENT = 7;
 
+/** Logger with dual mode : text or JSON*/
 @Injectable()
 export class ApplicationLogger implements ApplicationLoggerInterface {
   private readonly enabled: boolean;

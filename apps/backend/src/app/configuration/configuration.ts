@@ -5,6 +5,7 @@ import { Configuration } from './configuration.interface.js';
 const DEFAULT_PORT = '3000';
 const DEFAULT_STORAGE_THRESHOLD = '1.0';
 
+/** NestJS configuration */
 /* istanbul ignore next */
 export const configuration = (): Configuration => ({
   application: {

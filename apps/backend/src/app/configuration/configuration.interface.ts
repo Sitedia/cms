@@ -9,6 +9,7 @@ export interface ApplicationModuleOptions {
   apiUrl: string;
 }
 
+/** Expected structure of the NestJS configuration */
 export interface Configuration {
   application: ApplicationModuleOptions;
   logger: LoggerModuleOptions;

@@ -4,6 +4,7 @@ import { ExceptionDTO } from './exception.dto.js';
 
 const INTERNAL_SERVER_ERROR_MESSAGE = 'An internal server error occurred';
 
+/** Filter to hide internal error messages to the user */
 @Catch(HttpException)
 export class ApplicationExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
