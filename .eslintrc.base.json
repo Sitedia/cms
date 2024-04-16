@@ -42,11 +42,7 @@
       "rules": {
         "@nx/dependency-checks": [
           "error",
-          {
-            "ignoredFiles": ["**/*.spec.ts"],
-            "ignoredDependencies": ["dotenv"],
-            "includeTransitiveDependencies": true
-          }
+          { "ignoredFiles": ["**/*.spec.ts"], "ignoredDependencies": ["dotenv"], "includeTransitiveDependencies": true }
         ]
       }
     }

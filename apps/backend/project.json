@@ -55,7 +55,7 @@
     "docker:build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "DOCKER_BUILDKIT=1 docker build . -f apps/backend/Dockerfile -t backend --no-cache --build-arg=\"APP_VERSION={args.appVersion}\""
+        "command": "DOCKER_BUILDKIT=1 docker build . -f apps/backend/Dockerfile -t backend --no-cache"
       }
     },
     "docker:start": {

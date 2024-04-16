@@ -34,10 +34,6 @@ FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
 
 WORKDIR /app
 
-# Set the version of the application
-ARG APP_VERSION
-ENV APP_VERSION=$APP_VERSION
-
 # Copy production files
 COPY --from=builder --chown=root:root --chmod=755 /build/node_modules/ ./node_modules/
 COPY --from=builder --chown=root:root --chmod=755 /build/apps/backend/ ./apps/backend/
