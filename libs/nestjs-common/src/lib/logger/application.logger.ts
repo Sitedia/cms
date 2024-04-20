@@ -23,8 +23,6 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   }
 
   verbose(message: string, context: string, stack?: string) {
-    const uselessvar = 'coucou' + 1_500_000;
-    console.log(uselessvar);
     this.logMessage('verbose', message, context, stack);
   }
 

@@ -1,30 +1,29 @@
-'use strict';
-// @ts-check
 import eslint from '@eslint/js';
-import eslintPluginJest from 'eslint-plugin-jest';
-import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import tseslint from 'typescript-eslint';
+import nxPlugin from '@nx/eslint-plugin';
+import jestPlugin from 'eslint-plugin-jest';
+import unicornPlugin from 'eslint-plugin-unicorn';
+import typescriptPlugin from 'typescript-eslint';
 
-export default tseslint.config(
+export default typescriptPlugin.config(
   eslint.configs.recommended,
-  {
-    ignores: ['dist/**', 'coverage/**', '*.config.js'],
-  },
+  jestPlugin.configs['flat/all'],
+  unicornPlugin.configs['flat/all'],
+  { ignores: ['dist/**', 'coverage/**', '*.config.js'] },
+  { plugins: { '@nx': nxPlugin } },
   {
     rules: {
-      'no-unused-vars': 'warn',
       camelcase: 'error',
       curly: 'error',
       eqeqeq: 'error',
+      radix: 'error',
       complexity: ['error', 20],
       'max-depth': ['error', 4],
       'max-params': ['error', 8],
       'no-console': 'warn',
       'no-magic-numbers': ['error', { ignore: [0, 1] }],
-      radix: 'error',
+      'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
     },
   },
-  eslintPluginJest.configs['flat/all'],
   {
     files: ['**/*.spec.ts'],
     rules: {
@@ -39,20 +38,14 @@ export default tseslint.config(
       'no-magic-numbers': 'off',
     },
   },
-  eslintPluginUnicorn.configs['flat/all'],
-  {
-    rules: {
-      'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
-    },
-  },
-  ...tseslint.configs.recommendedTypeChecked,
-  ...tseslint.configs.stylistic,
-  {
-    languageOptions: {
-      parserOptions: {
-        project: './tsconfig.json',
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
+  ...typescriptPlugin.configs.recommendedTypeChecked,
+  ...typescriptPlugin.configs.stylistic,
+  // {
+  //   rules: {
+  //     '@nx/dependency-checks': [
+  //       'error',
+  //       { ignoredFiles: ['**/*.spec.ts'], ignoredDependencies: ['dotenv'], includeTransitiveDependencies: true },
+  //     ],
+  //   },
+  // },
 );
