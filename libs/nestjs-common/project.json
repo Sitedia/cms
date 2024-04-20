@@ -15,7 +15,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["eslint ."],
+        "commands": ["eslint"],
         "cwd": "libs/nestjs-common"
       }
     },
