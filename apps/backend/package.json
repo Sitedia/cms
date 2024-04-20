@@ -4,10 +4,10 @@
     "#libs/nestjs-common": "./dist/libs/nestjs-common/src/index.js"
   },
   "dependencies": {
-    "@nestjs/common": "^10.3.7",
+    "@nestjs/common": "^10.3.8",
     "@nestjs/config": "^3.2.2",
-    "@nestjs/core": "^10.3.7",
-    "@nestjs/platform-express": "^10.3.7",
+    "@nestjs/core": "^10.3.8",
+    "@nestjs/platform-express": "^10.3.8",
     "@nestjs/swagger": "^7.3.1",
     "@nestjs/terminus": "^10.2.3",
     "@nestjs/throttler": "^5.1.2",
