@@ -23,6 +23,8 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   }
 
   verbose(message: string, context: string, stack?: string) {
+    const uselessvar = 'coucou' + 1_500_000;
+    console.log(uselessvar);
     this.logMessage('verbose', message, context, stack);
   }
 
@@ -70,6 +72,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
 
     const coloredContext = contextColor(`[${context}]`);
     const coloredMessage = color(message);
+
     // eslint-disable-next-line no-console
     console.log(`${coloredTimestamp} ${coloredLevel} ${coloredContext} ${coloredMessage}`);
     if (stack) {
@@ -81,6 +84,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   /* istanbul ignore next */
   protected formatJsonMessage(level: LogLevel, message: string, context?: string, stack?: string) {
     const timestamp = new Date().toISOString();
+
     // eslint-disable-next-line no-console
     console.log(JSON.stringify({ timestamp, level, context, message, stack }));
   }
