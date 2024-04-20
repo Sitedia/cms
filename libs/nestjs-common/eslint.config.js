@@ -1,4 +1,4 @@
-import preset from '../../eslint.config.js';
+import preset from '../../eslint.base.js';
 
 export default [
   ...preset,

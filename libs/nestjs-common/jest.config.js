@@ -1,4 +1,6 @@
+import preset from '../../jest.base.js';
+
 export default {
-  preset: '../../jest.preset.js',
+  ...preset,
   displayName: 'nestjs-common',
 };

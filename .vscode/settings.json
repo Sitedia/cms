@@ -12,8 +12,8 @@
   "vsicons.associations.files": [
     { "icon": "nx", "extensions": ["project.json"], "filename": true, "format": "svg" },
     { "icon": "vscode", "extensions": ["extensions.json", "settings.json"], "filename": true, "format": "svg" },
-    { "icon": "eslint", "extensions": [".eslintrc.base.json"], "filename": true, "format": "svg" },
-    { "icon": "jest", "extensions": ["jest.preset.js", "dotenv.config.js"], "filename": true, "format": "svg" }
+    { "icon": "eslint", "extensions": ["eslint.base.js"], "filename": true, "format": "svg" },
+    { "icon": "jest", "extensions": ["jest.base.js", "dotenv.config.js"], "filename": true, "format": "svg" }
   ],
   "testing.openTesting": "openOnTestFailure",
   "jest.jestCommandLine": "nx run-many -t test",
