@@ -17,5 +17,7 @@
     { "icon": "jest", "extensions": ["jest.base.js", "dotenv.config.js"], "filename": true, "format": "svg" }
   ],
   "testing.openTesting": "neverOpen",
-  "jest.jestCommandLine": "nx run-many -t test"
+  "jest.jestCommandLine": "nx run-many -t test",
+  "rest-client.previewOption": "body",
+  "rest-client.enableTelemetry": false
 }
