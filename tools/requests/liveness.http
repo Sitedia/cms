@@ -1,0 +1,9 @@
+@basePath = http://localhost:3000/api
+
+###  Get the liveness
+
+GET {{basePath}}/probes/liveness
+
+### Get the readiness
+
+GET {{basePath}}/probes/readiness

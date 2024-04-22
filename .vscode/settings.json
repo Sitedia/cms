@@ -1,4 +1,5 @@
 {
+  "workbench.tree.indent": 16,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
@@ -15,7 +16,8 @@
     { "icon": "eslint", "extensions": ["eslint.base.js"], "filename": true, "format": "svg" },
     { "icon": "jest", "extensions": ["jest.base.js", "dotenv.config.js"], "filename": true, "format": "svg" }
   ],
-  "testing.openTesting": "openOnTestFailure",
+  "testing.openTesting": "neverOpen",
   "jest.jestCommandLine": "nx run-many -t test",
-  "jest.runMode": "on-demand"
+  "rest-client.previewOption": "body",
+  "rest-client.enableTelemetry": false
 }

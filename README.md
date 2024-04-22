@@ -1,10 +1,14 @@
-# MyEvents
+<h1>My Events</h1>
 
-## Description
+- [1. Description](#1-description)
+- [2. Getting started](#2-getting-started)
+- [3. Useful commands](#3-useful-commands)
+
+# 1. Description
 
 This is a NestJS application to manage events.
 
-## Getting started
+# 2. Getting started
 
 ```bash
 # Check node version >= 20
@@ -20,7 +24,7 @@ $ pnpm install
 $ nx serve apps/backend
 ```
 
-## Useful commands
+# 3. Useful commands
 
 ```bash
 # View the dependencies graph
