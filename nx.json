@@ -10,13 +10,5 @@
     "projects": ["*"],
     "version": { "conventionalCommits": true },
     "changelog": { "workspaceChangelog": { "renderOptions": { "authors": false } } }
-  },
-  "plugins": [
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    }
-  ]
+  }
 }
