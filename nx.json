@@ -4,11 +4,19 @@
     "lint": { "cache": true },
     "test": { "cache": true },
     "test:coverage": { "cache": true },
-    "build": { "cache": true, "dependsOn": ["clear", "^build"] }
+    "build": { "cache": true }
   },
   "release": {
     "projects": ["*"],
     "version": { "conventionalCommits": true },
     "changelog": { "workspaceChangelog": { "renderOptions": { "authors": false } } }
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ]
 }
