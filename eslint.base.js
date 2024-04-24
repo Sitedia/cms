@@ -1,21 +1,22 @@
 import { FlatCompat } from '@eslint/eslintrc';
-import nxEslintPlugin from '@nx/eslint-plugin';
-
 import eslint from '@eslint/js';
+import nxEslintPlugin from '@nx/eslint-plugin';
 import jestPlugin from 'eslint-plugin-jest';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import tseslint from 'typescript-eslint';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
   recommendedConfig: eslint.configs.recommended,
 });
 
-export default [
+export default tseslint.config(
   { plugins: { '@nx': nxEslintPlugin } },
   {
     ignores: ['dist', 'coverage', '*.config.js'],
   },
   eslint.configs.recommended,
+  ...tseslint.configs.recommended,
   jestPlugin.configs['flat/all'],
   unicornPlugin.configs['flat/all'],
   {
@@ -35,18 +36,6 @@ export default [
       'jest/unbound-method': 'off',
     },
   },
-  ...compat
-    .config({
-      extends: [
-        'plugin:@typescript-eslint/recommended-type-checked',
-        'plugin:@typescript-eslint/stylistic-type-checked',
-      ],
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.ts'],
-      rules: {},
-    })),
   {
     files: ['**/*.spec.ts'],
     rules: { 'jest/require-hook': ['error'] },
@@ -68,4 +57,4 @@ export default [
       ],
     },
   },
-];
+);

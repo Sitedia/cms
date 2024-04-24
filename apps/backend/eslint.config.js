@@ -3,6 +3,7 @@ import tseslint from 'typescript-eslint';
 import preset from '../../eslint.base.js';
 
 export default [
+  ...preset,
   {
     files: ['**/*.ts'],
     languageOptions: {
@@ -23,5 +24,4 @@ export default [
       },
     },
   },
-  ...preset,
 ];
