@@ -13,16 +13,17 @@
       }
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "libs/common/jest.config.js"
+        "commands": ["jest --verbose"],
+        "cwd": "libs/common"
       }
     },
     "test:coverage": {
-      "executor": "@nx/jest:jest",
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "libs/common/jest.config.js",
-        "codeCoverage": true
+        "commands": ["jest --coverage"],
+        "cwd": "libs/common"
       }
     },
     "build": {

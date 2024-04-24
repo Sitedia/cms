@@ -13,18 +13,17 @@
       }
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
-        "runInBand": true
+        "commands": ["jest --verbose"],
+        "cwd": "apps/backend"
       }
     },
     "test:coverage": {
-      "executor": "@nx/jest:jest",
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "apps/backend/jest.config.js",
-        "codeCoverage": true,
-        "runInBand": true
+        "commands": ["jest --coverage"],
+        "cwd": "apps/backend"
       }
     },
     "build": {
