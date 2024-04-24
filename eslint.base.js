@@ -15,8 +15,26 @@ export default [
   {
     ignores: ['dist', 'coverage', '*.config.js'],
   },
+  eslint.configs.recommended,
   jestPlugin.configs['flat/all'],
   unicornPlugin.configs['flat/all'],
+  {
+    rules: {
+      camelcase: 'error',
+      curly: 'error',
+      eqeqeq: 'error',
+      complexity: ['error', 20],
+      'max-depth': ['error', 4],
+      'max-params': ['error', 8],
+      'no-console': 'warn',
+      'no-magic-numbers': ['error', { ignore: [0, 1] }],
+      radix: 'error',
+      '@nx/enforce-module-boundaries': ['error'],
+      'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
+      'jest/require-hook': 'off',
+      'jest/unbound-method': 'off',
+    },
+  },
   ...compat
     .config({
       extends: [
@@ -27,21 +45,7 @@ export default [
     .map((config) => ({
       ...config,
       files: ['**/*.ts'],
-      rules: {
-        camelcase: 'error',
-        curly: 'error',
-        eqeqeq: 'error',
-        complexity: ['error', 20],
-        'max-depth': ['error', 4],
-        'max-params': ['error', 8],
-        'no-console': 'warn',
-        'no-magic-numbers': ['error', { ignore: [0, 1] }],
-        radix: 'error',
-        'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
-        '@nx/enforce-module-boundaries': ['error'],
-        'jest/require-hook': 'off',
-        'jest/unbound-method': 'off',
-      },
+      rules: {},
     })),
   {
     files: ['**/*.spec.ts'],
