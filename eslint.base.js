@@ -1,25 +1,28 @@
-import eslint from '@eslint/js';
+import eslintPlugin from '@eslint/js';
 import nxEslintPlugin from '@nx/eslint-plugin';
-import jestPlugin from 'eslint-plugin-jest';
-import unicornPlugin from 'eslint-plugin-unicorn';
+import jestEslintPlugin from 'eslint-plugin-jest';
+import unicornEslintPlugin from 'eslint-plugin-unicorn';
 import jsoncParser from 'jsonc-eslint-parser';
-import tseslint from 'typescript-eslint';
+import typescriptEslintPlugin from 'typescript-eslint';
 
-export default tseslint.config(
+export default typescriptEslintPlugin.config(
   { plugins: { '@nx': nxEslintPlugin } },
   { ignores: ['**/dist/', '**/coverage/'] },
   ...[
-    eslint.configs.recommended,
-    jestPlugin.configs['flat/all'],
-    unicornPlugin.configs['flat/all'],
-    ...tseslint.configs.recommendedTypeChecked,
-    ...tseslint.configs.stylisticTypeChecked,
-  ].map((configurations) => ({
+    eslintPlugin.configs.recommended,
+    jestEslintPlugin.configs['flat/all'],
+    unicornEslintPlugin.configs['flat/all'],
+    ...typescriptEslintPlugin.configs.recommendedTypeChecked,
+    ...typescriptEslintPlugin.configs.stylisticTypeChecked,
+  ].map((configs) => ({
+    ...configs,
+    languageOptions: {
+      parser: typescriptEslintPlugin.parser,
+      parserOptions: { project: true, tsconfigRootDir: import.meta.dirname },
+    },
     files: ['**/*.ts'],
-    ...configurations,
-    languageOptions: { parser: tseslint.parser, parserOptions: { project: true } },
     rules: {
-      ...configurations.rules,
+      ...configs.rules,
       camelcase: 'error',
       curly: 'error',
       eqeqeq: 'error',
