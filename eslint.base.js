@@ -1,25 +1,27 @@
 import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
 import nxEslintPlugin from '@nx/eslint-plugin';
-import jsoncParser from 'jsonc-eslint-parser';
+
+import eslint from '@eslint/js';
+import jestPlugin from 'eslint-plugin-jest';
+import unicornPlugin from 'eslint-plugin-unicorn';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
-  recommendedConfig: js.configs.recommended,
+  recommendedConfig: eslint.configs.recommended,
 });
 
 export default [
   { plugins: { '@nx': nxEslintPlugin } },
-  { ignores: ['dist', 'coverage', 'jest.config.js', 'dotenv.config.js'] },
+  {
+    ignores: ['dist', 'coverage', '*.config.js'],
+  },
+  jestPlugin.configs['flat/all'],
+  unicornPlugin.configs['flat/all'],
   ...compat
     .config({
       extends: [
-        'eslint:recommended',
         'plugin:@typescript-eslint/recommended-type-checked',
         'plugin:@typescript-eslint/stylistic-type-checked',
-        'plugin:@nx/typescript',
-        'plugin:jest/all',
-        'plugin:unicorn/all',
       ],
     })
     .map((config) => ({
@@ -38,6 +40,7 @@ export default [
         'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
         '@nx/enforce-module-boundaries': ['error'],
         'jest/require-hook': 'off',
+        'jest/unbound-method': 'off',
       },
     })),
   {
@@ -47,21 +50,5 @@ export default [
   {
     files: ['**/*.spec.ts', '**/*.dto.ts', '**/*.entity.ts'],
     rules: { 'no-magic-numbers': 'off' },
-  },
-  {
-    files: ['**/*.json'],
-    languageOptions: {
-      parser: jsoncParser,
-    },
-    rules: {
-      '@nx/dependency-checks': [
-        'error',
-        {
-          ignoredFiles: ['**/*.spec.ts'],
-          ignoredDependencies: ['dotenv'],
-          includeTransitiveDependencies: true,
-        },
-      ],
-    },
   },
 ];
