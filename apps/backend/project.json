@@ -5,13 +5,6 @@
   "projectType": "application",
   "tags": ["backend"],
   "targets": {
-    "clear": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["rimraf dist coverage"],
-        "cwd": "apps/backend"
-      }
-    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
