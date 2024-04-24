@@ -51,4 +51,17 @@ export default [
     files: ['**/*.spec.ts', '**/*.dto.ts', '**/*.entity.ts'],
     rules: { 'no-magic-numbers': 'off' },
   },
+  {
+    files: ['**/*.json'],
+    rules: {
+      'jest/unbound-method': 'off',
+      '@nx/dependency-checks': [
+        'error',
+        {
+          ignoredFiles: ['**/*.spec.ts', '**/*.js'],
+          includeTransitiveDependencies: true,
+        },
+      ],
+    },
+  },
 ];

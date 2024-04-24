@@ -3,7 +3,6 @@ import tseslint from 'typescript-eslint';
 import preset from '../../eslint.base.js';
 
 export default [
-  ...preset,
   {
     languageOptions: {
       parser: tseslint.parser,
@@ -18,15 +17,6 @@ export default [
         extraFileExtensions: ['.json'],
       },
     },
-    rules: {
-      'jest/unbound-method': 'off',
-      '@nx/dependency-checks': [
-        'error',
-        {
-          ignoredFiles: ['**/*.spec.ts', '**/*.js'],
-          includeTransitiveDependencies: true,
-        },
-      ],
-    },
   },
+  ...preset,
 ];
