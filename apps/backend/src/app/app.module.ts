@@ -1,4 +1,4 @@
-import { ExceptionModule, HealthModule, LoggerModule } from '#libs/nestjs-common';
+import { ExceptionModule, HealthModule, LoggerModule } from '#libs/common';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';

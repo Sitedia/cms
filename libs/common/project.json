@@ -1,34 +1,34 @@
 {
-  "name": "libs/nestjs-common",
+  "name": "libs/common",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/nestjs-common/src",
+  "sourceRoot": "libs/common/src",
   "projectType": "library",
-  "tags": ["nestjs-common"],
+  "tags": ["common"],
   "targets": {
     "clear": {
       "executor": "nx:run-commands",
       "options": {
         "commands": ["rimraf dist coverage"],
-        "cwd": "libs/nestjs-common"
+        "cwd": "libs/common"
       }
     },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
         "commands": ["eslint"],
-        "cwd": "libs/nestjs-common"
+        "cwd": "libs/common"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/nestjs-common/jest.config.js"
+        "jestConfig": "libs/common/jest.config.js"
       }
     },
     "test:coverage": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/nestjs-common/jest.config.js",
+        "jestConfig": "libs/common/jest.config.js",
         "codeCoverage": true
       }
     },
@@ -36,7 +36,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "tsc",
-        "cwd": "libs/nestjs-common"
+        "cwd": "libs/common"
       }
     }
   }

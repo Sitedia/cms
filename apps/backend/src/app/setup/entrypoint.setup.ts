@@ -1,4 +1,4 @@
-import { ApplicationLogger } from '#libs/nestjs-common';
+import { ApplicationLogger } from '#libs/common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NextFunction, Request, Response } from 'express';

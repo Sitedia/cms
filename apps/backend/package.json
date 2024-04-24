@@ -1,7 +1,7 @@
 {
   "type": "module",
   "imports": {
-    "#libs/nestjs-common": "./dist/libs/nestjs-common/src/index.js"
+    "#libs/*": "./dist/libs/*/src/index.js"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.8",

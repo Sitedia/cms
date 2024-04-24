@@ -1,4 +1,4 @@
-import { ApplicationLogger } from '#libs/nestjs-common';
+import { ApplicationLogger } from '#libs/common';
 import { INestApplication } from '@nestjs/common';
 import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface.js';
 import { ConfigService } from '@nestjs/config';
