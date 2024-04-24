@@ -1,14 +1,30 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
-    "lint": { "cache": true },
-    "test": { "cache": true },
-    "test:coverage": { "cache": true },
-    "build": { "cache": true }
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    },
+    "test:coverage": {
+      "cache": true
+    },
+    "build": {
+      "cache": true
+    }
   },
   "release": {
     "projects": ["*"],
-    "version": { "conventionalCommits": true },
-    "changelog": { "workspaceChangelog": { "renderOptions": { "authors": false } } }
+    "version": {
+      "conventionalCommits": true
+    },
+    "changelog": {
+      "workspaceChangelog": {
+        "renderOptions": {
+          "authors": false
+        }
+      }
+    }
   }
 }
