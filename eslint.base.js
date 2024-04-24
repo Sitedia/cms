@@ -3,20 +3,20 @@ import nxEslintPlugin from '@nx/eslint-plugin';
 import jestEslintPlugin from 'eslint-plugin-jest';
 import unicornEslintPlugin from 'eslint-plugin-unicorn';
 import jsoncParser from 'jsonc-eslint-parser';
-import typescriptEslintPlugin from 'typescript-eslint';
+import typescriptEslint from 'typescript-eslint';
 
-export default typescriptEslintPlugin.config(
-  { plugins: { '@nx': nxEslintPlugin } },
+export default typescriptEslint.config(
+  { plugins: { '@nx': nxEslintPlugin, '@typescript-eslint': typescriptEslint.plugin } },
   ...[
     eslintPlugin.configs.recommended,
     jestEslintPlugin.configs['flat/all'],
     unicornEslintPlugin.configs['flat/all'],
-    ...typescriptEslintPlugin.configs.recommendedTypeChecked,
-    ...typescriptEslintPlugin.configs.stylisticTypeChecked,
+    ...typescriptEslint.configs.strictTypeChecked,
+    ...typescriptEslint.configs.stylisticTypeChecked,
   ].map((configs) => ({
     ...configs,
     languageOptions: {
-      parser: typescriptEslintPlugin.parser,
+      parser: typescriptEslint.parser,
       parserOptions: { project: true, tsconfigRootDir: import.meta.dirname },
     },
     files: ['**/*.ts'],
@@ -35,6 +35,8 @@ export default typescriptEslintPlugin.config(
       'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
       'jest/require-hook': 'off',
       'jest/unbound-method': 'off',
+      '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }],
+      '@typescript-eslint/restrict-template-expressions': 'off',
     },
   })),
   {
