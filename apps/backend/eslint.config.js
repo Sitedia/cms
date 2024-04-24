@@ -9,31 +9,19 @@ export default [
   {
     files: ['**/*.ts'],
     languageOptions: {
-      globals: { process: true },
       parser: tseslint.parser,
-      parserOptions: { sourceType: 'module', project: './tsconfig.json', tsconfigRootDir: import.meta.dirname },
-    },
-  },
-  {
-    files: ['**/*.json'],
-    languageOptions: {
-      parser: jsoncParser,
-      parserOptions: {
-        sourceType: 'module',
-        project: './tsconfig.json',
-        tsconfigRootDir: import.meta.dirname,
-        extraFileExtensions: ['.json'],
-      },
+      parserOptions: { project: true },
     },
   },
   { plugins: { '@nx': nxEslintPlugin } },
-  {
-    ignores: ['dist', 'coverage', '*.config.js'],
-  },
+  { ignores: ['dist', 'coverage', '*.config.js'] },
   eslint.configs.recommended,
   jestPlugin.configs['flat/all'],
   unicornPlugin.configs['flat/all'],
+  ...tseslint.configs.recommendedTypeChecked.map((conf) => ({ ...conf, files: ['**/*.ts'] })),
+  ...tseslint.configs.stylisticTypeChecked.map((conf) => ({ ...conf, files: ['**/*.ts'] })),
   {
+    files: ['**/*.ts', '**/*.json'],
     rules: {
       camelcase: 'error',
       curly: 'error',
@@ -50,7 +38,6 @@ export default [
       'jest/unbound-method': 'off',
     },
   },
-  ...tseslint.configs.recommendedTypeChecked.map((conf) => ({ ...conf, files: ['**/*.ts'] })),
   {
     files: ['**/*.spec.ts'],
     rules: { 'jest/require-hook': ['error'] },
@@ -61,8 +48,10 @@ export default [
   },
   {
     files: ['**/*.json'],
+    languageOptions: {
+      parser: jsoncParser,
+    },
     rules: {
-      'jest/unbound-method': 'off',
       '@nx/dependency-checks': [
         'error',
         {
