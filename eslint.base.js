@@ -1,6 +1,7 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import nxEslintPlugin from '@nx/eslint-plugin';
+import jsoncParser from 'jsonc-eslint-parser';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -9,6 +10,7 @@ const compat = new FlatCompat({
 
 export default [
   { plugins: { '@nx': nxEslintPlugin } },
+  { ignores: ['dist', 'coverage', 'jest.config.js', 'dotenv.config.js'] },
   ...compat
     .config({
       extends: [
@@ -46,9 +48,11 @@ export default [
     files: ['**/*.spec.ts', '**/*.dto.ts', '**/*.entity.ts'],
     rules: { 'no-magic-numbers': 'off' },
   },
-  ...compat.config({ parser: 'jsonc-eslint-parser' }).map((config) => ({
-    ...config,
+  {
     files: ['**/*.json'],
+    languageOptions: {
+      parser: jsoncParser,
+    },
     rules: {
       '@nx/dependency-checks': [
         'error',
@@ -59,6 +63,5 @@ export default [
         },
       ],
     },
-  })),
-  { ignores: ['dist', 'coverage', 'jest.config.js', 'dotenv.config.js'] },
+  },
 ];
