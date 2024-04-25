@@ -5,41 +5,13 @@
   "projectType": "application",
   "tags": ["backend"],
   "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "eslintConfig": "./apps/backend/eslint.config.js"
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "./apps/backend/jest.config.js"
-      }
-    },
-    "test:coverage": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "./apps/backend/jest.config.js",
-        "coverage": true,
-        "coverageDirectory": "./coverage/apps/backend"
-      }
-    },
-    "test:watch": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "./apps/backend/jest.config.js",
-        "watch": true
-      }
-    },
     "build": {
       "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist",
         "main": "apps/backend/apps/backend/src/main.ts",
         "tsConfig": "apps/backend/tsconfig.build.json",
-        "rootDir": ".",
-        "generateLockfile": true
+        "rootDir": "."
       }
     },
     "serve": {
@@ -62,7 +34,7 @@
         "env": { "DOCKER_BUILDKIT": "1" }
       }
     },
-    "docker:local": {
+    "docker:test": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [

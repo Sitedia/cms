@@ -5,33 +5,6 @@
   "projectType": "library",
   "tags": ["common"],
   "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "eslintConfig": "./libs/common/eslint.config.js"
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "./libs/common/jest.config.js"
-      }
-    },
-    "test:coverage": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "./libs/common/jest.config.js",
-        "coverage": true,
-        "coverageDirectory": "./coverage/libs/common"
-      }
-    },
-    "test:watch": {
-      "executor": "@nx/jest:jest",
-      "options": {
-        "jestConfig": "./libs/common/jest.config.js",
-        "watch": true
-      }
-    },
     "build": {
       "executor": "@nx/js:tsc",
       "options": {

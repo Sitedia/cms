@@ -16,8 +16,6 @@ RUN npm ci --ignore-scripts
 RUN npx nx build apps/backend --verbose --batch
 
 # Install production dependencies in the 'dist' folder
-COPY --chown=root:root --chmod=755 apps/backend/package.json ./dist/
-COPY --chown=root:root --chmod=755 package-lock.json ./dist/
 RUN cd dist && npm ci --ignore-scripts
 
 # TARGET

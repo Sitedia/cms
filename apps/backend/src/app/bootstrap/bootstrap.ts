@@ -9,7 +9,7 @@ import { ApplicationModuleOptions } from '../configuration/configuration.interfa
 import { configuration as config } from '../configuration/configuration.js';
 import { secureEntrypoint } from '../setup/entrypoint.setup.js';
 import { configureSwagger } from '../setup/swagger.setup.js';
-
+//
 /** NestJS application launcher */
 export const bootstrap = async (): Promise<INestApplication> => {
   // Load HTTPs configuration
