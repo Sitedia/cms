@@ -11,9 +11,8 @@
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "vsicons.associations.files": [
-    { "icon": "nx", "extensions": ["project.json"], "filename": true, "format": "svg" },
     { "icon": "vscode", "extensions": ["extensions.json", "settings.json"], "filename": true, "format": "svg" },
-    { "icon": "jest", "extensions": ["dotenv.config.js"], "filename": true, "format": "svg" }
+    { "icon": "nx", "extensions": ["project.json"], "filename": true, "format": "svg" }
   ],
   "testing.openTesting": "neverOpen",
   "jest.jestCommandLine": "nx run-many -t test",
