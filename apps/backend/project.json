@@ -22,7 +22,7 @@
     "test:coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["jest --coverage"],
+        "commands": ["jest --coverage --coverageDirectory ../../coverage/libs/common"],
         "cwd": "apps/backend"
       }
     },
