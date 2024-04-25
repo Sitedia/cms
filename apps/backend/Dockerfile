@@ -4,7 +4,7 @@ FROM registry.access.redhat.com/ubi9/nodejs-20:1-34 AS builder
 WORKDIR /build
 
 # Copy only files required to build the application
-COPY --chown=root:root --chmod=755 nx.json package.json package-lock.json tsconfig.base.json ./
+COPY --chown=root:root --chmod=755 nx.json package.json package-lock.json tsconfig.json ./
 COPY --chown=root:root --chmod=755 libs/common ./libs/common
 COPY --chown=root:root --chmod=755 apps/backend ./apps/backend
 

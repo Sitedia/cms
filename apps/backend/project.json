@@ -23,21 +23,18 @@
         "command": "jest --rootDir ./apps/backend -c ./jest.config.js --coverage --coverageDirectory ../../coverage/apps/backend"
       }
     },
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "nest build",
-        "cwd": "apps/backend"
-      }
-    },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nest start --watch",
+        "command": "nest start --watch --sourceRoot apps/backend/src",
         "cwd": "apps/backend",
-        "env": {
-          "NODE_ENV": "development"
-        }
+        "env": { "NODE_ENV": "development" }
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nest build -p ./apps/backend/tsconfig.build.json"
       }
     },
     "start": {
@@ -50,7 +47,8 @@
     "docker:build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "DOCKER_BUILDKIT=1 docker build . -f apps/backend/Dockerfile -t backend --no-cache"
+        "command": "docker build . -f apps/backend/Dockerfile -t backend --no-cache",
+        "env": { "DOCKER_BUILDKIT": "1" }
       }
     },
     "docker:start": {
