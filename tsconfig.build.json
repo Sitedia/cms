@@ -1,5 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "exclude": ["**"],
-  "references": [{ "path": "apps/backend/tsconfig.build.json" }, { "path": "libs/common/tsconfig.build.json" }]
-}
