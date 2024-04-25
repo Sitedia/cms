@@ -15,14 +15,16 @@
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["jest --verbose"],
+        "commands": ["jest --rootDir . -c ../../jest.config.js --verbose"],
         "cwd": "libs/common"
       }
     },
     "test:coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["jest --coverage"],
+        "commands": [
+          "jest --rootDir . -c ../../jest.config.js --coverage --coverageDirectory ../../coverage/libs/common"
+        ],
         "cwd": "libs/common"
       }
     },
