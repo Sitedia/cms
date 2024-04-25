@@ -1,5 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src/**/*.ts"],
-  "references": [{ "path": "../../libs/common" }]
+  "include": ["src/**/*.ts", "../../libs/common"]
 }

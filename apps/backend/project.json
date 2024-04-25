@@ -26,7 +26,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nest start --watch --sourceRoot apps/backend/src",
+        "command": "nest start --watch --sourceRoot apps/backend/src -p ./tsconfig.json",
         "cwd": "apps/backend",
         "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "verbose" }
       }
