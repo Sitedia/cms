@@ -24,6 +24,10 @@ export default typescriptEslint.config(
   })),
   {
     files: ['**/*.ts'],
+    languageOptions: {
+      parser: typescriptEslint.parser,
+      parserOptions: { project: './tsconfig.json' },
+    },
     rules: {
       camelcase: 'error',
       curly: 'error',
