@@ -28,9 +28,9 @@ $ nx serve apps/backend
 $ nx graph
 
 # Check all the source code : lint, test, test coverage, build
-$ npm install && nx reset && sleep 1 && nx run-many -t lint,test:coverage,build --verbose
+$ npm install && nx reset && nx run-many -t lint,test:coverage,build --verbose
 
 # Check the Docker image
-$ nx reset && sleep 1 && clear && nx docker:build apps/backend && clear && nx docker:start apps/backend --batch
+$ nx reset && clear && nx docker:build apps/backend && clear && nx docker:start apps/backend --batch
 $ docker rm -rf backend
 ```
