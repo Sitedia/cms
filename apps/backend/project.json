@@ -8,22 +8,19 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["eslint . -c ../../eslint.config.js"],
-        "cwd": "apps/backend"
+        "command": "eslint ./apps/backend -c ./eslint.config.js"
       }
     },
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["jest"],
-        "cwd": "apps/backend"
+        "command": "jest --rootDir ./apps/backend -c ./jest.config.js"
       }
     },
     "test:coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["jest --coverage --coverageDirectory ../../coverage/libs/common"],
-        "cwd": "apps/backend"
+        "command": "jest --rootDir ./apps/backend -c ./jest.config.js --coverage --coverageDirectory ../../coverage/apps/backend"
       }
     },
     "build": {
