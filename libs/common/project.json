@@ -6,27 +6,38 @@
   "tags": ["common"],
   "targets": {
     "lint": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/eslint:lint",
       "options": {
-        "command": "eslint ./libs/common -c ./eslint.config.js"
+        "eslintConfig": "./libs/common/eslint.config.js"
       }
     },
     "test": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/jest:jest",
       "options": {
-        "command": "jest --rootDir ./libs/common -c ./jest.config.js"
+        "jestConfig": "./libs/common/jest.config.js"
       }
     },
     "test:coverage": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/jest:jest",
       "options": {
-        "command": "jest --rootDir ./libs/common -c ./jest.config.js --coverage --coverageDirectory ../../coverage/libs/common"
+        "jestConfig": "./libs/common/jest.config.js",
+        "coverage": true,
+        "coverageDirectory": "./coverage/libs/common"
+      }
+    },
+    "test:watch": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "./libs/common/jest.config.js",
+        "watch": true
       }
     },
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/js:tsc",
       "options": {
-        "command": "tsc -p ./libs/common/tsconfig.build.json"
+        "outputPath": "dist/libs/common",
+        "main": "libs/common/src/index.ts",
+        "tsConfig": "libs/common/tsconfig.build.json"
       }
     }
   }
