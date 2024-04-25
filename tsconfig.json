@@ -1,6 +1,4 @@
 {
-  "files": [],
-  "references": [{ "path": "./libs/common" }, { "path": "./apps/backend" }],
   "compilerOptions": {
     "baseUrl": ".",
     "composite": true,

@@ -15,6 +15,7 @@
     { "icon": "nx", "extensions": ["project.json"], "filename": true, "format": "svg" }
   ],
   "testing.openTesting": "neverOpen",
+  "jest.runMode": "on-demand",
   "jest.jestCommandLine": "nx run-many -t test",
   "rest-client.previewOption": "body",
   "rest-client.enableTelemetry": false

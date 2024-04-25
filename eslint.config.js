@@ -26,7 +26,7 @@ export default typescriptEslint.config(
     files: ['**/*.ts'],
     languageOptions: {
       parser: typescriptEslint.parser,
-      parserOptions: { project: true, tsconfigRootDir: import.meta.dirname },
+      parserOptions: { project: true, tsconfigRootDir: import.meta.dirname }, // The root one
     },
     rules: {
       camelcase: 'error',
