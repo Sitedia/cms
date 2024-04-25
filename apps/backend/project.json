@@ -8,7 +8,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["eslint ."],
+        "commands": ["eslint . -c ../../eslint.config.js"],
         "cwd": "apps/backend"
       }
     },
