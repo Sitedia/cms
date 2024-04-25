@@ -1,8 +1,7 @@
 {
-  "include": ["**/*.ts"],
   "compilerOptions": {
-    "allowJs": true,
     "baseUrl": ".",
+    "composite": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -18,7 +17,7 @@
     "strict": true,
     "target": "ES2022",
     "paths": {
-      "#libs/*": ["libs/*/src/index.js"]
+      "#libs/common": ["libs/common/src/index.js"]
     }
   }
 }

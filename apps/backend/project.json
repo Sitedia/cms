@@ -28,13 +28,13 @@
       "options": {
         "command": "nest start --watch --sourceRoot apps/backend/src",
         "cwd": "apps/backend",
-        "env": { "NODE_ENV": "development" }
+        "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "verbose" }
       }
     },
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nest build -p ./apps/backend/tsconfig.build.json"
+        "command": "tsc --build ./apps/backend/tsconfig.build.json"
       }
     },
     "start": {
