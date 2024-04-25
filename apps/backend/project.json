@@ -6,35 +6,46 @@
   "tags": ["backend"],
   "targets": {
     "lint": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/eslint:lint",
       "options": {
-        "command": "eslint ./apps/backend -c ./eslint.config.js"
+        "eslintConfig": "./apps/backend/eslint.config.js"
       }
     },
     "test": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/jest:jest",
       "options": {
-        "command": "jest --rootDir ./apps/backend -c ./jest.config.js"
+        "jestConfig": "./apps/backend/jest.config.js"
       }
     },
     "test:coverage": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/jest:jest",
       "options": {
-        "command": "jest --rootDir ./apps/backend -c ./jest.config.js --coverage --coverageDirectory ../../coverage/apps/backend"
+        "jestConfig": "./apps/backend/jest.config.js",
+        "coverage": true,
+        "coverageDirectory": "./coverage/apps/backend"
       }
     },
-    "serve": {
-      "executor": "nx:run-commands",
+    "test:watch": {
+      "executor": "@nx/jest:jest",
       "options": {
-        "command": "nest start --watch --sourceRoot apps/backend/src",
-        "cwd": "apps/backend",
-        "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "verbose" }
+        "jestConfig": "./apps/backend/jest.config.js",
+        "watch": true
       }
     },
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/js:tsc",
       "options": {
-        "command": "tsc -p ./apps/backend/tsconfig.build.json"
+        "outputPath": "dist",
+        "main": "apps/backend/apps/backend/src/main.ts",
+        "tsConfig": "apps/backend/tsconfig.build.json",
+        "rootDir": ".",
+        "generateLockfile": true
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "build"
       }
     },
     "start": {

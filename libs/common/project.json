@@ -35,9 +35,10 @@
     "build": {
       "executor": "@nx/js:tsc",
       "options": {
-        "outputPath": "dist/libs/common",
-        "main": "libs/common/src/index.ts",
-        "tsConfig": "libs/common/tsconfig.build.json"
+        "outputPath": "./dist",
+        "main": "./libs/common/src/index.ts",
+        "tsConfig": "./libs/common/tsconfig.build.json",
+        "rootDir": "./"
       }
     }
   }
