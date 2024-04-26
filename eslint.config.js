@@ -53,10 +53,6 @@ export default typescriptEslint.config(
     },
   },
   {
-    files: ['**/*.spec.ts'],
-    rules: { 'jest/require-hook': 'error' },
-  },
-  {
     files: ['**/*.spec.ts', '**/*.dto.ts', '**/*.entity.ts'],
     rules: { 'no-magic-numbers': 'off' },
   },
