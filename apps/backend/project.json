@@ -6,12 +6,10 @@
   "tags": ["backend"],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist",
-        "main": "apps/backend/apps/backend/src/main.ts",
-        "tsConfig": "apps/backend/tsconfig.build.json",
-        "rootDir": "."
+        "command": "nest build",
+        "cwd": "apps/backend"
       }
     },
     "serve": {
