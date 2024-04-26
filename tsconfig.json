@@ -1,5 +1,4 @@
 {
-  "include": ["**/*.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "composite": true,
