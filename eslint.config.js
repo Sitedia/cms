@@ -39,10 +39,9 @@ export default typescriptEslint.config(
       'max-params': ['error', 8],
       'no-console': 'warn',
       'object-shorthand': ['error', 'always'],
+      'prefer-destructuring': ['error', { object: true }],
       'no-magic-numbers': ['error', { ignore: [0, 1] }],
       'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
-      'jest/require-hook': 'off',
-      'jest/unbound-method': 'off',
       '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }],
       '@typescript-eslint/restrict-template-expressions': 'off',
       '@nx/enforce-module-boundaries': [
