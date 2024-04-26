@@ -64,7 +64,7 @@
           "echo 'Delete the previous container if exists ..'",
           "docker rm -f backend",
           "echo 'Create the container ...'",
-          "docker run --name backend -p 8801:3000 -e APP_LOG_FORMAT -e APP_TLS_ENABLED -e APP_TLS_CERTIFICATE -e APP_TLS_KEY -e APP_TLS_ALLOWED_CIPHERS -e APP_API_URL backend"
+          "docker run --name backend -p 8801:3000 -e APP_LOG_FORMAT -e APP_API_URL backend"
         ],
         "parallel": false,
         "env": { "APP_LOG_FORMAT": "JSON", "APP_API_URL": "http://localhost:8801" }
