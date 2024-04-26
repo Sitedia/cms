@@ -1,5 +1,6 @@
 {
   "extends": "../../tsconfig.json",
+  "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.ts", "../../libs/common/src/**/*.spec.ts"],
   "references": [{ "path": "../../libs/common/tsconfig.build.json" }]
 }
