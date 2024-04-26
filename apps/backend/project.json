@@ -39,7 +39,7 @@
       "options": {
         "command": "nest start --watch --sourceRoot apps/backend/src",
         "cwd": "apps/backend",
-        "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "verbose" }
+        "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "debug" }
       }
     },
     "start": {

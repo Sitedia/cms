@@ -21,9 +21,9 @@
     "@jest/globals": "^29.7.0",
     "@nestjs/cli": "^10.3.2",
     "@nestjs/testing": "^10.3.8",
-    "@nx/eslint-plugin": "^18.3.3",
-    "@nx/nest": "18.3.3",
-    "@nx/workspace": "18.3.3",
+    "@nx/eslint-plugin": "18.3.4",
+    "@nx/nest": "18.3.4",
+    "@nx/workspace": "18.3.4",
     "@types/cli-color": "^2.0.6",
     "@types/express": "^4.17.21",
     "@types/supertest": "^6.0.2",
@@ -31,7 +31,7 @@
     "eslint-plugin-jest": "^28.2.0",
     "eslint-plugin-unicorn": "^52.0.0",
     "jest": "^29.7.0",
-    "nx": "18.3.3",
+    "nx": "18.3.4",
     "prettier": "^3.2.5",
     "supertest": "^7.0.0",
     "ts-jest": "^29.1.2",
@@ -39,3 +39,4 @@
     "typescript-eslint": "^7.7.1"
   }
 }
+
