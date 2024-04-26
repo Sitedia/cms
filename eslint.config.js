@@ -6,6 +6,7 @@ import jsoncParser from 'jsonc-eslint-parser';
 import typescriptEslint from 'typescript-eslint';
 
 export default typescriptEslint.config(
+  { ignores: ['**/dist', '**/coverage'] },
   {
     plugins: {
       '@nx': nxEslintPlugin,
