@@ -15,9 +15,11 @@
       }
     },
     "serve": {
-      "executor": "@nx/js:node",
+      "executor": "nx:run-commands",
       "options": {
-        "buildTarget": "build"
+        "command": "nest start --watch --sourceRoot apps/backend/src",
+        "cwd": "apps/backend",
+        "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "verbose" }
       }
     },
     "start": {
