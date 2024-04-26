@@ -1,7 +1,6 @@
 {
   "name": "libs/common",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/common/src",
   "projectType": "library",
   "tags": ["libs/common"],
   "targets": {
