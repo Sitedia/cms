@@ -6,29 +6,42 @@ import jsoncParser from 'jsonc-eslint-parser';
 import typescriptEslint from 'typescript-eslint';
 
 export default typescriptEslint.config(
-  { ignores: ['**/dist', '**/coverage'] },
   {
-    plugins: {
-      '@nx': nxEslintPlugin,
-      '@typescript-eslint': typescriptEslint.plugin,
-    },
+    ignores: ['**/dist', '**/coverage'],
   },
-  ...[
-    eslintPlugin.configs.recommended,
-    ...typescriptEslint.configs.strictTypeChecked,
-    ...typescriptEslint.configs.stylisticTypeChecked,
-    unicornEslintPlugin.configs['flat/all'],
-    jestEslintPlugin.configs['flat/all'],
-  ].map((configs) => ({
-    ...configs,
-    files: ['**/*.ts'],
-  })),
+  {
+    plugins: { '@nx': nxEslintPlugin, '@typescript-eslint': typescriptEslint.plugin },
+  },
+
+  // Parser for *.ts files
   {
     files: ['**/*.ts'],
     languageOptions: {
       parser: typescriptEslint.parser,
       parserOptions: { project: './tsconfig.json', tsconfigRootDir: import.meta.dirname },
     },
+  },
+
+  // Parser for *.json files
+  {
+    files: ['**/*.json'],
+    languageOptions: { parser: jsoncParser },
+  },
+
+  // Configurations for *.ts files
+  ...[
+    eslintPlugin.configs.recommended,
+    ...typescriptEslint.configs.strictTypeChecked,
+    ...typescriptEslint.configs.stylisticTypeChecked,
+    unicornEslintPlugin.configs['flat/all'],
+  ].map((configs) => ({
+    files: ['**/*.ts'],
+    ...configs,
+  })),
+
+  // Rules customization for *.ts files
+  {
+    files: ['**/*.ts'],
     rules: {
       camelcase: 'error',
       curly: 'error',
@@ -52,13 +65,22 @@ export default typescriptEslint.config(
       ],
     },
   },
+
+  // Configuration for test files
+  ...[jestEslintPlugin.configs['flat/all']].map((configs) => ({
+    files: ['**/*.spec.ts'],
+    ...configs,
+  })),
+
+  // Adjustments for specific files
   {
     files: ['**/*.spec.ts', '**/*.dto.ts', '**/*.entity.ts'],
     rules: { 'no-magic-numbers': 'off' },
   },
+
+  // Specific rules for package.json files
   {
-    files: ['**/*.json'],
-    languageOptions: { parser: jsoncParser },
+    files: ['**/package.json'],
     rules: {
       '@nx/dependency-checks': [
         'error',
