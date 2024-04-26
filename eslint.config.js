@@ -38,6 +38,7 @@ export default typescriptEslint.config(
       'max-depth': ['error', 4],
       'max-params': ['error', 8],
       'no-console': 'warn',
+      'object-shorthand': ['error', 'always'],
       'no-magic-numbers': ['error', { ignore: [0, 1] }],
       'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
       'jest/require-hook': 'off',
