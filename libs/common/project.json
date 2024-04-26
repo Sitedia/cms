@@ -5,13 +5,34 @@
   "projectType": "library",
   "tags": ["common"],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
+    "lint": {
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "./dist",
-        "main": "./libs/common/src/index.ts",
-        "tsConfig": "./libs/common/tsconfig.build.json",
-        "rootDir": "./"
+        "command": "eslint ./libs/common -c ./eslint.config.js"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "jest -c ./libs/common/jest.config.js"
+      }
+    },
+    "test:coverage": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "jest -c ./libs/common/jest.config.js --coverage"
+      }
+    },
+    "test:watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "jest -c ./libs/common/jest.config.js --watch"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --build ./libs/common/tsconfig.build.json"
       }
     }
   }
