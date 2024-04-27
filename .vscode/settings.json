@@ -17,6 +17,6 @@
   "testing.openTesting": "neverOpen",
   "jest.runMode": "on-demand",
   "jest.jestCommandLine": "nx run-many -t test",
-  "rest-client.previewOption": "body",
-  "rest-client.enableTelemetry": false
+  "rest-client.previewColumn": "current",
+  "rest-client.previewOption": "body"
 }
