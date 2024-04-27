@@ -56,7 +56,7 @@
         "env": { "DOCKER_BUILDKIT": "1" }
       }
     },
-    "docker:test": {
+    "docker:start": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
