@@ -5,15 +5,16 @@ import unicornEslintPlugin from 'eslint-plugin-unicorn';
 import jsoncParser from 'jsonc-eslint-parser';
 import typescriptEslint from 'typescript-eslint';
 
-export default typescriptEslint.config(
+export default [
   {
-    ignores: ['**/dist', '**/coverage'],
-  },
-  {
-    plugins: { '@nx': nxEslintPlugin, '@typescript-eslint': typescriptEslint.plugin },
+    ignores: ['node_modules', 'dist', 'coverage', 'tmp'],
   },
 
-  // Parser for *.ts files
+  {
+    plugins: { '@typescript-eslint': typescriptEslint.plugin, '@nx': nxEslintPlugin },
+  },
+
+  // Parser for Typescript files
   {
     files: ['**/*.ts'],
     languageOptions: {
@@ -22,24 +23,27 @@ export default typescriptEslint.config(
     },
   },
 
-  // Parser for *.json files
+  // Parser for JSON files
   {
     files: ['**/*.json'],
-    languageOptions: { parser: jsoncParser },
+    languageOptions: {
+      parser: jsoncParser,
+    },
   },
 
-  // Configurations for *.ts files
-  ...[
-    eslintPlugin.configs.recommended,
-    ...typescriptEslint.configs.strictTypeChecked,
-    ...typescriptEslint.configs.stylisticTypeChecked,
-    unicornEslintPlugin.configs['flat/all'],
-  ].map((configs) => ({
-    files: ['**/*.ts'],
-    ...configs,
-  })),
+  // Recommended Eslint configurations
+  eslintPlugin.configs.recommended,
 
-  // Rules customization for *.ts files
+  // Strict Typescript configurations
+  ...typescriptEslint.configs.strictTypeChecked.map((configs) => ({ files: ['**/*.ts'], ...configs })),
+
+  // All Jest configurations
+  ...[jestEslintPlugin.configs['flat/all']].map((configs) => ({ files: ['**/*.spec.ts'], ...configs })),
+
+  // All Unicorn configurations
+  unicornEslintPlugin.configs['flat/all'],
+
+  // Custom configurations for Typescript files
   {
     files: ['**/*.ts'],
     rules: {
@@ -50,13 +54,13 @@ export default typescriptEslint.config(
       complexity: ['error', 20],
       'max-depth': ['error', 4],
       'max-params': ['error', 8],
-      'no-console': 'warn',
+      'no-console': 'error',
       'object-shorthand': ['error', 'always'],
       'prefer-destructuring': ['error', { object: true }],
       'no-magic-numbers': ['error', { ignore: [0, 1] }],
       'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
       '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }],
-      '@typescript-eslint/restrict-template-expressions': 'off',
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
       '@nx/enforce-module-boundaries': [
         'error',
         {
@@ -66,26 +70,17 @@ export default typescriptEslint.config(
     },
   },
 
-  // Configuration for test files
-  ...[jestEslintPlugin.configs['flat/all']].map((configs) => ({
-    files: ['**/*.spec.ts'],
-    ...configs,
-  })),
-
-  // Adjustments for specific files
+  // Allow magic numbers in some files
   {
     files: ['**/*.spec.ts', '**/*.dto.ts', '**/*.entity.ts'],
     rules: { 'no-magic-numbers': 'off' },
   },
 
-  // Specific rules for package.json files
+  // Check dependencies in package.json files for the buildable projects
   {
     files: ['**/package.json'],
     rules: {
-      '@nx/dependency-checks': [
-        'error',
-        { ignoredFiles: ['**/*.spec.ts', '**/*.js'], includeTransitiveDependencies: true },
-      ],
+      '@nx/dependency-checks': ['error', { ignoredFiles: ['**/*.spec.ts'], includeTransitiveDependencies: true }],
     },
   },
-);
+];

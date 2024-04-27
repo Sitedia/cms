@@ -68,7 +68,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     const coloredTimestamp = color(new Date().toISOString());
     const coloredLevel = color(level.toLocaleUpperCase().padStart(LEVEL_PAD_INDENT, ' ').slice(0, LEVEL_PAD_INDENT));
 
-    const coloredContext = contextColor(`[${context}]`);
+    const coloredContext = contextColor(`[${context ?? '<undefined>'}]`);
     const coloredMessage = color(message);
 
     // eslint-disable-next-line no-console
