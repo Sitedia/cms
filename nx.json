@@ -7,11 +7,8 @@
     "test": {
       "cache": true
     },
-    "test:coverage": {
-      "cache": true
-    },
-    "docker:build": {
-      "cache": true
+    "build": {
+      "dependsOn": ["source:clear"]
     }
   },
   "release": {

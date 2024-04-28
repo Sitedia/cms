@@ -13,19 +13,19 @@
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "jest -c ./apps/backend/jest.config.js"
+        "command": "jest -c ./apps/backend/jest.config.js --runInBand"
       }
     },
     "test:coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "jest -c ./apps/backend/jest.config.js --coverage"
+        "command": "jest -c ./apps/backend/jest.config.js --coverage --runInBand"
       }
     },
     "test:watch": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "jest -c ./apps/backend/jest.config.js --watch"
+        "command": "jest -c ./apps/backend/jest.config.js --watch --runInBand"
       }
     },
     "build": {
@@ -40,7 +40,8 @@
         "command": "nest start --watch --sourceRoot apps/backend/src",
         "cwd": "apps/backend",
         "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "debug" }
-      }
+      },
+      "dependsOn": ["source:clear"]
     },
     "start": {
       "executor": "nx:run-commands",
@@ -54,19 +55,20 @@
       "options": {
         "command": "docker build . -f apps/backend/Dockerfile -t backend --no-cache",
         "env": { "DOCKER_BUILDKIT": "1" }
-      }
+      },
+      "cache": true
     },
     "docker:start": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "echo 'Delete the previous container if exists ..'",
-          "docker rm -f backend",
-          "echo 'Create the container ...'",
-          "docker run --name backend -p 8801:3000 -e APP_LOG_FORMAT -e APP_API_URL backend"
-        ],
-        "parallel": false,
-        "env": { "APP_LOG_FORMAT": "JSON", "APP_API_URL": "http://localhost:8801" }
+        "command": "docker run --name backend -p 8801:3000 --env-file apps/backend/.env.docker.local backend"
+      },
+      "dependsOn": ["docker:build", "docker:remove"]
+    },
+    "docker:remove": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker rm -f backend"
       }
     }
   }

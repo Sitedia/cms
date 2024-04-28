@@ -10,6 +10,9 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
+  "search.exclude": {
+    "dist/**": true
+  },
   "vsicons.associations.files": [
     { "icon": "vscode", "extensions": ["extensions.json", "settings.json"], "filename": true, "format": "svg" },
     { "icon": "nx", "extensions": ["project.json"], "filename": true, "format": "svg" }
