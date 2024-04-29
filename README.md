@@ -1,36 +1,18 @@
-<h1>My Events</h1>
+<h1>CMS application</h1>
 
 - [1. Description](#1-description)
 - [2. Getting started](#2-getting-started)
-- [3. Useful commands](#3-useful-commands)
 
 # 1. Description
 
-This is a NestJS application to manage events.
+This is an application to manage the content of a website
 
 # 2. Getting started
 
 ```bash
-# Check node version >= 20
-$ node --version
-
 # Install dependencies
 $ npm install
 
-# Start the application in development mode
-$ nx serve apps/backend
-```
-
-# 3. Useful commands
-
-```bash
-# View the dependencies graph
-$ nx graph
-
-# Check all the source code : lint, test, test coverage, build
-$ npm install && nx reset && nx run-many -t lint,test:coverage,build --verbose
-
-# Check the Docker image
-$ nx reset && clear && nx docker:build apps/backend && clear && nx docker:start apps/backend --batch
-$ docker rm -rf backend
+# Start the application
+npm run start:dev
 ```

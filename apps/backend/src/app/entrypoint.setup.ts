@@ -3,15 +3,10 @@ import { HttpStatus, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { ApplicationModuleOptions } from '../configuration/configuration.interface.js';
+import { ApplicationModuleOptions } from './configuration.interface.js';
 
 export const secureEntrypoint = (app: INestApplication) => {
-  // Load the logger
-  const applicationlogger = app.get(ApplicationLogger);
-
-  // Load the configuration
-  const configService = app.get(ConfigService);
-  const configuration = configService.getOrThrow<ApplicationModuleOptions>('application');
+  const configuration = app.get(ConfigService).getOrThrow<ApplicationModuleOptions>('application');
 
   // Configure Express
   app.setGlobalPrefix(configuration.basePath);
@@ -19,6 +14,7 @@ export const secureEntrypoint = (app: INestApplication) => {
   app.enableCors({ origin: configuration.origin });
 
   // Log all incoming requests
+  const applicationlogger = app.get(ApplicationLogger);
   app.use((request: Request, response: Response, next: NextFunction) => {
     applicationlogger.debug(`${request.method} ${request.url}`, 'secureEntrypoint');
     next();
@@ -33,6 +29,4 @@ export const secureEntrypoint = (app: INestApplication) => {
       }
     });
   });
-
-  return this;
 };

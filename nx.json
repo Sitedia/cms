@@ -11,6 +11,12 @@
       "dependsOn": ["source:clear"]
     }
   },
+  "defaultBase": "main",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
+  },
   "release": {
     "projects": ["*"],
     "version": {

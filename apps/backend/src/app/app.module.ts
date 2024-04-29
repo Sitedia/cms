@@ -1,11 +1,8 @@
-import { ExceptionModule, HealthModule, LoggerModule } from '#libs/common';
+import { CommonModule } from '#libs/common';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { configuration } from './configuration/configuration.js';
+import { configuration } from './configuration.js';
 
-/** Components to load in our NestJS application */
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -14,20 +11,10 @@ import { configuration } from './configuration/configuration.js';
       isGlobal: true,
       cache: true,
     }),
-    ThrottlerModule.forRootAsync({
-      useFactory: (configService: ConfigService) => configService.getOrThrow('rateLimit'),
+    CommonModule.registerAsync({
+      useFactory: (configService: ConfigService) => configService.getOrThrow('common'),
       inject: [ConfigService],
     }),
-    LoggerModule.registerAsync({
-      useFactory: (configService: ConfigService) => configService.getOrThrow('logger'),
-      inject: [ConfigService],
-    }),
-    HealthModule.registerAsync({
-      useFactory: (configService: ConfigService) => configService.getOrThrow('health'),
-      inject: [ConfigService],
-    }),
-    ExceptionModule,
   ],
-  providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 export class AppModule {}

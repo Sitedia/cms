@@ -19,7 +19,7 @@ const contextMock = {
 
 // Set up each test
 const setup = () => {
-  const logger = new ApplicationLogger({ enabled: false });
+  const logger = new ApplicationLogger({ logsEnabled: false });
   return new RequestInterceptor(logger);
 };
 

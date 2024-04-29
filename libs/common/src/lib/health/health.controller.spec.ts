@@ -1,12 +1,12 @@
 import { describe, expect, it } from '@jest/globals';
+import { ServiceUnavailableException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { LoggerModule } from '../logger/logger.module.js';
+import { CommonModule } from '../common.module.js';
 import { HealthController } from './health.controller.js';
-import { HealthModule } from './health.module.js';
 
-const setup = async () => {
+const setup = async (healthStorageThresholdPercent?: number) => {
   const app: TestingModule = await Test.createTestingModule({
-    imports: [HealthModule.register({ storageThresholdPercent: 1 }), LoggerModule.register({})],
+    imports: [CommonModule.register({ healthStorageThresholdPercent })],
   }).compile();
 
   return app.get(HealthController);
@@ -19,6 +19,12 @@ describe('health endpoint', () => {
     const healthCheckStatus = await healthController.liveness();
 
     expect(healthCheckStatus.status).toBe('ok');
+  });
+
+  it('should return a liveness error', async () => {
+    expect.assertions(1);
+    const healthController = await setup(0);
+    await expect(healthController.liveness()).rejects.toThrow(ServiceUnavailableException);
   });
 
   it('should return the readiness status of the application', async () => {

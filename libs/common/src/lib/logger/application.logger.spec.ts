@@ -1,11 +1,10 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import { ApplicationLogger } from './application.logger.js';
-import { LogFormat } from './log-format.enum.js';
+import { ApplicationLogger, LogFormat } from './application.logger.js';
 
 describe('application logger', () => {
   it('should display text in CONSOLE mode', () => {
     expect.assertions(1);
-    const logger = new ApplicationLogger({ enabled: false, format: LogFormat.CONSOLE });
+    const logger = new ApplicationLogger({ logsEnabled: false, logFormat: LogFormat.CONSOLE });
     const loggerSpy = jest.spyOn(logger, 'logMessage');
     logger.verbose('Test', 'Context');
     logger.log('Test', 'Context');
@@ -15,7 +14,7 @@ describe('application logger', () => {
 
   it('should display text in JSON mode', () => {
     expect.assertions(1);
-    const logger = new ApplicationLogger({ enabled: false, format: LogFormat.JSON });
+    const logger = new ApplicationLogger({ logsEnabled: false, logFormat: LogFormat.JSON });
     const loggerSpy = jest.spyOn(logger, 'logMessage');
     logger.debug('JSON', 'Context');
     logger.error('JSON', 'Context', new Error('Fatal error').stack);

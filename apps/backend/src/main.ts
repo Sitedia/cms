@@ -1,4 +1,4 @@
-import { bootstrap } from './app/bootstrap/bootstrap.js';
+import { bootstrap } from './app/bootstrap.js';
 
-// Launch the NestJS application
+// Launch the application
 await bootstrap();
