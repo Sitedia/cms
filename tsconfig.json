@@ -7,7 +7,6 @@
     "forceConsistentCasingInFileNames": true,
     "module": "NodeNext",
     "noImplicitOverride": true,
-    "noImplicitReturns": true,
     "outDir": "./dist",
     "removeComments": true,
     "rootDir": ".",
