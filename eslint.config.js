@@ -35,10 +35,13 @@ export default [
   eslintPlugin.configs.recommended,
 
   // Strict Typescript configurations
-  ...typescriptEslint.configs.strictTypeChecked.map((configs) => ({ files: ['**/*.ts'], ...configs })),
+  ...typescriptEslint.configs.strictTypeChecked.map((config) => ({ files: ['**/*.ts'], ...config })),
 
   // All Jest configurations
-  ...[jestEslintPlugin.configs['flat/all']].map((configs) => ({ files: ['**/*.spec.ts'], ...configs })),
+  {
+    files: ['**/*.spec.ts'],
+    ...jestEslintPlugin.configs['flat/all'],
+  },
 
   // All Unicorn configurations
   unicornEslintPlugin.configs['flat/all'],
