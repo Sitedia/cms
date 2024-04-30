@@ -23,8 +23,11 @@ export const bootstrap = async (): Promise<INestApplication> => {
   const options: NestApplicationOptions = { bufferLogs: true, httpsOptions: enableHTTPs ? httpsOptions : undefined };
   const app: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, options);
 
-  // Set our custom logger (https://docs.nestjs.com/techniques/logger)
+  // Retrieve the logger and the configuration
   const logger = app.get(ApplicationLogger);
+  const configuration = app.get(ConfigService).getOrThrow<ApplicationModuleOptions>('application');
+
+  // Set our custom logger (https://docs.nestjs.com/techniques/logger)
   app.useLogger(logger);
 
   // Secure the entrypoint
@@ -32,9 +35,6 @@ export const bootstrap = async (): Promise<INestApplication> => {
 
   // Configure Swagger
   configureSwagger(app);
-
-  // Load the configuration
-  const configuration = app.get(ConfigService).getOrThrow<ApplicationModuleOptions>('application');
 
   await app.listen(configuration.port);
   logger.log(`Application listening http://localhost:${configuration.port}/${configuration.basePath}`, 'bootstrap');
