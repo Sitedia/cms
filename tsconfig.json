@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "composite": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -9,7 +9,7 @@
     "noImplicitOverride": true,
     "outDir": "./dist",
     "removeComments": true,
-    "rootDir": ".",
+    "rootDir": "./",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
