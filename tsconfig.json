@@ -3,7 +3,6 @@
     "baseUrl": ".",
     "composite": true,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "module": "NodeNext",
