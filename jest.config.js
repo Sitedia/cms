@@ -1,7 +1,15 @@
 export default {
   testRegex: ['.*\\.spec\\.ts$'],
   transform: {
-    '^.+\\.(ts|js)$': ['ts-jest', { tsconfig: import.meta.dirname + '/tsconfig.json' }],
+    '^.+\\.(ts|js)$': [
+      'ts-jest',
+      {
+        tsconfig: import.meta.dirname + '/tsconfig.json',
+        diagnostics: {
+          ignoreCodes: ['TS151001'],
+        },
+      },
+    ],
   },
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1', // remove '.js' extensions for local resolution in ESM mode
