@@ -1,4 +1,5 @@
-import { CommonModuleOptions } from '#libs/common';
+import { LoggerModuleOptions } from '#libs/common';
+import { ThrottlerModuleOptions } from '@nestjs/throttler';
 
 export interface ApplicationModuleOptions {
   name: string;
@@ -12,5 +13,6 @@ export interface ApplicationModuleOptions {
 
 export interface Configuration {
   application: ApplicationModuleOptions;
-  common: CommonModuleOptions;
+  logger: LoggerModuleOptions;
+  rateLimit: ThrottlerModuleOptions;
 }

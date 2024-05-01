@@ -1,8 +1,8 @@
 import { Inject, Injectable, LogLevel } from '@nestjs/common';
 import clc from 'cli-color';
-import { MODULE_OPTIONS_TOKEN } from '../common-module.definition.js';
-import { CommonModuleOptions } from '../common-module.options.js';
 import { ApplicationLoggerInterface } from './application-logger.interface.js';
+import { MODULE_OPTIONS_TOKEN } from './logger-module.definition.js';
+import { LoggerModuleOptions } from './logger-module.options.js';
 
 const levels: LogLevel[] = ['verbose', 'debug', 'log', 'warn', 'error', 'fatal'];
 const LEVEL_PAD_INDENT = 7;
@@ -19,10 +19,11 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
   private readonly level: LogLevel;
   private readonly format: LogFormat;
 
-  constructor(@Inject(MODULE_OPTIONS_TOKEN) options: CommonModuleOptions) {
-    this.enabled = options.logsEnabled ?? true;
-    this.level = options.logLevel ?? 'log';
-    this.format = options.logFormat ?? LogFormat.CONSOLE;
+  constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {
+    /* istanbul ignore next */
+    this.enabled = options.enabled ?? true;
+    this.level = options.level ?? 'log';
+    this.format = options.format ?? LogFormat.CONSOLE;
     this.verbose(`Logger started with options ${JSON.stringify(options)}`, ApplicationLogger.name);
   }
 
@@ -61,6 +62,7 @@ export class ApplicationLogger implements ApplicationLoggerInterface {
     }
   }
 
+  /* istanbul ignore next */
   isEnabled(level: LogLevel) {
     return this.enabled ? levels.slice(levels.indexOf(this.level)).includes(level) : false;
   }
