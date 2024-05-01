@@ -1,22 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
-    "lint": {
-      "cache": true
-    },
-    "test": {
-      "cache": true
-    },
-    "build": {
-      "dependsOn": ["source:clear"]
-    }
+    "lint": { "cache": true },
+    "test": { "cache": true }
   },
   "defaultBase": "main",
-  "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": [],
-    "production": ["default"]
-  },
   "release": {
     "projects": ["*"],
     "version": {
