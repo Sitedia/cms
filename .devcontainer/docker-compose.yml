@@ -16,7 +16,7 @@ services:
       POSTGRES_DB: postgres
 
   pgadmin:
-    image: dpage/pgadmin4:8.5
+    image: dpage/pgadmin4:8
     environment:
       PGADMIN_DEFAULT_EMAIL: developer@localhost.com
       PGADMIN_DEFAULT_PASSWORD: secret
@@ -24,7 +24,7 @@ services:
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
-      - '5051:80'
+      - '5050-5059:80'
 
 volumes:
   postgres-data:
