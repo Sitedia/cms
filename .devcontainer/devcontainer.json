@@ -5,9 +5,7 @@
   "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {}
-  },
+  "mounts": ["source=${devcontainerId}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"],
 
   "postCreateCommand": "bash ./.devcontainer/post-install.sh",
 
@@ -52,8 +50,7 @@
         "nrwl.angular-console",
         "humao.rest-client",
         "streetsidesoftware.code-spell-checker"
-      ]
+      ],
     }
-  },
-  "mounts": ["source=${devcontainerId}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"]
+  }
 }
