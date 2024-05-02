@@ -1,5 +1,6 @@
 echo
-echo -e "\033[1;32mUpdate Npm ...\033[0m"
+echo -e "\033[1;32mConfigure ...\033[0m"
+sudo chown node node_modules
 npm install -g npm
 
 echo

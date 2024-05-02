@@ -19,13 +19,14 @@
         "esbenp.prettier-vscode",
         "vscode-icons-team.vscode-icons",
         "orta.vscode-jest",
-        "editorconfig.editorconfig",
         "mhutchie.git-graph",
         "yzhang.markdown-all-in-one",
         "christian-kohler.npm-intellisense",
         "nrwl.angular-console",
-        "humao.rest-client"
+        "humao.rest-client",
+        "streetsidesoftware.code-spell-checker"
       ]
     }
-  }
+  },
+  "mounts": ["source=${devcontainerId}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"]
 }
