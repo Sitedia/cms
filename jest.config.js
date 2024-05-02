@@ -1,4 +1,5 @@
 export default {
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   testRegex: ['.*\\.spec\\.ts$'],
   transform: {
     '^.+\\.(ts|js)$': ['ts-jest', { tsconfig: import.meta.dirname + '/tsconfig.json' }],
