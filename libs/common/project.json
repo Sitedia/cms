@@ -29,6 +29,13 @@
         "command": "jest -c ./libs/common/jest.config.js --watch"
       }
     },
+
+    "test:report": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 -m http.server --directory coverage/libs/common/lcov-report 8000"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {

@@ -13,7 +13,7 @@ const setup = async () => {
 };
 
 describe('health endpoint', () => {
-  it('should return the liveness status of the application', async () => {
+  it('should return the liveness status', async () => {
     expect.assertions(1);
     const healthController = await setup();
     const healthCheckStatus = await healthController.liveness();
@@ -21,7 +21,7 @@ describe('health endpoint', () => {
     expect(healthCheckStatus.status).toBe('ok');
   });
 
-  it('should return the readiness status of the application', async () => {
+  it('should return the readiness status', async () => {
     expect.assertions(1);
     const healthController = await setup();
     const healthCheckStatus = await healthController.readiness();

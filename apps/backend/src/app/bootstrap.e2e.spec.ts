@@ -5,7 +5,7 @@ import * as request from 'supertest';
 import { bootstrap } from './bootstrap.js';
 
 describe('nestjs application', () => {
-  it('should display start the application', async () => {
+  it('should start the application', async () => {
     expect.assertions(1);
     process.env.PORT = '3001';
     process.env.APP_LOG_ENABLED = 'false';

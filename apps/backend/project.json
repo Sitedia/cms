@@ -28,6 +28,12 @@
         "command": "jest -c ./apps/backend/jest.config.js --watch --runInBand"
       }
     },
+    "test:report": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "python3 -m http.server --directory coverage/apps/backend/lcov-report 8001"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {

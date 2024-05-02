@@ -1,5 +1,6 @@
 {
   "workbench.tree.indent": 16,
+  "workbench.iconTheme": "vscode-icons",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
@@ -7,6 +8,7 @@
     "source.organizeImports": "explicit",
     "source.fixAll": "explicit"
   },
+  "scm.defaultViewMode": "tree",
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -19,7 +21,6 @@
   ],
   "testing.openTesting": "neverOpen",
   "jest.runMode": "on-demand",
-  "jest.jestCommandLine": "nx run-many -t test",
   "rest-client.previewColumn": "current",
   "rest-client.previewOption": "body"
 }
