@@ -8,6 +8,6 @@ export default {
     '#libs/(.*)': ['libs/$1/src'], // add alias which is in tsconfig.base.json for local resolution in ESM mode
   },
   modulePaths: [import.meta.dirname],
-  collectCoverageFrom: ['src/**/*.ts', '!src/*.ts'],
+  collectCoverageFrom: ['**/src/**/*.ts', '!**/src/*.ts'],
   coverageThreshold: { global: { lines: 75 } },
 };

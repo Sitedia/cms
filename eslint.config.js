@@ -81,9 +81,12 @@ export default [
 
   // Check dependencies in package.json files for the buildable projects
   {
-    files: ['**/package.json'],
+    files: ['apps/**/package.json', 'libs/**/package.json'],
     rules: {
-      '@nx/dependency-checks': ['error', { ignoredFiles: ['**/*.spec.ts'], includeTransitiveDependencies: true }],
+      '@nx/dependency-checks': [
+        'error',
+        { ignoredFiles: ['**/*.spec.ts', '*.config.js'], includeTransitiveDependencies: true },
+      ],
     },
   },
 ];
