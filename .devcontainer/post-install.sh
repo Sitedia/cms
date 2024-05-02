@@ -1,6 +1,9 @@
 echo
-echo -e "\033[1;32mConfigure ...\033[0m"
+echo -e "\033[1;32mPrepare node_modules folder ...\033[0m"
 sudo chown node node_modules
+
+echo
+echo -e "\033[1;32mUpdate Npm ...\033[0m"
 npm install -g npm
 
 echo
