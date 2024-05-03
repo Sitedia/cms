@@ -35,7 +35,6 @@ export const bootstrap = async (): Promise<INestApplication> => {
     .setTitle(configuration.name)
     .setDescription(configuration.description)
     .setVersion(configuration.version)
-    .addServer(configuration.apiUrl)
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(`/${configuration.basePath}/swagger-ui.html`, app, document);

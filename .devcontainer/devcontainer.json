@@ -1,12 +1,49 @@
 {
   "name": "CMS",
-  "dockerComposeFile": ["docker-compose.yml", "../docker-compose.yml"],
+  "dockerComposeFile": "docker-compose.yml",
   "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "mounts": ["source=${devcontainerId}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"],
   "postCreateCommand": "bash ./.devcontainer/post-install.sh",
+  "forwardPorts": ["pgadmin:80"],
   "customizations": {
     "vscode": {
+      "settings": {
+        "workbench.tree.indent": 16,
+        "workbench.iconTheme": "vscode-icons",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.addMissingImports": "explicit",
+          "source.organizeImports": "explicit",
+          "source.fixAll": "explicit"
+        },
+        "scm.defaultViewMode": "tree",
+        "[dockerfile]": {
+          "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+        },
+        "search.exclude": {
+          "dist/**": true
+        },
+        "vsicons.associations.files": [
+          { "icon": "vscode", "extensions": ["extensions.json", "settings.json"], "filename": true, "format": "svg" },
+          { "icon": "nx", "extensions": ["project.json"], "filename": true, "format": "svg" }
+        ],
+        "testing.openTesting": "neverOpen",
+        "jest.runMode": "on-demand",
+        "rest-client.previewColumn": "current",
+        "rest-client.previewOption": "body",
+        "cSpell.words": [
+          "BUILDKIT",
+          "nestjs",
+          "nrwl",
+          "camelcase",
+          "vsicons",
+          "devcontainer",
+          "devcontainers",
+          "pgadmin"
+        ]
+      },
       "extensions": [
         "ms-azuretools.vscode-docker",
         "dbaeumer.vscode-eslint",
@@ -20,6 +57,27 @@
         "humao.rest-client",
         "streetsidesoftware.code-spell-checker"
       ]
+    }
+  },
+  "portsAttributes": {
+    "80": {
+      "label": "Pgadmin"
+    },
+    "3000": {
+      "label": "Backend",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "4211": {
+      "label": "Nx graph",
+      "onAutoForward": "ignore"
+    },
+    "5566": {
+      "label": "Nx graph preview",
+      "onAutoForward": "ignore"
+    },
+    "8000": {
+      "label": "Jest",
+      "onAutoForward": "openBrowserOnce"
     }
   }
 }
