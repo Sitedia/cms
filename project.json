@@ -15,12 +15,6 @@
         "command": "jest"
       }
     },
-    "test:coverage": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "jest --coverage"
-      }
-    },
     "test:report": {
       "executor": "nx:run-commands",
       "options": {
