@@ -25,7 +25,10 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["tsc --build apps/backend/tsconfig.build.json --watch", "node --watch dist/apps/backend/main.js"],
+        "commands": [
+          "tsc --build apps/backend/tsconfig.build.json --watch",
+          "node --watch dist/apps/backend/main.js --inspect"
+        ],
         "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "debug" }
       },
       "dependsOn": ["build"]
