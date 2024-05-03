@@ -25,15 +25,15 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nest start --watch --sourceRoot apps/backend/src",
-        "cwd": "apps/backend",
+        "commands": ["tsc --build apps/backend/tsconfig.build.json --watch", "node --watch dist/apps/backend/main.js"],
         "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "debug" }
-      }
+      },
+      "dependsOn": ["build"]
     },
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node ./dist/apps/backend/src/main.js"
+        "command": "node ./dist/apps/backend/main.js"
       },
       "dependsOn": ["build"]
     },

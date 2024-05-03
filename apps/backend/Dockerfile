@@ -32,4 +32,4 @@ USER nobody
 COPY --from=builder --chown=root:root --chmod=755 /build/dist ./
 
 # Start the application
-CMD ["node", "apps/backend/src/main.js"]
+CMD ["node", "apps/backend/main.js"]
