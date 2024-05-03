@@ -17,7 +17,7 @@ RUN npx tsc --build apps/backend/tsconfig.build.json
 
 # Install production dependencies in the 'dist' folder
 COPY --chown=root:root package-lock.json apps/backend/package.json ./dist/
-RUN cd dist && npm ci --include=prod --ignore-scripts
+RUN cd dist && npm ci --ignore-scripts
 
 # TARGET
 FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
