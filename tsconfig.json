@@ -4,8 +4,6 @@
     "target": "ES2022",
     "strict": true,
     "composite": true,
-    "rootDir": "./",
-    "outDir": "./dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noImplicitOverride": true,
