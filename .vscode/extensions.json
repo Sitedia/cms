@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "vscode-icons-team.vscode-icons",
+    "orta.vscode-jest",
+    "mhutchie.git-graph",
+    "yzhang.markdown-all-in-one",
+    "christian-kohler.npm-intellisense",
+    "nrwl.angular-console",
+    "humao.rest-client",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

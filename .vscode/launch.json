@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug backend",
+      "command": "nx serve apps/backend",
+      "request": "launch",
+      "type": "node-terminal",
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug tests",
+      "command": "nx test --watch",
+      "request": "launch",
+      "type": "node-terminal",
+      "sourceMaps": true
+    }
+  ]
+}
