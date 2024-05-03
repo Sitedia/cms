@@ -3,7 +3,6 @@ node_modules
 dist
 coverage
 .nx/cache
-tmp
 
 # Local .env files
 .env.*.local
