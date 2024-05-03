@@ -5,7 +5,7 @@
   "projectType": "library",
   "tags": ["libs/common"],
   "targets": {
-    "prettify": {
+    "format:fix": {
       "executor": "nx:run-commands",
       "options": {
         "command": "prettier ./libs/common --write --log-level warn"

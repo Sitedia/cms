@@ -4,7 +4,7 @@
   "projectType": "application",
   "tags": ["apps/backend"],
   "targets": {
-    "prettify": {
+    "format:fix": {
       "executor": "nx:run-commands",
       "options": {
         "command": "prettier ./apps/backend --write --log-level warn"

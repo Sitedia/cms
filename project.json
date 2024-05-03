@@ -3,7 +3,7 @@
   "$schema": "./node_modules/nx/schemas/project-schema.json",
   "tags": ["source"],
   "targets": {
-    "prettify": {
+    "format:fix": {
       "executor": "nx:run-commands",
       "options": {
         "command": "prettier . --write --log-level warn"
