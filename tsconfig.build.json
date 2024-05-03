@@ -1,4 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "dist", "**/*spec.ts"]
+  "files": [],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"],
+  "references": [{ "path": "./libs/common/tsconfig.build.json" }, { "path": "./apps/backend/tsconfig.build.json" }]
 }
