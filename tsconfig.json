@@ -1,21 +1,21 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "module": "NodeNext",
+    "target": "ES2022",
+    "strict": true,
     "composite": true,
-    "esModuleInterop": true,
+    "rootDir": "./",
+    "outDir": "./dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "module": "NodeNext",
     "noImplicitOverride": true,
-    "outDir": "./dist",
-    "removeComments": true,
-    "rootDir": "./",
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
-    "target": "ES2022",
+    "removeComments": true,
+    "baseUrl": "./",
     "paths": {
       "#libs/common": ["libs/common/src/index.js"]
     }
-  }
+  },
+  "references": [{ "path": "./libs/common/tsconfig.build.json" }, { "path": "./apps/backend/tsconfig.build.json" }]
 }
