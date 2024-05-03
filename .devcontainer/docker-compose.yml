@@ -4,6 +4,7 @@ services:
     image: mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye
     volumes:
       - ../..:/workspaces:cached
+      - cms-bash-history:/commandhistory
     command: sleep infinity
 
   postgres:
@@ -29,3 +30,4 @@ services:
 volumes:
   postgres-data:
   pgadmin:
+  cms-bash-history:
