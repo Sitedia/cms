@@ -40,7 +40,8 @@
           "vsicons",
           "devcontainer",
           "devcontainers",
-          "pgadmin"
+          "pgadmin",
+          "lcov"
         ]
       },
       "extensions": [
