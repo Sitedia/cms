@@ -5,10 +5,16 @@
   "projectType": "library",
   "tags": ["libs/common"],
   "targets": {
+    "prettify": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier ./libs/common --write --log-level warn"
+      }
+    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint ./libs/common"
+        "command": "eslint ./libs/common --fix"
       }
     },
     "test": {

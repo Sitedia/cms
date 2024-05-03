@@ -4,10 +4,16 @@
   "projectType": "application",
   "tags": ["apps/backend"],
   "targets": {
+    "prettify": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier ./apps/backend --write --log-level warn"
+      }
+    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint ./apps/backend"
+        "command": "eslint ./apps/backend --fix"
       }
     },
     "test": {

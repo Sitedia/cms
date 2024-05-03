@@ -3,10 +3,16 @@
   "$schema": "./node_modules/nx/schemas/project-schema.json",
   "tags": ["source"],
   "targets": {
+    "prettify": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier . --write --log-level warn"
+      }
+    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint ."
+        "command": "eslint . --fix"
       }
     },
     "test": {
