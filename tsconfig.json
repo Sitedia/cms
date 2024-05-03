@@ -16,6 +16,5 @@
     "paths": {
       "#libs/common": ["libs/common/src/index.js"]
     }
-  },
-  "references": [{ "path": "./libs/common/tsconfig.build.json" }, { "path": "./apps/backend/tsconfig.build.json" }]
+  }
 }
