@@ -1,4 +1,4 @@
-import { ApplicationLogger } from '#libs/common';
+import { Logger } from '#libs/common';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
@@ -14,7 +14,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
   const app: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, { bufferLogs: true });
 
   // Retrieve the logger and the configuration
-  const logger = app.get(ApplicationLogger);
+  const logger = app.get(Logger);
   const options = app.get(ConfigService).getOrThrow<BackendModuleOptions>('backend');
   const { port, version, corsOrigin, basePath } = options;
 

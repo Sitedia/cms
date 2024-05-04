@@ -1,7 +1,7 @@
 import { ConsoleLogger, Inject, Injectable, LogLevel } from '@nestjs/common';
-import { ApplicationLoggerInterface } from './application-logger.interface.js';
 import { MODULE_OPTIONS_TOKEN } from './logger-module.definition.js';
 import { LoggerModuleOptions } from './logger-module.options.js';
+import { LoggerInterface } from './logger.interface.js';
 
 export enum LogFormat {
   CONSOLE = 'CONSOLE',
@@ -10,7 +10,7 @@ export enum LogFormat {
 
 /** Logger with dual mode : text or JSON */
 @Injectable()
-export class ApplicationLogger extends ConsoleLogger implements ApplicationLoggerInterface {
+export class Logger extends ConsoleLogger implements LoggerInterface {
   private readonly format: LogFormat;
 
   constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {

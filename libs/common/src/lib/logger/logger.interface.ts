@@ -1,7 +1,7 @@
 import { LoggerService } from '@nestjs/common';
 
 /** Enforced methods for the NestJS logger */
-export interface ApplicationLoggerInterface extends LoggerService {
+export interface LoggerInterface extends LoggerService {
   verbose(message: string, context: string, stack?: string): void;
   debug(message: string, context: string, stack?: string): void;
   log(message: string, context: string, stack?: string): void;

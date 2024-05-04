@@ -1,10 +1,10 @@
 import { Global, Module } from '@nestjs/common';
-import { ApplicationLogger } from './application.logger.js';
 import { ConfigurableModuleClass } from './logger-module.definition.js';
+import { Logger } from './logger.js';
 
 @Global()
 @Module({
-  providers: [ApplicationLogger],
-  exports: [ApplicationLogger],
+  providers: [Logger],
+  exports: [Logger],
 })
 export class LoggerModule extends ConfigurableModuleClass {}

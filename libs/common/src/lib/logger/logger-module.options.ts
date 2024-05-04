@@ -1,5 +1,5 @@
 import { LogLevel } from '@nestjs/common';
-import { LogFormat } from './application.logger.js';
+import { LogFormat } from './logger.js';
 
 export interface LoggerModuleOptions {
   enabled?: boolean;
