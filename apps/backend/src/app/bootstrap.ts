@@ -10,8 +10,16 @@ import { AppModule } from './app.module.js';
 import { BackendModuleOptions } from './options.interface.js';
 
 export const bootstrap = async (): Promise<INestApplication> => {
+  /* istanbul ignore next */
+  const httpsOptions = process.env.APP_TLS_CERTIFICATE
+    ? {
+        cert: process.env.APP_TLS_CERTIFICATE.replaceAll('\\n', '\n'),
+        key: process.env.APP_TLS_KEY?.replaceAll('\\n', '\n'),
+      }
+    : undefined;
+
   // Create the application
-  const app: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, { bufferLogs: true });
+  const app: INestApplication<ExpressAdapter> = await NestFactory.create(AppModule, { bufferLogs: true, httpsOptions });
 
   // Retrieve the logger and the configuration
   const logger = app.get(Logger);
@@ -31,11 +39,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
   });
 
   // Configure Swagger
-  const config = new DocumentBuilder()
-    .setTitle('CMS API')
-    .setDescription('Backend to manage the content of a website')
-    .setVersion(version)
-    .build();
+  const config = new DocumentBuilder().setTitle('CMS API').setDescription('Backend to manage the content of a website').setVersion(version).build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(`/${basePath}/swagger-ui.html`, app, document);
 
