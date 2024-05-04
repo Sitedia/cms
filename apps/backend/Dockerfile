@@ -12,7 +12,7 @@ COPY --chown=root:root libs/common ./libs/common
 COPY --chown=root:root apps/backend ./apps/backend
 
 # Build the application
-RUN npm ci --omit=optional --ignore-scripts
+RUN npm ci --ignore-scripts
 RUN npx tsc --build apps/backend/tsconfig.build.json
 
 # Install production dependencies in the 'dist' folder
