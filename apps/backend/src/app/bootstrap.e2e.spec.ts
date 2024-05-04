@@ -9,8 +9,8 @@ describe('nestjs application', () => {
     expect.assertions(2);
     process.env.PORT = '3001';
     process.env.APP_LOG_LEVEL = 'fatal';
-    const application = await bootstrap();
-    const httpServer = application.getHttpServer() as http.Server;
+    const app = await bootstrap();
+    const httpServer = app.getHttpServer() as http.Server;
 
     // Redirect from root
     const redirectResponse = await request.agent(httpServer).get('/');
@@ -20,6 +20,6 @@ describe('nestjs application', () => {
     const livenessResponse = await request.agent(httpServer).get('/api/probes/liveness');
     expect(livenessResponse.statusCode).toBe(HttpStatus.OK);
 
-    await application.close();
+    await app.close();
   });
 });
