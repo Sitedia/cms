@@ -1,0 +1,6 @@
+services:
+  backend:
+    image: backend
+    environment:
+      APP_CORS_ORIGIN: http://localhost:8801
+      APP_LOG_FORMAT: JSON

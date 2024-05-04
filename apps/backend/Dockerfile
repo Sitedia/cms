@@ -25,6 +25,10 @@ FROM registry.access.redhat.com/ubi9/nodejs-20-minimal:1-37
 # Reduce privileges (user from base image)
 USER nobody
 
+# Set version
+ARG DOCKER_TAG
+ENV APP_VERSION=$DOCKER_TAG
+
 # Copy production files
 COPY --from=builder --chown=root:root /build/dist ./
 

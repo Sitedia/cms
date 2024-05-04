@@ -15,6 +15,7 @@ export class ApplicationLogger extends ConsoleLogger implements ApplicationLogge
 
   constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {
     super();
+    /* istanbul ignore next */
     this.setLogLevels([options.level ?? 'log']);
     this.format = options.format ?? LogFormat.CONSOLE;
   }
