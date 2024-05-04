@@ -5,4 +5,5 @@ coverage
 .nx/cache
 
 # .env files
-.env.local
+.env*
+.env.*
