@@ -1,4 +1,3 @@
-import { LogFormat } from '#libs/common';
 import { LogLevel } from '@nestjs/common';
 import { Options } from './options.interface.js';
 
@@ -12,6 +11,6 @@ export const options = (): Options => ({
   },
   logger: {
     level: process.env.APP_LOG_LEVEL ? (process.env.APP_LOG_LEVEL as LogLevel) : 'log',
-    format: process.env.APP_LOG_FORMAT === 'JSON' ? LogFormat.JSON : LogFormat.CONSOLE,
+    json: process.env.APP_LOG_JSON === 'true',
   },
 });

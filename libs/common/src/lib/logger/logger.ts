@@ -1,42 +1,21 @@
+// eslint-disable-next-line no-console
 import { ConsoleLogger, Inject, Injectable, LogLevel } from '@nestjs/common';
 import { MODULE_OPTIONS_TOKEN } from './logger-module.definition.js';
 import { LoggerModuleOptions } from './logger-module.options.js';
 
-export enum LogFormat {
-  CONSOLE = 'CONSOLE',
-  JSON = 'JSON',
-}
-
-/** Logger with dual mode : text or JSON */
+/** Logger with JSON format option */
+/* istanbul ignore next */
 @Injectable()
 export class Logger extends ConsoleLogger {
-  private readonly format: LogFormat;
-
-  constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {
-    super();
-    /* istanbul ignore next */
-    this.setLogLevels([options.level ?? 'log']);
-    this.format = options.format ?? LogFormat.CONSOLE;
+  constructor(@Inject(MODULE_OPTIONS_TOKEN) readonly loggerOptions: LoggerModuleOptions) {
+    super('', { logLevels: [loggerOptions.level ?? 'log'] });
   }
 
-  /* istanbul ignore next */
-  protected override printMessages(
-    messages: unknown[],
-    context?: string | undefined,
-    logLevel?: LogLevel | undefined,
-    writeStreamType?: 'stdout' | 'stderr' | undefined,
-  ): void {
-    if (!super.isLevelEnabled(logLevel ?? 'log')) {
-      return;
-    }
-    if (this.format === LogFormat.CONSOLE) {
-      super.printMessages(messages, context, logLevel, writeStreamType);
+  protected override printMessages(messages: unknown[], context?: string, logLevel: LogLevel = 'log', writeStreamType?: 'stdout' | 'stderr') {
+    if (this.loggerOptions.json) {
+      messages.map((message) => console.log(JSON.stringify({ timestamp: super.getTimestamp(), logLevel, message, context })));
     } else {
-      // Display the log in JSON format
-      messages.map((message) => {
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify({ timestamp: super.getTimestamp(), logLevel, message, context }));
-      });
+      super.printMessages(messages, context, logLevel, writeStreamType);
     }
   }
 }
