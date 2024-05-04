@@ -15,7 +15,7 @@ export class Logger extends ConsoleLogger {
   constructor(@Inject(MODULE_OPTIONS_TOKEN) options: LoggerModuleOptions) {
     super();
     /* istanbul ignore next */
-    this.setLogLevels(options.enabled ? [options.level ?? 'log'] : []);
+    this.setLogLevels([options.level ?? 'log']);
     this.format = options.format ?? LogFormat.CONSOLE;
   }
 

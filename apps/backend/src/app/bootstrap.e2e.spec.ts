@@ -8,7 +8,7 @@ describe('nestjs application', () => {
   it('should start the application', async () => {
     expect.assertions(2);
     process.env.PORT = '3001';
-    process.env.APP_LOG_ENABLED = 'false';
+    process.env.APP_LOG_LEVEL = 'fatal';
     const application = await bootstrap();
     const httpServer = application.getHttpServer() as http.Server;
 
