@@ -1,18 +1,15 @@
 import { LoggerModuleOptions } from '#libs/common';
 import { ThrottlerModuleOptions } from '@nestjs/throttler';
 
-export interface ApplicationModuleOptions {
-  name: string;
-  description: string;
+export interface BackendModuleOptions {
   version: string;
   port: number;
   basePath: string;
-  origin?: string;
-  apiUrl: string;
+  corsOrigin: string;
 }
 
-export interface Configuration {
-  application: ApplicationModuleOptions;
+export interface Options {
+  backend: BackendModuleOptions;
   logger: LoggerModuleOptions;
   rateLimit: ThrottlerModuleOptions;
 }

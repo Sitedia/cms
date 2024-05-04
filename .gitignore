@@ -4,5 +4,6 @@ dist
 coverage
 .nx/cache
 
-# Local .env files
-.env.*.local
+# .env files
+.env
+.env.*

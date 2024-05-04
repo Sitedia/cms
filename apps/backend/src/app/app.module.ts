@@ -3,15 +3,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { configuration } from './configuration.js';
+import { options } from './options.js';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      load: [configuration],
-      envFilePath: [`.env.${process.env.NODE_ENV}.local`, `.env.${process.env.NODE_ENV}`],
-      isGlobal: true,
-    }),
+    ConfigModule.forRoot({ load: [options], isGlobal: true }),
     LoggerModule.registerAsync({
       useFactory: (config: ConfigService) => config.getOrThrow('logger'),
       inject: [ConfigService],

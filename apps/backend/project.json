@@ -4,12 +4,6 @@
   "projectType": "application",
   "tags": ["apps/backend"],
   "targets": {
-    "format:fix": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier ./apps/backend --write --log-level warn"
-      }
-    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
@@ -32,10 +26,9 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "tsc --build apps/backend/tsconfig.build.json --watch",
-          "node --watch dist/apps/backend/main.js --inspect"
-        ],
-        "env": { "NODE_ENV": "development", "APP_LOG_LEVEL": "debug" }
+          "tsc --build ./apps/backend/tsconfig.build.json --watch",
+          "node --inspect --watch ./dist/apps/backend/main.js --version 0.0.1"
+        ]
       },
       "dependsOn": ["build"]
     },
