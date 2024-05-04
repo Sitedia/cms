@@ -1,10 +1,10 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import { ApplicationLogger, LogFormat } from './application.logger.js';
+import { ApplicationLogger } from './application.logger.js';
 
 describe('application logger', () => {
   it('should log by level', () => {
     expect.assertions(1);
-    const logger = new ApplicationLogger({ level: 'fatal', format: LogFormat.CONSOLE });
+    const logger = new ApplicationLogger({ enabled: false });
     const loggerSpy = jest.spyOn(logger, 'logMessage');
     logger.verbose('Test', 'Context');
     logger.debug('Test', 'Context');

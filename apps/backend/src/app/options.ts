@@ -17,6 +17,7 @@ export const options = (): Options => ({
     },
   ],
   logger: {
+    enabled: !process.env.APP_LOG_ENABLED || process.env.APP_LOG_ENABLED === 'true',
     level: process.env.APP_LOG_LEVEL ? (process.env.APP_LOG_LEVEL as LogLevel) : 'log',
     format: process.env.APP_LOG_FORMAT === 'JSON' ? LogFormat.JSON : LogFormat.CONSOLE,
   },

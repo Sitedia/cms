@@ -6,7 +6,7 @@ import { HealthModule } from './health.module.js';
 
 const setup = async () => {
   const app: TestingModule = await Test.createTestingModule({
-    imports: [HealthModule, LoggerModule.register({ level: 'fatal' })],
+    imports: [HealthModule, LoggerModule.register({ enabled: false })],
   }).compile();
 
   return app.get(HealthController);
