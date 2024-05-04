@@ -10,12 +10,6 @@ export const options = (): Options => ({
     basePath: process.env.APP_BASE_PATH ?? 'api',
     corsOrigin: process.env.APP_CORS_ORIGIN ?? 'http://localhost:3000',
   },
-  rateLimit: [
-    {
-      ttl: Number.parseInt(process.env.APP_RATE_LIMIT_TTL ?? '1000', 10),
-      limit: Number.parseInt(process.env.APP_RATE_LIMIT_LIMIT ?? '100', 10),
-    },
-  ],
   logger: {
     enabled: !process.env.APP_LOG_ENABLED || process.env.APP_LOG_ENABLED === 'true',
     level: process.env.APP_LOG_LEVEL ? (process.env.APP_LOG_LEVEL as LogLevel) : 'log',
