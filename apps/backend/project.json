@@ -7,7 +7,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint ./apps/backend --fix"
+        "command": "eslint ./apps/backend"
       }
     },
     "test": {

@@ -8,7 +8,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint ./libs/common --fix"
+        "command": "eslint ./libs/common"
       }
     },
     "test": {

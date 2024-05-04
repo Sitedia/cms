@@ -6,7 +6,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint . --fix"
+        "command": "eslint ."
       }
     },
     "test": {

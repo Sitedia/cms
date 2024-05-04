@@ -16,7 +16,8 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/supertest": "^6.0.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@nx/js": "^18.3.4"
   },
   "optionalDependencies": {
     "@eslint/eslintrc": "^3.0.2",
