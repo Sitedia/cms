@@ -1,29 +1,22 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
 import { Logger } from '../logger/logger.js';
+import { StatusDTO } from './health-status.dto.js';
 
 @ApiTags('probes')
 @Controller('probes')
 export class HealthController {
-  constructor(
-    private readonly health: HealthCheckService,
-    private readonly logger: Logger,
-  ) {}
+  constructor(private readonly logger: Logger) {}
 
   @Get('liveness')
-  @HealthCheck()
-  async liveness() {
-    const healthCheckResult = await this.health.check([]);
-    this.logger.debug(`Status is ${healthCheckResult.status}`, HealthController.name);
-    return healthCheckResult;
+  liveness(): StatusDTO {
+    this.logger.debug('Status is OK');
+    return { status: 'OK' };
   }
 
   @Get('readiness')
-  @HealthCheck()
-  async readiness() {
-    const healthCheckResult = await this.health.check([]);
-    this.logger.debug(`Status is ${healthCheckResult.status}`, HealthController.name);
-    return healthCheckResult;
+  readiness(): StatusDTO {
+    this.logger.debug('Status is OK');
+    return { status: 'OK' };
   }
 }
