@@ -62,7 +62,7 @@ export class ApplicationLogger extends ConsoleLogger implements ApplicationLogge
 
   /* istanbul ignore next */
   isEnabled(level: LogLevel) {
-    return this.enabled ? orderedLevels.slice(orderedLevels.indexOf(this.level)).includes(level) : false;
+    return this.enabled && orderedLevels.slice(orderedLevels.indexOf(this.level)).includes(level);
   }
 
   /* istanbul ignore next */
