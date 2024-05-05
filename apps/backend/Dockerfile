@@ -8,13 +8,12 @@ USER default
 
 # Copy only files required to build the application
 COPY --chown=root:root nx.json project.json package.json package-lock.json tsconfig.json tsconfig.build.json ./
-COPY --chown=root:root libs/common ./libs/common
-COPY --chown=root:root apps/backend ./apps/backend
+COPY --chown=root:root libs/ ./libs/
+COPY --chown=root:root apps/ ./apps/
 
 # Build the application
 RUN npm ci --ignore-scripts
 RUN npx nx build source
-RUN npx nx clear:dist source
 
 # Install production dependencies in the 'dist' folder
 COPY --chown=root:root package-lock.json apps/backend/package.json ./dist/
