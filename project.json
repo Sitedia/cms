@@ -24,13 +24,13 @@
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "jest"
+        "command": "jest ."
       }
     },
     "test:coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "jest --coverage"
+        "command": "jest . --coverage"
       }
     },
     "test:report": {
