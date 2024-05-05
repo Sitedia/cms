@@ -27,7 +27,7 @@
       "options": {
         "commands": [
           "tsc --build ./apps/backend/tsconfig.build.json --watch",
-          "node --inspect --watch ./dist/apps/backend/main.js"
+          "node --inspect --enable-source-maps --watch ./dist/apps/backend/main.js"
         ]
       },
       "dependsOn": ["build"]

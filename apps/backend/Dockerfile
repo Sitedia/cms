@@ -35,4 +35,4 @@ ENV APP_VERSION=$DOCKER_TAG
 COPY --from=builder --chown=root:root /build/dist ./
 
 # Start the application
-CMD ["node", "."]
+CMD ["node", "--enable-source-maps", "."]
