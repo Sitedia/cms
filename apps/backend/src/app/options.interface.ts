@@ -1,4 +1,5 @@
 import { LoggerModuleOptions } from '#libs/common';
+import { ThrottlerModuleOptions } from '@nestjs/throttler';
 
 export interface BackendModuleOptions {
   version: string;
@@ -10,4 +11,5 @@ export interface BackendModuleOptions {
 export interface Options {
   backend: BackendModuleOptions;
   logger: LoggerModuleOptions;
+  throttler: ThrottlerModuleOptions;
 }

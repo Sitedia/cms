@@ -13,4 +13,10 @@ export const options = (): Options => ({
     level: process.env.APP_LOG_LEVEL ? (process.env.APP_LOG_LEVEL as LogLevel) : 'log',
     json: process.env.APP_LOG_JSON === 'true',
   },
+  throttler: [
+    {
+      ttl: Number.parseInt(process.env.APP_THROTTLER_TTL ?? '1000', 10),
+      limit: Number.parseInt(process.env.APP_THROTTLER_LIMIT ?? '1', 10),
+    },
+  ],
 });
