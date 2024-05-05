@@ -39,7 +39,11 @@ export const bootstrap = async (): Promise<INestApplication> => {
   });
 
   // Configure Swagger
-  const config = new DocumentBuilder().setTitle('CMS API').setDescription('Backend to manage the content of a website').setVersion(version).build();
+  const config = new DocumentBuilder()
+    .setTitle('CMS API')
+    .setDescription('Backend to manage the content of a website')
+    .setVersion(version)
+    .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(`/${basePath}/swagger-ui.html`, app, document);
 

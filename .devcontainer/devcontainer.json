@@ -41,7 +41,8 @@
           "devcontainer",
           "devcontainers",
           "pgadmin",
-          "lcov"
+          "lcov",
+          "tsbuildinfo"
         ]
       },
       "extensions": [

@@ -3,6 +3,18 @@
   "$schema": "./node_modules/nx/schemas/project-schema.json",
   "tags": ["source"],
   "targets": {
+    "clear": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rimraf dist coverage"
+      }
+    },
+    "clear:dist": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx rimraf dist/**/tsconfig.build.tsbuildinfo"
+      }
+    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {

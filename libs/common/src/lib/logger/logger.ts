@@ -11,7 +11,12 @@ export class Logger extends ConsoleLogger {
     super('', { logLevels: [loggerOptions.level ?? 'log'] });
   }
 
-  protected override printMessages(messages: unknown[], context?: string, logLevel: LogLevel = 'log', writeStreamType?: 'stdout' | 'stderr') {
+  protected override printMessages(
+    messages: unknown[],
+    context?: string,
+    logLevel: LogLevel = 'log',
+    writeStreamType?: 'stdout' | 'stderr',
+  ) {
     if (this.loggerOptions.json) {
       messages.map((message) => {
         console.log(JSON.stringify({ timestamp: super.getTimestamp(), logLevel, message, context }));

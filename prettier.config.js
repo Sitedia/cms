@@ -1,6 +1,6 @@
 export default {
   singleQuote: true,
   trailingComma: 'all',
-  printWidth: 160,
+  printWidth: 120,
   endOfLine: 'lf',
 };
