@@ -8,8 +8,10 @@ USER default
 
 # Copy only files required to build the application
 COPY --chown=root:root nx.json project.json package.json package-lock.json tsconfig.json tsconfig.build.json ./
-COPY --chown=root:root libs/ ./libs/
-COPY --chown=root:root apps/ ./apps/
+COPY --chown=root:root libs/common/project.json libs/common/tsconfig.build.json ./libs/common/
+COPY --chown=root:root libs/common/src ./libs/common/src
+COPY --chown=root:root apps/backend/project.json apps/backend/package.json apps/backend/tsconfig.build.json ./apps/backend/
+COPY --chown=root:root apps/backend/src ./apps/backend/src
 
 # Build the application
 RUN npm ci --ignore-scripts
