@@ -31,7 +31,8 @@ export const bootstrap = async (): Promise<INestApplication> => {
   app.setGlobalPrefix(basePath);
   app.use(helmet());
   app.enableCors({ origin: corsOrigin });
-
+  app.enableShutdownHooks();
+  
   // Add redirection to Swagger UI
   const httpAdapter = app.getHttpAdapter();
   httpAdapter.get('/', function (request: Request, response: Response) {
