@@ -14,5 +14,5 @@ This is an application to manage the content of a website
 $ npm install
 
 # Start the application
-npm run start:dev
+nx serve apps/backend
 ```
