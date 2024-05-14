@@ -58,6 +58,7 @@ export default [
       'max-depth': ['error', 4],
       'max-params': ['error', 8],
       'no-console': 'error',
+      'no-implicit-coercion': 'error',
       'no-else-return': ['error', { allowElseIf: false }],
       'object-shorthand': ['error', 'always'],
       'no-magic-numbers': ['error', { ignore: [0, 1] }],
