@@ -26,8 +26,8 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "tsc --build ./apps/backend/tsconfig.build.json --watch",
-          "node --enable-source-maps --watch --no-warnings ./dist/apps/backend/main.js"
+          "node --enable-source-maps --watch --no-warnings ./dist/apps/backend/main.js",
+          "tsc --build ./apps/backend/tsconfig.build.json --watch"
         ]
       },
       "dependsOn": ["build"]
