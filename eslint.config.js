@@ -62,6 +62,7 @@ export default [
       'no-else-return': ['error', { allowElseIf: false }],
       'object-shorthand': ['error', 'always'],
       'no-magic-numbers': ['error', { ignore: [0, 1] }],
+      'unicorn/prefer-string-raw': 'off',
       'unicorn/prevent-abbreviations': ['error', { ignore: ['app', 'e2e', 'props', 'moduleRef'] }],
       '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }],
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
@@ -71,6 +72,14 @@ export default [
           depConstraints: [{ sourceTag: 'apps/backend', onlyDependOnLibsWithTags: ['libs/common'] }],
         },
       ],
+    },
+  },
+
+  // Custom configurations for Javascript files
+  {
+    files: ['**/*.js'],
+    rules: {
+      'unicorn/prefer-string-raw': 'off',
     },
   },
 

@@ -10,7 +10,7 @@ sudo chown node node_modules
 echo
 echo -e "\033[1;32mInstall Nx 18 globally ...\033[0m"
 npm config set fund false
-npm install -g nx@^18
+npm install -g nx
 
 echo
 echo -e "\033[1;32mInstall project dependencies ...\033[0m"
