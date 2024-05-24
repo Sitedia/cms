@@ -1,4 +1,5 @@
 import { LogLevel } from '@nestjs/common';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { Options } from './options.interface.js';
 
 /* istanbul ignore next */
@@ -19,4 +20,19 @@ export const options = (): Options => ({
       limit: Number.parseInt(process.env.APP_THROTTLER_LIMIT ?? '1', 10),
     },
   ],
+  typeorm: {
+    type: 'postgres',
+    ssl: process.env.APP_POSTGRES_SSL === 'true',
+    extra: process.env.APP_POSTGRES_SSL ? { ssl: { rejectUnauthorized: false } } : undefined,
+    host: process.env.APP_POSTGRES_HOSTNAME ?? 'postgres',
+    port: Number.parseInt(process.env.PORT ?? '5432', 10),
+    database: process.env.APP_POSTGRES_DATABASE ?? 'local',
+    username: process.env.APP_POSTGRES_USERNAME ?? 'postgres',
+    password: process.env.APP_POSTGRES_PASSWORD ?? 'postgres',
+    schema: process.env.APP_POSTGRES_SCHEMA ?? 'cms',
+    autoLoadEntities: true,
+    synchronize: false,
+    namingStrategy: new SnakeNamingStrategy(),
+    logging: false,
+  },
 });

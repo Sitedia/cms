@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { options } from './options.js';
 
 @Module({
@@ -14,6 +15,10 @@ import { options } from './options.js';
     }),
     LoggerModule.registerAsync({
       useFactory: (config: ConfigService) => config.getOrThrow('logger'),
+      inject: [ConfigService],
+    }),
+    TypeOrmModule.forRootAsync({
+      useFactory: (config: ConfigService) => config.getOrThrow('typeorm'),
       inject: [ConfigService],
     }),
     HealthModule,

@@ -35,7 +35,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node --enable-source-maps --watch --no-warnings ./dist/apps/backend/main.js"
+        "command": "node --enable-source-maps ./dist/apps/backend/main.js"
       },
       "dependsOn": ["build"]
     },
