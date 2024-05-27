@@ -1,0 +1,129 @@
+openapi: 3.0.0
+paths:
+  /api/probes/liveness:
+    get:
+      operationId: HealthController_liveness
+      parameters: []
+      responses:
+        default:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatusDTO'
+      tags:
+        - probes
+  /api/probes/readiness:
+    get:
+      operationId: HealthController_readiness
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - probes
+  /api/categories:
+    post:
+      operationId: CategoryController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCategoryDto'
+      responses:
+        '201':
+          description: ''
+      tags:
+        - categories
+    get:
+      operationId: CategoryController_findAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - categories
+  /api/categories/{id}:
+    get:
+      operationId: CategoryController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+        - categories
+    patch:
+      operationId: CategoryController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCategoryDto'
+      responses:
+        '200':
+          description: ''
+      tags:
+        - categories
+    delete:
+      operationId: CategoryController_delete
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+        - categories
+info:
+  title: CMS API
+  description: Backend to manage the content of a website
+  version: local
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    HealthStatusDTO:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the application
+          enum:
+            - OK
+      required:
+        - status
+    CreateCategoryDto:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+      required:
+        - code
+        - name
+    UpdateCategoryDto:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string

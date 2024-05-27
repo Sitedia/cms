@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { Logger } from '../logger/logger.js';
+import { OwaspResponse } from '../swagger/owasp-response.js';
 import { HealthStatusDTO } from './health-status.dto.js';
 
 @ApiTags('probes')
@@ -8,13 +9,14 @@ import { HealthStatusDTO } from './health-status.dto.js';
 export class HealthController {
   constructor(private readonly logger: Logger) {}
 
-  @ApiResponse({ type: HealthStatusDTO })
+  @OwaspResponse(HealthStatusDTO)
   @Get('liveness')
   liveness(): HealthStatusDTO {
     this.logger.debug('Status is OK');
     return { status: 'OK' };
   }
 
+  @OwaspResponse(HealthStatusDTO)
   @Get('readiness')
   readiness(): HealthStatusDTO {
     this.logger.debug('Status is OK');
