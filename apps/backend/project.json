@@ -47,6 +47,24 @@
       },
       "cache": true
     },
+    "migrations:create": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx typeorm-ts-node-esm  migration:create apps/backend/src/app/migrations/{args.title}"
+      }
+    },
+    "migrations:run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx typeorm-ts-node-esm  migration:run -d apps/backend/migrations/typeorm/typeorm.config.ts"
+      }
+    },
+    "migration:revert": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx typeorm-ts-node-esm  migration:revert -d apps/migrations/typeorm/typeorm.config.ts"
+      }
+    },
     "docker:start": {
       "executor": "nx:run-commands",
       "options": {

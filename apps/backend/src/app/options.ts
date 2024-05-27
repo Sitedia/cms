@@ -31,8 +31,9 @@ export const options = (): Options => ({
     password: process.env.APP_POSTGRES_PASSWORD ?? 'postgres',
     schema: process.env.APP_POSTGRES_SCHEMA ?? 'cms',
     autoLoadEntities: true,
-    synchronize: false,
     namingStrategy: new SnakeNamingStrategy(),
-    logging: false,
+    migrationsRun: true,
+    migrations: [`${import.meta.dirname}/../migrations/**/*{.ts,.js}`],
+    logging: true,
   },
 });
