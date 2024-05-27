@@ -49,7 +49,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
     .setVersion(version)
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup(`/${basePath}/swagger-ui.html`, app, document);
+  SwaggerModule.setup(`/${basePath}/swagger-ui.html`, app, document, { yamlDocumentUrl: `/${basePath}/openapi.yaml` });
 
   await app.listen(port);
   logger.log(`Application listening http://localhost:${port}/${basePath}`, 'bootstrap');

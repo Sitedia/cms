@@ -10,6 +10,12 @@
         "command": "eslint ./apps/backend"
       }
     },
+    "lint:api": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "spectral lint http://localhost:3000/api/openapi.yaml --ruleset .spectral.yaml"
+      }
+    },
     "test": {
       "executor": "nx:run-commands",
       "options": {
