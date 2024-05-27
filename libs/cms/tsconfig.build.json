@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.ts"],
+  "references": [{ "path": "../../libs/common/tsconfig.build.json" }],
   "compilerOptions": {
-    "outDir": "../../dist/libs/common/"
+    "outDir": "../../dist/libs/cms/"
   }
 }

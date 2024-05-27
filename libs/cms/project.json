@@ -1,0 +1,27 @@
+{
+  "name": "libs/cms",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/cms/src",
+  "projectType": "library",
+  "tags": ["libs/cms"],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint ./libs/cms"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "jest ./libs/cms --collectCoverageFrom='[\"./libs/cms/src/lib/**/*.ts\"]'"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --build ./libs/cms/tsconfig.build.json"
+      }
+    }
+  }
+}

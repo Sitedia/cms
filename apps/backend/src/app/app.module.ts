@@ -1,3 +1,4 @@
+import { CmsModule } from '#libs/cms';
 import { HealthModule, LoggerModule } from '#libs/common';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -22,6 +23,7 @@ import { options } from './options.js';
       inject: [ConfigService],
     }),
     HealthModule,
+    CmsModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })

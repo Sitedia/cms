@@ -1,9 +1,9 @@
 {
   "exclude": ["node_modules", "dist", "coverage"],
   "compilerOptions": {
-    "module": "ES2022",
+    "module": "NodeNext",
     "target": "ES2022",
-    "moduleResolution": "Node",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "composite": true,
     "emitDecoratorMetadata": true,
@@ -14,7 +14,8 @@
     "removeComments": true,
     "baseUrl": "./",
     "paths": {
-      "#libs/common": ["libs/common/src/index.js"]
+      "#libs/common": ["libs/common/src/index.js"],
+      "#libs/cms": ["libs/cms/src/index.js"]
     }
   }
 }

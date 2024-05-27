@@ -1,5 +1,5 @@
 import { Logger } from '#libs/common';
-import { HttpStatus, INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
@@ -32,6 +32,9 @@ export const bootstrap = async (): Promise<INestApplication> => {
   app.use(helmet());
   app.enableCors({ origin: corsOrigin });
   app.enableShutdownHooks();
+  app.useGlobalPipes(
+    new ValidationPipe({ forbidUnknownValues: true, forbidNonWhitelisted: true, stopAtFirstError: true }),
+  );
 
   // Add redirection to Swagger UI
   const httpAdapter = app.getHttpAdapter();

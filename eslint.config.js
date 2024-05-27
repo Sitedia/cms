@@ -69,7 +69,10 @@ export default [
       '@nx/enforce-module-boundaries': [
         'error',
         {
-          depConstraints: [{ sourceTag: 'apps/backend', onlyDependOnLibsWithTags: ['libs/common'] }],
+          depConstraints: [
+            { sourceTag: 'apps/backend', onlyDependOnLibsWithTags: ['libs/common', 'libs/cms'] },
+            { sourceTag: 'libs/cms', onlyDependOnLibsWithTags: ['libs/common'] },
+          ],
         },
       ],
     },

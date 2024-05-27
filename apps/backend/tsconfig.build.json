@@ -1,9 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "exclude": ["src/**/*.spec.ts"],
-  "references": [{ "path": "../../libs/common/tsconfig.build.json" }],
+  "references": [{ "path": "../../libs/common/tsconfig.build.json" }, { "path": "../../libs/cms/tsconfig.build.json" }],
   "compilerOptions": {
-    "rootDir": "./src",
     "outDir": "../../dist/apps/backend"
   }
 }

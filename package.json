@@ -1,7 +1,8 @@
 {
   "type": "module",
   "imports": {
-    "#libs/common": "./dist/libs/common/index.js"
+    "#libs/common": "./dist/libs/common/src/index.js",
+    "#libs/cms": "./dist/libs/cms/src/index.js"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.8",
@@ -12,6 +13,8 @@
     "@nestjs/terminus": "^10.2.3",
     "@nestjs/throttler": "^5.1.2",
     "@nestjs/typeorm": "^10.0.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
     "pg": "^8.11.5",

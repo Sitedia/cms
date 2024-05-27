@@ -1,5 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "files": [],
-  "references": [{ "path": "./libs/common/tsconfig.build.json" }, { "path": "./apps/backend/tsconfig.build.json" }]
+  "references": [
+    { "path": "./libs/common/tsconfig.build.json" },
+    { "path": "./libs/cms/tsconfig.build.json" },
+    { "path": "./apps/backend/tsconfig.build.json" }
+  ]
 }
