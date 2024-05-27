@@ -9,14 +9,14 @@ import { HealthStatusDTO } from './health-status.dto.js';
 export class HealthController {
   constructor(private readonly logger: Logger) {}
 
-  @OwaspResponse(HealthStatusDTO)
+  @OwaspResponse({ type: HealthStatusDTO, description: 'checks if the instance should be restarted' })
   @Get('liveness')
   liveness(): HealthStatusDTO {
     this.logger.debug('Status is OK');
     return { status: 'OK' };
   }
 
-  @OwaspResponse(HealthStatusDTO)
+  @OwaspResponse({ type: HealthStatusDTO, description: 'checks if the instance is ready to respond' })
   @Get('readiness')
   readiness(): HealthStatusDTO {
     this.logger.debug('Status is OK');

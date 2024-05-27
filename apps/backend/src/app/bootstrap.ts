@@ -4,10 +4,15 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ServerObject } from '@nestjs/swagger/dist/interfaces/open-api-spec.interface.js';
 import { Request, Response } from 'express';
 import helmet from 'helmet';
 import { AppModule } from './app.module.js';
 import { BackendModuleOptions } from './options.interface.js';
+
+interface SwaggerServer extends ServerObject {
+  'x-internal'?: boolean;
+}
 
 export const bootstrap = async (): Promise<INestApplication> => {
   /* istanbul ignore next */
@@ -47,8 +52,16 @@ export const bootstrap = async (): Promise<INestApplication> => {
     .setTitle('CMS API')
     .setDescription('Backend to manage the content of a website')
     .setVersion(version)
+    .addTag('probes', 'Probes')
+    .addServer(`/`, 'localhost')
     .build();
   const document = SwaggerModule.createDocument(app, config);
+
+  const server = document.servers ? (document.servers[0] as SwaggerServer) : undefined;
+  if (server) {
+    server['x-internal'] = false;
+  }
+
   SwaggerModule.setup(`/${basePath}/swagger-ui.html`, app, document, { yamlDocumentUrl: `/${basePath}/openapi.yaml` });
 
   await app.listen(port);
