@@ -22,7 +22,10 @@ services:
       PGADMIN_DEFAULT_PASSWORD: secret
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-      - pgadmin:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
+      - ./pgadmin/pgpass:/pgadmin4/pgpass
+    depends_on:
+      - 'postgres'
 
 volumes:
   postgres-data:
